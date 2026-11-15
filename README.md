@@ -48,7 +48,7 @@ This repository never contains personal data: no names, student numbers, grades,
 ## Changes and review
 
 - Only the maintainer, [@Ikrar06](https://github.com/Ikrar06), can change the data.
-- The `main` branch is protected. Every change must pass `validate`, which checks the schema itself and validates `config.json` against it.
+- The `main` branch is protected: pull requests must pass `validate` before they can be merged. `validate` checks the schema itself and validates `config.json` against it. The maintainer may push directly, and those pushes run `validate` too.
 - Academic calendar data will be checked twice against the official PDF before it is published. Each file will name its source, revision and date.
 - Corrections are welcome as issues or pull requests. Please link the official source.
 
