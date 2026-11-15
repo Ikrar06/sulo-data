@@ -1,0 +1,20 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Schema is a valid JSON Schema
+        run: pipx run check-jsonschema==0.29.4 --check-metaschema schema/config.schema.json
+
+      - name: config.json matches the schema
+        run: pipx run check-jsonschema==0.29.4 --schemafile schema/config.schema.json config.json

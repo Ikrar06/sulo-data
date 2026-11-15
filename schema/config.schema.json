@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ikrar06.github.io/sulo-data/schema/config.schema.json",
+  "title": "Sulo remote configuration",
+  "description": "Remote kill switch and pacing for the Sulo extension. Mirrors remoteConfigSchema in lib/remote-config.ts of the Sulo repository. This schema is stricter than the extension: unknown keys are rejected here, while the extension ignores them.",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "description": "false stops every request from Sulo to SIKOLA in all installations. The extension shows `message` instead."
+    },
+    "minIntervalMinutes": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Minimum minutes between background syncs. Can only slow Sulo down: values below the built-in 180 are ignored."
+    },
+    "message": {
+      "type": "string",
+      "maxLength": 500,
+      "default": "",
+      "description": "Short Indonesian text shown to users while the extension is disabled. Plain text, never HTML."
+    }
+  },
+  "required": ["enabled", "minIntervalMinutes"],
+  "additionalProperties": false
+}
