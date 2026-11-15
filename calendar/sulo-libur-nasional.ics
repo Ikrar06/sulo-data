@@ -1,0 +1,317 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sulo//Kalender Akademik Unhas (tidak resmi)//ID
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Libur nasional di kalender akademik Unhas (Sulo\, tidak resmi)
+X-WR-CALDESC:Hari libur nasional dan cuti bersama sebagaimana tercantum di 
+ PDF kalender akademik. Tidak resmi\; rujuk dokumen resmi.
+X-WR-TIMEZONE:Asia/Makassar
+BEGIN:VEVENT
+UID:2026-2027-libur-2026-06-01-hari-lahir-pancasila@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260601
+DTEND;VALUE=DATE:20260602
+SUMMARY:Hari Lahir Pancasila
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2026-06-16-tahun-baru-islam@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260616
+DTEND;VALUE=DATE:20260617
+SUMMARY:Tahun Baru Islam 1448 H
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2026-08-17-hari-kemerdekaan@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260817
+DTEND;VALUE=DATE:20260818
+SUMMARY:Hari Kemerdekaan RI
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2026-08-25-maulid-nabi@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260825
+DTEND;VALUE=DATE:20260826
+SUMMARY:Maulid Nabi Muhammad SAW
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2026-12-24-cuti-bersama-natal@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261224
+DTEND;VALUE=DATE:20261225
+SUMMARY:Cuti bersama Hari Raya Natal
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:cuti_bersama
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2026-12-25-natal@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261225
+DTEND;VALUE=DATE:20261226
+SUMMARY:Hari Raya Natal
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2027-01-01-tahun-baru-masehi@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Tahun Baru Masehi 2027
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2027-01-05-isra-miraj@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270105
+DTEND;VALUE=DATE:20270106
+SUMMARY:Isra' Mi'raj Nabi Muhammad SAW
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2027-02-06-imlek@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270206
+DTEND;VALUE=DATE:20270207
+SUMMARY:Tahun Baru Imlek 2578
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2027-03-08-nyepi@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270308
+DTEND;VALUE=DATE:20270309
+SUMMARY:Hari Raya Nyepi (Tahun Baru Saka 1949)
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2027-03-10-idul-fitri@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270310
+DTEND;VALUE=DATE:20270312
+SUMMARY:Hari Raya Idul Fitri 1448 H
+DESCRIPTION:PDF menulis "10 Mar" dua kali\; kisi kalender menandai 10 dan 1
+ 1 Mar. Dipakai 10 dan 11 Mar.\nDari PDF kalender akademik\; belum dicocokk
+ an dengan SKB 3 Menteri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/202
+ 6\, Kalender Akademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (D
+ irektorat Pendidikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi
+  dan tidak berafiliasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2027-03-26-wafat-yesus-kristus@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270326
+DTEND;VALUE=DATE:20270327
+SUMMARY:Wafat Yesus Kristus
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2027-05-01-hari-buruh@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:Hari Buruh Nasional
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2027-05-06-kenaikan-yesus-kristus@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270506
+DTEND;VALUE=DATE:20270507
+SUMMARY:Kenaikan Yesus Kristus
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2027-05-17-idul-adha@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270517
+DTEND;VALUE=DATE:20270518
+SUMMARY:Hari Raya Idul Adha 1448 H
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2027-05-20-waisak@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270520
+DTEND;VALUE=DATE:20270521
+SUMMARY:Hari Raya Waisak 2571
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2027-06-01-hari-lahir-pancasila@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270602
+SUMMARY:Hari Lahir Pancasila
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-2027-06-06-tahun-baru-islam@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270606
+DTEND;VALUE=DATE:20270607
+SUMMARY:Tahun Baru Islam 1449 H
+DESCRIPTION:Dari PDF kalender akademik\; belum dicocokkan dengan SKB 3 Ment
+ eri.\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademi
+ k Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan
+ ). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafilia
+ si dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur_nasional
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

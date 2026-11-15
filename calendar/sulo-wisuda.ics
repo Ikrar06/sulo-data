@@ -1,0 +1,154 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sulo//Kalender Akademik Unhas (tidak resmi)//ID
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Wisuda Unhas (Sulo\, tidak resmi)
+X-WR-CALDESC:Periode wisuda dari kalender akademik resmi. Tidak resmi\; ruj
+ uk dokumen resmi.
+X-WR-TIMEZONE:Asia/Makassar
+BEGIN:VEVENT
+UID:2026-2027-awal-wisuda-juni-2026@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260622
+DTEND;VALUE=DATE:20260624
+SUMMARY:Wisuda Juni 2026
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:wisuda
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-wisuda-juli-2026@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260728
+DTEND;VALUE=DATE:20260731
+SUMMARY:Wisuda Juli 2026
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:wisuda
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-wisuda-september-2026@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260901
+DTEND;VALUE=DATE:20260904
+SUMMARY:Wisuda September 2026
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:wisuda
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-wisuda-oktober-2026@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261030
+SUMMARY:Wisuda Oktober 2026
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:wisuda
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-wisuda-desember-2026@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261218
+SUMMARY:Wisuda Desember 2026
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:wisuda
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-wisuda-februari-2027@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270202
+DTEND;VALUE=DATE:20270205
+SUMMARY:Wisuda Februari 2027
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:wisuda
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-wisuda-maret-2027@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270330
+DTEND;VALUE=DATE:20270402
+SUMMARY:Wisuda Maret 2027
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:wisuda
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-wisuda-mei-2027@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270511
+DTEND;VALUE=DATE:20270514
+SUMMARY:Wisuda Mei 2027
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:wisuda
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-wisuda-juni-2027@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270622
+DTEND;VALUE=DATE:20270625
+SUMMARY:Wisuda Juni 2027
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:wisuda
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

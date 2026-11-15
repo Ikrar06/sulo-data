@@ -1,0 +1,627 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sulo//Kalender Akademik Unhas (tidak resmi)//ID
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Kalender akademik Unhas: inti S1 (Sulo\, tidak resmi)
+X-WR-CALDESC:KRS\, perkuliahan\, UTS\, UAS\, libur semester\, nilai\, evalu
+ asi\, KKN\, dan batas administrasi untuk mahasiswa S1. Disusun Sulo dari k
+ alender akademik resmi. Tidak resmi\; rujuk dokumen resmi.
+X-WR-TIMEZONE:Asia/Makassar
+BEGIN:VEVENT
+UID:2026-2027-lain-kkn-reguler-jun-agu-2026@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260601
+DTEND;VALUE=DATE:20260901
+SUMMARY:Penyelenggaraan Kuliah Kerja Nyata (KKN) Reguler
+DESCRIPTION:Perkiraan bulan\; tanggal pastinya diumumkan kemudian.\nPDF han
+ ya menulis bulan (Jun-Agu).\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/
+ 2026\, Kalender Akademik Tahun Akademik 2026/2027\, Universitas Hasanuddin
+  (Direktorat Pendidikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak re
+ smi dan tidak berafiliasi dengan Universitas Hasanuddin. Rujuk dokumen res
+ mi.
+CATEGORIES:kkn
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-lain-akhir-perkuliahan-semester-akhir-t-a-2025-2026@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260626
+DTEND;VALUE=DATE:20260627
+SUMMARY:Akhir perkuliahan Semester Akhir T.A. 2025/2026
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:perkuliahan
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-semester-sebelum-awal@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260629
+DTEND;VALUE=DATE:20260816
+SUMMARY:Libur semester
+DESCRIPTION:Hanya ditandai warna di kisi kalender PDF.\nSumber: Keputusan R
+ ektor No. 08429/UN4.1/KEP/2026\, Kalender Akademik Tahun Akademik 2026/202
+ 7\, Universitas Hasanuddin (Direktorat Pendidikan). Revisi data 1\, diperb
+ arui 2026-11-16.\nTidak resmi dan tidak berafiliasi dengan Universitas Has
+ anuddin. Rujuk dokumen resmi.
+CATEGORIES:libur
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-lain-batas-akhir-penginputan-nilai-daring-semester@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260710
+DTEND;VALUE=DATE:20260711
+SUMMARY:Batas akhir penginputan nilai daring Semester Akhir T.A. 2025/2026
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:nilai
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-pembayaran-ukt-semester-awal@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260713
+DTEND;VALUE=DATE:20260808
+SUMMARY:Pembayaran UKT Semester Awal
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:administrasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-lain-penginputan-perubahan-nilai-semester-akhir-t-a@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260713
+DTEND;VALUE=DATE:20260716
+SUMMARY:Penginputan perubahan nilai Semester Akhir T.A. 2025/2026
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:nilai
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-evaluasi-masa-studi-dan-kelanjutan-studi@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260717
+DTEND;VALUE=DATE:20260718
+SUMMARY:Evaluasi masa studi dan kelanjutan studi (angkatan dan jenjang yang
+  dievaluasi tercantum di PDF)
+DESCRIPTION:Rincian per angkatan disalin dari PDF. Teks Indonesia menyebut 
+ dokter hewan Angkatan 2023-1\, teks Inggris tidak. Rujuk PDF resmi.\nEvalu
+ asi masa studi mahasiswa S1 Angkatan 2019 (Evaluasi 14 semester)\nEvaluasi
+  masa studi mahasiswa S2 Angkatan 2021-2 dan S3 Angkatan 2020-2 (Pernah Cu
+ ti)\nEvaluasi masa studi mahasiswa S2 Angkatan 2022-1 (Evaluasi delapan se
+ mester)\, S2 Angkatan 2023-1 (evauasi enam semester) dan S3 Angkatan 2021-
+ 1 (Evaluasi sepuluh semester)\nEvaluasi masa studi mahasiswa Profesi (Akun
+ tansi\, Insinyur\, Arsitek\, Apoteker\, Ners\, Fisioterapi) dan dokter hew
+ an Angkatan 2023-1 (Evaluasi enam semester)\nEvaluasi masa studi mahasiswa
+  Profesi Dokter dan Dokter Gigi Angkatan 2021-1 (Evaluasi sepuluh semester
+ )\nEvaluasi kelanjutan studi mahasiswa S1 Angkatan 2024 (Evaluasi empat se
+ mester)\nEvaluasi kelanjutan studi S2 dan S3 Angkatan 2025-1 (Evaluasi dua
+  semester)\nSumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender A
+ kademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pend
+ idikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak ber
+ afiliasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:evaluasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-pengisian-krs-daring-semester-awal@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260720
+DTEND;VALUE=DATE:20260815
+SUMMARY:Pengisian KRS daring Semester Awal
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:krs
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-batas-akhir-masa-studi-bagi-angkatan-yang@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260724
+DTEND;VALUE=DATE:20260725
+SUMMARY:Batas akhir masa studi bagi angkatan yang dievaluasi (rincian di PD
+ F)
+DESCRIPTION:Rincian per angkatan disalin dari PDF. Rujuk PDF resmi.\nBatas 
+ akhir masa studi mahasiswa S1 Angkatan 2019 (Evaluasi 14 Semester)\; S2 An
+ gkatan 2021-2 (Pernah Cuti)\; S2 Angkatan 2022-1 (Evaluasi delapan semeste
+ r)\; S2 Angkatan 2023-1 (Evaluasi enam semester)\; S3 Angkatan 2020-2 (Per
+ nah Cuti)\; S3 Angkatan 2021-1 (Evaluasi sepuluh semester)\; Profesi (Akun
+ tansi\, Insinyur\, Arsitek\, Apoteker\, Ners\, dan Fisioterapi) Angkatan 2
+ 023-1 (Evaluasi enam semester)\; dan Profesi Dokter dan Dokter Gigi Angkat
+ an 2021-1 (Evaluasi sepuluh semester).\nSumber: Keputusan Rektor No. 08429
+ /UN4.1/KEP/2026\, Kalender Akademik Tahun Akademik 2026/2027\, Universitas
+  Hasanuddin (Direktorat Pendidikan). Revisi data 1\, diperbarui 2026-11-16
+ .\nTidak resmi dan tidak berafiliasi dengan Universitas Hasanuddin. Rujuk 
+ dokumen resmi.
+CATEGORIES:evaluasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-mahasiswa-yang-memiliki-surat-izin-ujian-atau@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260807
+DTEND;VALUE=DATE:20260808
+SUMMARY:Mahasiswa yang memiliki surat izin ujian atau surat pendaftaran wis
+ uda tidak dikenakan UKT Semester Awal
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:administrasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-batas-akhir-permohonan-cuti-akademik-semester@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260814
+DTEND;VALUE=DATE:20260815
+SUMMARY:Batas akhir permohonan cuti akademik Semester Awal
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:administrasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-kuliah-perdana-semester-awal-untuk-semua-jenjang@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260818
+DTEND;VALUE=DATE:20260819
+SUMMARY:Kuliah perdana Semester Awal untuk semua jenjang
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:perkuliahan
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-batas-akhir-pembatalan-penggantian-mata-kuliah@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260828
+DTEND;VALUE=DATE:20260829
+SUMMARY:Batas akhir pembatalan/penggantian mata kuliah
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:administrasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-dies-natalis-unhas@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20260910
+DTEND;VALUE=DATE:20260911
+SUMMARY:Dies Natalis Unhas
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:lainnya
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-ujian-tengah-semester@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261005
+DTEND;VALUE=DATE:20261010
+SUMMARY:Ujian tengah semester (UTS)
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:uts
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-batas-akhir-pengunduran-diri-dari-semua-mata@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:Batas akhir pengunduran diri dari semua mata kuliah
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:administrasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-ujian-final@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261206
+SUMMARY:Ujian final (UAS)
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:uas
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-kuliah-kerja-nyata-reguler@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20270301
+SUMMARY:Kuliah Kerja Nyata (KKN) Reguler
+DESCRIPTION:Perkiraan bulan\; tanggal pastinya diumumkan kemudian.\nSumber:
+  Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademik Tahun Akade
+ mik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan). Revisi dat
+ a 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafiliasi dengan Uni
+ versitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:kkn
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-akhir-perkuliahan-semester-awal@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Akhir perkuliahan Semester Awal
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:perkuliahan
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-semester-setelah-awal@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261207
+DTEND;VALUE=DATE:20270214
+SUMMARY:Libur semester
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-batas-akhir-penginputan-nilai-daring-semester@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261219
+SUMMARY:Batas akhir penginputan nilai daring Semester Awal
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:nilai
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-awal-penginputan-perubahan-nilai-semester-awal@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261221
+DTEND;VALUE=DATE:20261228
+SUMMARY:Penginputan perubahan nilai Semester Awal
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:nilai
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-evaluasi-masa-studi-dan-kelanjutan-studi@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:Evaluasi masa studi dan kelanjutan studi (rincian di PDF)
+DESCRIPTION:Rincian per angkatan disalin dari teks Indonesia di PDF. Teks I
+ nggris menyebut angkatan lain (misalnya S3 2020-1 dan bukan 2021-1\, S2 20
+ 21-2 dan 2023-2 dan bukan 2022-2). Rujuk PDF resmi.\nEvaluasi masa studi m
+ ahasiswa S1 Angkatan 2019 (Pernah Cuti)\nEvaluasi masa studi mahasiswa S2 
+ Angkatan 2022-1 dan 2023-1 serta S3 Angkatan 2021-1 (Pernah Cuti)\nEvaluas
+ i masa studi mahasiswa S2 Angkatan 2022-2 (Evaluasi delapan semester) dan 
+ S3 Angkatan 2021-2 (Evaluasi sepuluhsemester)\nEvaluasi masa studi mahasis
+ wa Profesi (Akuntansi\, Insinyur\, Arsitek\, Apoteker\, Ners\, dan Fisiote
+ rapi) Angkatan 2023-1 (Pernah Cuti) dan Angkatan 2023-2 (Evaluasi enam sem
+ ester)\nEvaluasi masa studi mahasiswa Profesi Dokter dan Dokter Gigi Angka
+ tan 2021-1 (Pernah Cuti) dan Angkatan 2021-2 (Evaluasi sepuluh semester)\n
+ Tunda Evaluasi kelanjutan studi mahasiswa S1 Angkatan 2024 (pernah cuti/mu
+ ndur dari seluruh mata kuliah)\nEvaluasi kelanjutan studi S2 dan S3 Angkat
+ an 2025-2 (Evaluasi dua semester)\nSumber: Keputusan Rektor No. 08429/UN4.
+ 1/KEP/2026\, Kalender Akademik Tahun Akademik 2026/2027\, Universitas Hasa
+ nuddin (Direktorat Pendidikan). Revisi data 1\, diperbarui 2026-11-16.\nTi
+ dak resmi dan tidak berafiliasi dengan Universitas Hasanuddin. Rujuk dokum
+ en resmi.
+CATEGORIES:evaluasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-pembayaran-ukt-semester-akhir@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270102
+DTEND;VALUE=DATE:20270206
+SUMMARY:Pembayaran UKT Semester Akhir
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:administrasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-pengisian-krs-daring-semester-akhir@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270103
+DTEND;VALUE=DATE:20270213
+SUMMARY:Pengisian KRS daring Semester Akhir
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:krs
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-batas-akhir-masa-studi-bagi-angkatan-yang@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270123
+SUMMARY:Batas akhir masa studi bagi angkatan yang dievaluasi (rincian di PD
+ F)
+DESCRIPTION:Rincian per angkatan disalin dari PDF. Angkatan yang disebut ti
+ dak sama dengan evaluasi 31 Des 2026 (S1 2018 dan bukan 2019\, S2 2021-1 d
+ an 2021-2\, S3 2020-1 dan 2020-2). Rujuk PDF resmi.\nBatas akhir masa stud
+ i mahasiswa S1 Angkatan 2018 (Pernah Cuti)\; S2 Angkatan 2021-1 (Pernah Cu
+ ti)\; S2 Angkatan 2021-2 (Evaluasi delapan semester)\; S3 Angkatan 2020-1 
+ (Pernah Cuti)\; S3 Angkatan 2020-2 (Evaluasi sepuluh semester)\; Profesi (
+ Akuntansi\, Insinyur\, Arsitek\, Apoteker\, Ners\, dan Fisioterapi) Angkat
+ an 2022-1 (Pernah Cuti) dan Angkatan 2022-2 (Evaluasi enam semester)\; dan
+  Profesi Dokter dan Dokter Gigi Angkatan 2020-1 (Pernah Cuti) Angkatan 202
+ 0-2 (Evaluasi sepuluh semester).\nSumber: Keputusan Rektor No. 08429/UN4.1
+ /KEP/2026\, Kalender Akademik Tahun Akademik 2026/2027\, Universitas Hasan
+ uddin (Direktorat Pendidikan). Revisi data 1\, diperbarui 2026-11-16.\nTid
+ ak resmi dan tidak berafiliasi dengan Universitas Hasanuddin. Rujuk dokume
+ n resmi.
+CATEGORIES:evaluasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-mahasiswa-yang-memiliki-surat-izin-ujian-atau@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270204
+DTEND;VALUE=DATE:20270205
+SUMMARY:Mahasiswa yang memiliki surat izin ujian atau surat pendaftaran wis
+ uda tidak dikenakan UKT Semester Akhir
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:administrasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-batas-akhir-permohonan-cuti-akademik-semester@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270212
+DTEND;VALUE=DATE:20270213
+SUMMARY:Batas akhir permohonan cuti akademik Semester Akhir
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:administrasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-batas-akhir-pembatalan-penggantian-mata-kuliah@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270227
+DTEND;VALUE=DATE:20270228
+SUMMARY:Batas akhir pembatalan/penggantian mata kuliah
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:administrasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-ujian-tengah-semester@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270405
+DTEND;VALUE=DATE:20270411
+SUMMARY:Ujian tengah semester (UTS)
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:uts
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-batas-akhir-pengunduran-diri-dari-semua-mata@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270518
+DTEND;VALUE=DATE:20270519
+SUMMARY:Batas akhir pengunduran diri dari semua mata kuliah
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:administrasi
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-kuliah-kerja-nyata-reguler@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270901
+SUMMARY:Kuliah Kerja Nyata (KKN) Reguler
+DESCRIPTION:Perkiraan bulan\; tanggal pastinya diumumkan kemudian.\nSumber:
+  Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademik Tahun Akade
+ mik 2026/2027\, Universitas Hasanuddin (Direktorat Pendidikan). Revisi dat
+ a 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak berafiliasi dengan Uni
+ versitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:kkn
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-ujian-final@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270614
+DTEND;VALUE=DATE:20270619
+SUMMARY:Ujian final (UAS)
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:uas
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-akhir-akhir-perkuliahan-semester-akhir@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270625
+DTEND;VALUE=DATE:20270626
+SUMMARY:Akhir perkuliahan Semester Akhir
+DESCRIPTION:Sumber: Keputusan Rektor No. 08429/UN4.1/KEP/2026\, Kalender Ak
+ ademik Tahun Akademik 2026/2027\, Universitas Hasanuddin (Direktorat Pendi
+ dikan). Revisi data 1\, diperbarui 2026-11-16.\nTidak resmi dan tidak bera
+ filiasi dengan Universitas Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:perkuliahan
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-2027-libur-semester-setelah-akhir@sulo
+DTSTAMP:20261116T000000Z
+LAST-MODIFIED:20261116T000000Z
+SEQUENCE:1
+DTSTART;VALUE=DATE:20270628
+DTEND;VALUE=DATE:20270629
+SUMMARY:Libur semester
+DESCRIPTION:Tanggal akhir belum ada di kalender ini.\nAwal libur semester. 
+ Tanggal akhirnya ada di kalender tahun ajaran berikutnya.\nSumber: Keputus
+ an Rektor No. 08429/UN4.1/KEP/2026\, Kalender Akademik Tahun Akademik 2026
+ /2027\, Universitas Hasanuddin (Direktorat Pendidikan). Revisi data 1\, di
+ perbarui 2026-11-16.\nTidak resmi dan tidak berafiliasi dengan Universitas
+  Hasanuddin. Rujuk dokumen resmi.
+CATEGORIES:libur
+URL:https://www.unhas.ac.id/kalender-akademik/?lang=id
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

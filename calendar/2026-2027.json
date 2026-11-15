@@ -1,0 +1,1479 @@
+{
+  "skema": 1,
+  "tahun_ajaran": "2026/2027",
+  "revisi": 1,
+  "diperbarui": "2026-11-16",
+  "diverifikasi_pada": "2026-11-16",
+  "berlaku_mulai": "2026-06-01",
+  "berlaku_sampai": "2027-06-30",
+  "zona_waktu": "Asia/Makassar",
+  "sumber": {
+    "judul": "Kalender Akademik Tahun Akademik 2026/2027, Universitas Hasanuddin (Direktorat Pendidikan)",
+    "sk": "Keputusan Rektor No. 08429/UN4.1/KEP/2026",
+    "pdf_url": "https://www.unhas.ac.id/wp-content/uploads/2026/10/kalender-akademik-unhas-2026-2027.pdf",
+    "pdf_sha256": "e778ecddb0833418d2a0547f0872fca09d6ed1ef4676880175904aea6bd8155b",
+    "halaman_url": "https://www.unhas.ac.id/kalender-akademik/?lang=id",
+    "ics_diunduh_pada": "2026-11-15"
+  },
+  "kegiatan": [
+    {
+      "id": "2026-2027-lain-kkn-reguler-jun-agu-2026",
+      "semester": null,
+      "kategori": "kkn",
+      "judul": "Penyelenggaraan Kuliah Kerja Nyata (KKN) Reguler",
+      "mulai": "2026-06-01",
+      "selesai": "2026-08-31",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_pdf",
+      "asal": "pdf",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "PDF hanya menulis bulan (Jun-Agu)."
+    },
+    {
+      "id": "2026-2027-awal-wisuda-juni-2026",
+      "semester": "awal",
+      "kategori": "wisuda",
+      "judul": "Wisuda Juni 2026",
+      "mulai": "2026-06-22",
+      "selesai": "2026-06-23",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-lain-akhir-perkuliahan-semester-akhir-t-a-2025-2026",
+      "semester": null,
+      "kategori": "perkuliahan",
+      "judul": "Akhir perkuliahan Semester Akhir T.A. 2025/2026",
+      "mulai": "2026-06-26",
+      "selesai": "2026-06-26",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-penginputan-jadwal-kuliah-semester-awal-ke",
+      "semester": "awal",
+      "kategori": "jadwal",
+      "judul": "Penginputan jadwal kuliah Semester Awal ke NeoSIA",
+      "mulai": "2026-06-29",
+      "selesai": "2026-07-17",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-semester-sebelum-awal",
+      "semester": null,
+      "kategori": "libur",
+      "judul": "Libur semester",
+      "mulai": "2026-06-29",
+      "selesai": "2026-08-15",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_pdf",
+      "asal": "pdf",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Hanya ditandai warna di kisi kalender PDF."
+    },
+    {
+      "id": "2026-2027-lain-batas-akhir-penginputan-nilai-daring-semester",
+      "semester": null,
+      "kategori": "nilai",
+      "judul": "Batas akhir penginputan nilai daring Semester Akhir T.A. 2025/2026",
+      "mulai": "2026-07-10",
+      "selesai": "2026-07-10",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-pembayaran-ukt-semester-awal",
+      "semester": "awal",
+      "kategori": "administrasi",
+      "judul": "Pembayaran UKT Semester Awal",
+      "mulai": "2026-07-13",
+      "selesai": "2026-08-07",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-lain-penginputan-perubahan-nilai-semester-akhir-t-a",
+      "semester": null,
+      "kategori": "nilai",
+      "judul": "Penginputan perubahan nilai Semester Akhir T.A. 2025/2026",
+      "mulai": "2026-07-13",
+      "selesai": "2026-07-15",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-evaluasi-masa-studi-dan-kelanjutan-studi",
+      "semester": "awal",
+      "kategori": "evaluasi",
+      "judul": "Evaluasi masa studi dan kelanjutan studi (angkatan dan jenjang yang dievaluasi tercantum di PDF)",
+      "mulai": "2026-07-17",
+      "selesai": "2026-07-17",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "perlu_cek",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [
+        "Evaluasi masa studi mahasiswa S1 Angkatan 2019 (Evaluasi 14 semester)",
+        "Evaluasi masa studi mahasiswa S2 Angkatan 2021-2 dan S3 Angkatan 2020-2 (Pernah Cuti)",
+        "Evaluasi masa studi mahasiswa S2 Angkatan 2022-1 (Evaluasi delapan semester), S2 Angkatan 2023-1 (evauasi enam semester) dan S3 Angkatan 2021-1 (Evaluasi sepuluh semester)",
+        "Evaluasi masa studi mahasiswa Profesi (Akuntansi, Insinyur, Arsitek, Apoteker, Ners, Fisioterapi) dan dokter hewan Angkatan 2023-1 (Evaluasi enam semester)",
+        "Evaluasi masa studi mahasiswa Profesi Dokter dan Dokter Gigi Angkatan 2021-1 (Evaluasi sepuluh semester)",
+        "Evaluasi kelanjutan studi mahasiswa S1 Angkatan 2024 (Evaluasi empat semester)",
+        "Evaluasi kelanjutan studi S2 dan S3 Angkatan 2025-1 (Evaluasi dua semester)"
+      ],
+      "catatan": "Rincian per angkatan disalin dari PDF. Teks Indonesia menyebut dokter hewan Angkatan 2023-1, teks Inggris tidak. Rujuk PDF resmi."
+    },
+    {
+      "id": "2026-2027-awal-pengecekan-dan-batas-akhir-penginputan-jadwal",
+      "semester": "awal",
+      "kategori": "jadwal",
+      "judul": "Pengecekan dan batas akhir penginputan jadwal kuliah ke NeoSIA",
+      "mulai": "2026-07-17",
+      "selesai": "2026-07-19",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-pengisian-krs-daring-semester-awal",
+      "semester": "awal",
+      "kategori": "krs",
+      "judul": "Pengisian KRS daring Semester Awal",
+      "mulai": "2026-07-20",
+      "selesai": "2026-08-14",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-batas-akhir-masa-studi-bagi-angkatan-yang",
+      "semester": "awal",
+      "kategori": "evaluasi",
+      "judul": "Batas akhir masa studi bagi angkatan yang dievaluasi (rincian di PDF)",
+      "mulai": "2026-07-24",
+      "selesai": "2026-07-24",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [
+        "Batas akhir masa studi mahasiswa S1 Angkatan 2019 (Evaluasi 14 Semester); S2 Angkatan 2021-2 (Pernah Cuti); S2 Angkatan 2022-1 (Evaluasi delapan semester); S2 Angkatan 2023-1 (Evaluasi enam semester); S3 Angkatan 2020-2 (Pernah Cuti); S3 Angkatan 2021-1 (Evaluasi sepuluh semester); Profesi (Akuntansi, Insinyur, Arsitek, Apoteker, Ners, dan Fisioterapi) Angkatan 2023-1 (Evaluasi enam semester); dan Profesi Dokter dan Dokter Gigi Angkatan 2021-1 (Evaluasi sepuluh semester)."
+      ],
+      "catatan": "Rincian per angkatan disalin dari PDF. Rujuk PDF resmi."
+    },
+    {
+      "id": "2026-2027-awal-wisuda-juli-2026",
+      "semester": "awal",
+      "kategori": "wisuda",
+      "judul": "Wisuda Juli 2026",
+      "mulai": "2026-07-28",
+      "selesai": "2026-07-30",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-mahasiswa-yang-memiliki-surat-izin-ujian-atau",
+      "semester": "awal",
+      "kategori": "administrasi",
+      "judul": "Mahasiswa yang memiliki surat izin ujian atau surat pendaftaran wisuda tidak dikenakan UKT Semester Awal",
+      "mulai": "2026-08-07",
+      "selesai": "2026-08-07",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-prosesi-penerimaan-mahasiswa-baru-s1-d4",
+      "semester": "awal",
+      "kategori": "penerimaan",
+      "judul": "Prosesi penerimaan mahasiswa baru S1/D4",
+      "mulai": "2026-08-10",
+      "selesai": "2026-08-13",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "S1",
+        "D4"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-batas-akhir-permohonan-cuti-akademik-semester",
+      "semester": "awal",
+      "kategori": "administrasi",
+      "judul": "Batas akhir permohonan cuti akademik Semester Awal",
+      "mulai": "2026-08-14",
+      "selesai": "2026-08-14",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-prosesi-penerimaan-mahasiswa-baru-s3-s2",
+      "semester": "awal",
+      "kategori": "penerimaan",
+      "judul": "Prosesi penerimaan mahasiswa baru S3, S2, spesialis, dan profesi oleh fakultas/Sekolah Pascasarjana",
+      "mulai": "2026-08-14",
+      "selesai": "2026-08-14",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "S2",
+        "S3",
+        "profesi",
+        "spesialis"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-kuliah-perdana-semester-awal-untuk-semua-jenjang",
+      "semester": "awal",
+      "kategori": "perkuliahan",
+      "judul": "Kuliah perdana Semester Awal untuk semua jenjang",
+      "mulai": "2026-08-18",
+      "selesai": "2026-08-18",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-batas-akhir-pembatalan-penggantian-mata-kuliah",
+      "semester": "awal",
+      "kategori": "administrasi",
+      "judul": "Batas akhir pembatalan/penggantian mata kuliah",
+      "mulai": "2026-08-28",
+      "selesai": "2026-08-28",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-magister-dan-doktor-masuk-semester-akhir-2026",
+      "semester": "akhir",
+      "kategori": "penerimaan",
+      "judul": "Magister (S2) dan doktor (S3), masuk Semester Akhir 2026/2027",
+      "mulai": "2026-09-01",
+      "selesai": "2027-01-31",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "S2",
+        "S3"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Perkiraan bulan; tanggal pastinya diumumkan kemudian."
+    },
+    {
+      "id": "2026-2027-akhir-profesi-dan-spesialis-masuk-semester-akhir-2026",
+      "semester": "akhir",
+      "kategori": "penerimaan",
+      "judul": "Profesi dan spesialis, masuk Semester Akhir 2026/2027",
+      "mulai": "2026-09-01",
+      "selesai": "2027-01-31",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "profesi",
+        "spesialis"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Perkiraan bulan; tanggal pastinya diumumkan kemudian."
+    },
+    {
+      "id": "2026-2027-awal-wisuda-september-2026",
+      "semester": "awal",
+      "kategori": "wisuda",
+      "judul": "Wisuda September 2026",
+      "mulai": "2026-09-01",
+      "selesai": "2026-09-03",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-dies-natalis-unhas",
+      "semester": "awal",
+      "kategori": "lainnya",
+      "judul": "Dies Natalis Unhas",
+      "mulai": "2026-09-10",
+      "selesai": "2026-09-10",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "umum",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_pdf",
+      "asal": "pdf",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-ujian-tengah-semester",
+      "semester": "awal",
+      "kategori": "uts",
+      "judul": "Ujian tengah semester (UTS)",
+      "mulai": "2026-10-05",
+      "selesai": "2026-10-09",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-wisuda-oktober-2026",
+      "semester": "awal",
+      "kategori": "wisuda",
+      "judul": "Wisuda Oktober 2026",
+      "mulai": "2026-10-27",
+      "selesai": "2026-10-29",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [
+        {
+          "mulai": "2026-10-26",
+          "selesai": "2026-10-27",
+          "sumber": "Tabel di halaman kalender akademik Unhas",
+          "catatan": "Berbeda dengan PDF dan bagian tanya jawab di halaman yang sama (27 sampai 29 Okt)."
+        }
+      ],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-batas-akhir-pengunduran-diri-dari-semua-mata",
+      "semester": "awal",
+      "kategori": "administrasi",
+      "judul": "Batas akhir pengunduran diri dari semua mata kuliah",
+      "mulai": "2026-11-06",
+      "selesai": "2026-11-06",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-ujian-final",
+      "semester": "awal",
+      "kategori": "uas",
+      "judul": "Ujian final (UAS)",
+      "mulai": "2026-11-30",
+      "selesai": "2026-12-05",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-kuliah-kerja-nyata-reguler",
+      "semester": "awal",
+      "kategori": "kkn",
+      "judul": "Kuliah Kerja Nyata (KKN) Reguler",
+      "mulai": "2026-12-01",
+      "selesai": "2027-02-28",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Perkiraan bulan; tanggal pastinya diumumkan kemudian."
+    },
+    {
+      "id": "2026-2027-awal-akhir-perkuliahan-semester-awal",
+      "semester": "awal",
+      "kategori": "perkuliahan",
+      "judul": "Akhir perkuliahan Semester Awal",
+      "mulai": "2026-12-04",
+      "selesai": "2026-12-04",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-penginputan-jadwal-kuliah-semester-akhir-ke",
+      "semester": "akhir",
+      "kategori": "jadwal",
+      "judul": "Penginputan jadwal kuliah Semester Akhir ke NeoSIA",
+      "mulai": "2026-12-07",
+      "selesai": "2026-12-24",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-semester-setelah-awal",
+      "semester": "akhir",
+      "kategori": "libur",
+      "judul": "Libur semester",
+      "mulai": "2026-12-07",
+      "selesai": "2027-02-13",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-wisuda-desember-2026",
+      "semester": "akhir",
+      "kategori": "wisuda",
+      "judul": "Wisuda Desember 2026",
+      "mulai": "2026-12-15",
+      "selesai": "2026-12-17",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-batas-akhir-penginputan-nilai-daring-semester",
+      "semester": "awal",
+      "kategori": "nilai",
+      "judul": "Batas akhir penginputan nilai daring Semester Awal",
+      "mulai": "2026-12-18",
+      "selesai": "2026-12-18",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-awal-penginputan-perubahan-nilai-semester-awal",
+      "semester": "awal",
+      "kategori": "nilai",
+      "judul": "Penginputan perubahan nilai Semester Awal",
+      "mulai": "2026-12-21",
+      "selesai": "2026-12-27",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-pengecekan-dan-batas-akhir-penginputan-jadwal",
+      "semester": "akhir",
+      "kategori": "jadwal",
+      "judul": "Pengecekan dan batas akhir penginputan jadwal kuliah Semester Akhir ke NeoSIA",
+      "mulai": "2026-12-26",
+      "selesai": "2026-12-31",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-evaluasi-masa-studi-dan-kelanjutan-studi",
+      "semester": "akhir",
+      "kategori": "evaluasi",
+      "judul": "Evaluasi masa studi dan kelanjutan studi (rincian di PDF)",
+      "mulai": "2026-12-31",
+      "selesai": "2026-12-31",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "perlu_cek",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [
+        "Evaluasi masa studi mahasiswa S1 Angkatan 2019 (Pernah Cuti)",
+        "Evaluasi masa studi mahasiswa S2 Angkatan 2022-1 dan 2023-1 serta S3 Angkatan 2021-1 (Pernah Cuti)",
+        "Evaluasi masa studi mahasiswa S2 Angkatan 2022-2 (Evaluasi delapan semester) dan S3 Angkatan 2021-2 (Evaluasi sepuluhsemester)",
+        "Evaluasi masa studi mahasiswa Profesi (Akuntansi, Insinyur, Arsitek, Apoteker, Ners, dan Fisioterapi) Angkatan 2023-1 (Pernah Cuti) dan Angkatan 2023-2 (Evaluasi enam semester)",
+        "Evaluasi masa studi mahasiswa Profesi Dokter dan Dokter Gigi Angkatan 2021-1 (Pernah Cuti) dan Angkatan 2021-2 (Evaluasi sepuluh semester)",
+        "Tunda Evaluasi kelanjutan studi mahasiswa S1 Angkatan 2024 (pernah cuti/mundur dari seluruh mata kuliah)",
+        "Evaluasi kelanjutan studi S2 dan S3 Angkatan 2025-2 (Evaluasi dua semester)"
+      ],
+      "catatan": "Rincian per angkatan disalin dari teks Indonesia di PDF. Teks Inggris menyebut angkatan lain (misalnya S3 2020-1 dan bukan 2021-1, S2 2021-2 dan 2023-2 dan bukan 2022-2). Rujuk PDF resmi."
+    },
+    {
+      "id": "2026-2027-lain-sarjana-jalur-snbp-2027-2028",
+      "semester": null,
+      "kategori": "penerimaan",
+      "judul": "Sarjana jalur SNBP 2027/2028",
+      "mulai": "2027-01-01",
+      "selesai": "2027-04-30",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "S1"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Perkiraan bulan; tanggal pastinya diumumkan kemudian."
+    },
+    {
+      "id": "2026-2027-akhir-pembayaran-ukt-semester-akhir",
+      "semester": "akhir",
+      "kategori": "administrasi",
+      "judul": "Pembayaran UKT Semester Akhir",
+      "mulai": "2027-01-02",
+      "selesai": "2027-02-05",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-pengisian-krs-daring-semester-akhir",
+      "semester": "akhir",
+      "kategori": "krs",
+      "judul": "Pengisian KRS daring Semester Akhir",
+      "mulai": "2027-01-03",
+      "selesai": "2027-02-12",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-batas-akhir-masa-studi-bagi-angkatan-yang",
+      "semester": "akhir",
+      "kategori": "evaluasi",
+      "judul": "Batas akhir masa studi bagi angkatan yang dievaluasi (rincian di PDF)",
+      "mulai": "2027-01-22",
+      "selesai": "2027-01-22",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "perlu_cek",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [
+        "Batas akhir masa studi mahasiswa S1 Angkatan 2018 (Pernah Cuti); S2 Angkatan 2021-1 (Pernah Cuti); S2 Angkatan 2021-2 (Evaluasi delapan semester); S3 Angkatan 2020-1 (Pernah Cuti); S3 Angkatan 2020-2 (Evaluasi sepuluh semester); Profesi (Akuntansi, Insinyur, Arsitek, Apoteker, Ners, dan Fisioterapi) Angkatan 2022-1 (Pernah Cuti) dan Angkatan 2022-2 (Evaluasi enam semester); dan Profesi Dokter dan Dokter Gigi Angkatan 2020-1 (Pernah Cuti) Angkatan 2020-2 (Evaluasi sepuluh semester)."
+      ],
+      "catatan": "Rincian per angkatan disalin dari PDF. Angkatan yang disebut tidak sama dengan evaluasi 31 Des 2026 (S1 2018 dan bukan 2019, S2 2021-1 dan 2021-2, S3 2020-1 dan 2020-2). Rujuk PDF resmi."
+    },
+    {
+      "id": "2026-2027-lain-magister-dan-doktor-masuk-semester-awal-2027",
+      "semester": null,
+      "kategori": "penerimaan",
+      "judul": "Magister (S2) dan doktor (S3), masuk Semester Awal 2027/2028",
+      "mulai": "2027-02-01",
+      "selesai": "2027-08-31",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "S2",
+        "S3"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Perkiraan bulan; tanggal pastinya diumumkan kemudian."
+    },
+    {
+      "id": "2026-2027-lain-profesi-dan-spesialis-masuk-semester-awal-2027",
+      "semester": null,
+      "kategori": "penerimaan",
+      "judul": "Profesi dan spesialis, masuk Semester Awal 2027/2028",
+      "mulai": "2027-02-01",
+      "selesai": "2027-07-31",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "profesi",
+        "spesialis"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Perkiraan bulan; tanggal pastinya diumumkan kemudian."
+    },
+    {
+      "id": "2026-2027-lain-sarjana-jalur-mandiri-talent-showcase-dan-kelas",
+      "semester": null,
+      "kategori": "penerimaan",
+      "judul": "Sarjana jalur mandiri Talent Showcase dan Kelas Internasional 2027/2028",
+      "mulai": "2027-02-01",
+      "selesai": "2027-08-31",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "S1"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Perkiraan bulan; tanggal pastinya diumumkan kemudian."
+    },
+    {
+      "id": "2026-2027-akhir-wisuda-februari-2027",
+      "semester": "akhir",
+      "kategori": "wisuda",
+      "judul": "Wisuda Februari 2027",
+      "mulai": "2027-02-02",
+      "selesai": "2027-02-04",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-mahasiswa-yang-memiliki-surat-izin-ujian-atau",
+      "semester": "akhir",
+      "kategori": "administrasi",
+      "judul": "Mahasiswa yang memiliki surat izin ujian atau surat pendaftaran wisuda tidak dikenakan UKT Semester Akhir",
+      "mulai": "2027-02-04",
+      "selesai": "2027-02-04",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-batas-akhir-permohonan-cuti-akademik-semester",
+      "semester": "akhir",
+      "kategori": "administrasi",
+      "judul": "Batas akhir permohonan cuti akademik Semester Akhir",
+      "mulai": "2027-02-12",
+      "selesai": "2027-02-12",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-prosesi-penerimaan-mahasiswa-baru-s3-s2",
+      "semester": "akhir",
+      "kategori": "penerimaan",
+      "judul": "Prosesi penerimaan mahasiswa baru S3, S2, spesialis, dan profesi oleh fakultas/Sekolah Pascasarjana",
+      "mulai": "2027-02-12",
+      "selesai": "2027-02-12",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "S2",
+        "S3",
+        "profesi",
+        "spesialis"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-kuliah-perdana-mahasiswa-baru-s3-s2-spesialis",
+      "semester": "akhir",
+      "kategori": "perkuliahan",
+      "judul": "Kuliah perdana mahasiswa baru S3, S2, spesialis, dan profesi",
+      "mulai": "2027-02-15",
+      "selesai": "2027-02-15",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "S2",
+        "S3",
+        "profesi",
+        "spesialis"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-batas-akhir-pembatalan-penggantian-mata-kuliah",
+      "semester": "akhir",
+      "kategori": "administrasi",
+      "judul": "Batas akhir pembatalan/penggantian mata kuliah",
+      "mulai": "2027-02-27",
+      "selesai": "2027-02-27",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-lain-sarjana-dan-sarjana-terapan-jalur-mandiri-smk",
+      "semester": null,
+      "kategori": "penerimaan",
+      "judul": "Sarjana dan sarjana terapan jalur mandiri SMK Berprestasi 2027/2028",
+      "mulai": "2027-03-01",
+      "selesai": "2027-07-31",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "S1",
+        "D4"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Perkiraan bulan; tanggal pastinya diumumkan kemudian."
+    },
+    {
+      "id": "2026-2027-lain-sarjana-jalur-mandiri-ketua-osis-dan-non-utbk",
+      "semester": null,
+      "kategori": "penerimaan",
+      "judul": "Sarjana jalur mandiri Ketua OSIS dan Non-UTBK 2027/2028",
+      "mulai": "2027-03-01",
+      "selesai": "2027-07-31",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "S1"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Perkiraan bulan; tanggal pastinya diumumkan kemudian."
+    },
+    {
+      "id": "2026-2027-lain-sarjana-jalur-mandiri-utbk-dan-prestasi",
+      "semester": null,
+      "kategori": "penerimaan",
+      "judul": "Sarjana jalur mandiri UTBK dan Prestasi Olahraga, Seni, dan Keilmuan (POSK) 2027/2028",
+      "mulai": "2027-03-01",
+      "selesai": "2027-07-31",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "S1"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Perkiraan bulan; tanggal pastinya diumumkan kemudian."
+    },
+    {
+      "id": "2026-2027-lain-sarjana-jalur-utbk-snbt-2027-2028",
+      "semester": null,
+      "kategori": "penerimaan",
+      "judul": "Sarjana jalur UTBK-SNBT 2027/2028",
+      "mulai": "2027-03-01",
+      "selesai": "2027-05-31",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "calon_mahasiswa",
+      "jenjang": [
+        "S1"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Perkiraan bulan; tanggal pastinya diumumkan kemudian."
+    },
+    {
+      "id": "2026-2027-akhir-wisuda-maret-2027",
+      "semester": "akhir",
+      "kategori": "wisuda",
+      "judul": "Wisuda Maret 2027",
+      "mulai": "2027-03-30",
+      "selesai": "2027-04-01",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-ujian-tengah-semester",
+      "semester": "akhir",
+      "kategori": "uts",
+      "judul": "Ujian tengah semester (UTS)",
+      "mulai": "2027-04-05",
+      "selesai": "2027-04-10",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-wisuda-mei-2027",
+      "semester": "akhir",
+      "kategori": "wisuda",
+      "judul": "Wisuda Mei 2027",
+      "mulai": "2027-05-11",
+      "selesai": "2027-05-13",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-batas-akhir-pengunduran-diri-dari-semua-mata",
+      "semester": "akhir",
+      "kategori": "administrasi",
+      "judul": "Batas akhir pengunduran diri dari semua mata kuliah",
+      "mulai": "2027-05-18",
+      "selesai": "2027-05-18",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-kuliah-kerja-nyata-reguler",
+      "semester": "akhir",
+      "kategori": "kkn",
+      "judul": "Kuliah Kerja Nyata (KKN) Reguler",
+      "mulai": "2027-06-01",
+      "selesai": "2027-08-31",
+      "ujung_terbuka": false,
+      "perkiraan": true,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Perkiraan bulan; tanggal pastinya diumumkan kemudian."
+    },
+    {
+      "id": "2026-2027-akhir-ujian-final",
+      "semester": "akhir",
+      "kategori": "uas",
+      "judul": "Ujian final (UAS)",
+      "mulai": "2027-06-14",
+      "selesai": "2027-06-18",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-wisuda-juni-2027",
+      "semester": "akhir",
+      "kategori": "wisuda",
+      "judul": "Wisuda Juni 2027",
+      "mulai": "2027-06-22",
+      "selesai": "2027-06-24",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-akhir-akhir-perkuliahan-semester-akhir",
+      "semester": "akhir",
+      "kategori": "perkuliahan",
+      "judul": "Akhir perkuliahan Semester Akhir",
+      "mulai": "2027-06-25",
+      "selesai": "2027-06-25",
+      "ujung_terbuka": false,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_ics_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-semester-setelah-akhir",
+      "semester": "akhir",
+      "kategori": "libur",
+      "judul": "Libur semester",
+      "mulai": "2027-06-28",
+      "selesai": null,
+      "ujung_terbuka": true,
+      "perkiraan": false,
+      "audiens": "mahasiswa",
+      "jenjang": [
+        "semua"
+      ],
+      "status_verifikasi": "cocok_pdf",
+      "asal": "ics",
+      "nilai_lain": [],
+      "rincian": [],
+      "catatan": "Awal libur semester. Tanggal akhirnya ada di kalender tahun ajaran berikutnya."
+    }
+  ],
+  "libur_nasional": [
+    {
+      "id": "2026-2027-libur-2026-06-01-hari-lahir-pancasila",
+      "nama": "Hari Lahir Pancasila",
+      "mulai": "2026-06-01",
+      "selesai": "2026-06-01",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2026-06-16-tahun-baru-islam",
+      "nama": "Tahun Baru Islam 1448 H",
+      "mulai": "2026-06-16",
+      "selesai": "2026-06-16",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2026-08-17-hari-kemerdekaan",
+      "nama": "Hari Kemerdekaan RI",
+      "mulai": "2026-08-17",
+      "selesai": "2026-08-17",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2026-08-25-maulid-nabi",
+      "nama": "Maulid Nabi Muhammad SAW",
+      "mulai": "2026-08-25",
+      "selesai": "2026-08-25",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2026-12-24-cuti-bersama-natal",
+      "nama": "Cuti bersama Hari Raya Natal",
+      "mulai": "2026-12-24",
+      "selesai": "2026-12-24",
+      "jenis": "cuti_bersama",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2026-12-25-natal",
+      "nama": "Hari Raya Natal",
+      "mulai": "2026-12-25",
+      "selesai": "2026-12-25",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2027-01-01-tahun-baru-masehi",
+      "nama": "Tahun Baru Masehi 2027",
+      "mulai": "2027-01-01",
+      "selesai": "2027-01-01",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2027-01-05-isra-miraj",
+      "nama": "Isra' Mi'raj Nabi Muhammad SAW",
+      "mulai": "2027-01-05",
+      "selesai": "2027-01-05",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2027-02-06-imlek",
+      "nama": "Tahun Baru Imlek 2578",
+      "mulai": "2027-02-06",
+      "selesai": "2027-02-06",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2027-03-08-nyepi",
+      "nama": "Hari Raya Nyepi (Tahun Baru Saka 1949)",
+      "mulai": "2027-03-08",
+      "selesai": "2027-03-08",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2027-03-10-idul-fitri",
+      "nama": "Hari Raya Idul Fitri 1448 H",
+      "mulai": "2027-03-10",
+      "selesai": "2027-03-11",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": "PDF menulis \"10 Mar\" dua kali; kisi kalender menandai 10 dan 11 Mar. Dipakai 10 dan 11 Mar."
+    },
+    {
+      "id": "2026-2027-libur-2027-03-26-wafat-yesus-kristus",
+      "nama": "Wafat Yesus Kristus",
+      "mulai": "2027-03-26",
+      "selesai": "2027-03-26",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2027-05-01-hari-buruh",
+      "nama": "Hari Buruh Nasional",
+      "mulai": "2027-05-01",
+      "selesai": "2027-05-01",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2027-05-06-kenaikan-yesus-kristus",
+      "nama": "Kenaikan Yesus Kristus",
+      "mulai": "2027-05-06",
+      "selesai": "2027-05-06",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2027-05-17-idul-adha",
+      "nama": "Hari Raya Idul Adha 1448 H",
+      "mulai": "2027-05-17",
+      "selesai": "2027-05-17",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2027-05-20-waisak",
+      "nama": "Hari Raya Waisak 2571",
+      "mulai": "2027-05-20",
+      "selesai": "2027-05-20",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2027-06-01-hari-lahir-pancasila",
+      "nama": "Hari Lahir Pancasila",
+      "mulai": "2027-06-01",
+      "selesai": "2027-06-01",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    },
+    {
+      "id": "2026-2027-libur-2027-06-06-tahun-baru-islam",
+      "nama": "Tahun Baru Islam 1449 H",
+      "mulai": "2027-06-06",
+      "selesai": "2027-06-06",
+      "jenis": "libur_nasional",
+      "status_verifikasi": "cocok_pdf",
+      "catatan": ""
+    }
+  ],
+  "pekan": {
+    "awal": {
+      "pekan": [
+        {
+          "nomor": 1,
+          "mulai": "2026-08-17"
+        },
+        {
+          "nomor": 2,
+          "mulai": "2026-08-24"
+        },
+        {
+          "nomor": 3,
+          "mulai": "2026-08-31"
+        },
+        {
+          "nomor": 4,
+          "mulai": "2026-09-07"
+        },
+        {
+          "nomor": 5,
+          "mulai": "2026-09-14"
+        },
+        {
+          "nomor": 6,
+          "mulai": "2026-09-21"
+        },
+        {
+          "nomor": 7,
+          "mulai": "2026-09-28"
+        },
+        {
+          "nomor": 8,
+          "mulai": "2026-10-05"
+        },
+        {
+          "nomor": 9,
+          "mulai": "2026-10-12"
+        },
+        {
+          "nomor": 10,
+          "mulai": "2026-10-19"
+        },
+        {
+          "nomor": 11,
+          "mulai": "2026-10-26"
+        },
+        {
+          "nomor": 12,
+          "mulai": "2026-11-02"
+        },
+        {
+          "nomor": 13,
+          "mulai": "2026-11-09"
+        },
+        {
+          "nomor": 14,
+          "mulai": "2026-11-16"
+        },
+        {
+          "nomor": 15,
+          "mulai": "2026-11-23"
+        },
+        {
+          "nomor": 16,
+          "mulai": "2026-11-30"
+        }
+      ],
+      "dikecualikan": [],
+      "uts_pekan": 8,
+      "uas_pekan": 16,
+      "catatan": "Pekan 1 adalah minggu yang memuat kuliah perdana 18 Agu 2026. Cocok dengan pola \"Pekan 1 sampai 16\" di SIKOLA."
+    },
+    "akhir": null
+  }
+}
