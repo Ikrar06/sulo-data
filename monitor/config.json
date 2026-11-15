@@ -1,0 +1,9 @@
+{
+  "userAgent": "sulo-data-monitor (+https://github.com/Ikrar06/sulo-data)",
+  "robotsUrl": "https://www.unhas.ac.id/robots.txt",
+  "sitemapUrl": "https://www.unhas.ac.id/page-sitemap1.xml",
+  "pageLocPattern": "/kalender-akademik/",
+  "verifiedLastmod": "2026-10-21T09:53:25+08:00",
+  "intervalsDays": { "robots": 7, "pageFallback": 7, "pdfHead": 7, "pdfFull": 30, "heartbeat": 7 },
+  "failureIssueAfter": 3
+}
