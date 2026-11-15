@@ -1,0 +1,59 @@
+name: pantau-kalender
+
+# Watches the official Unhas academic calendar for changes and opens issues.
+# It never edits calendar data. State lives on the unprotected branch
+# "pantau" (main requires the validate check, which a bot push cannot pass).
+on:
+  schedule:
+    # Daily at minute 37 (22:37 UTC = 06:37 WITA), not on the hour.
+    - cron: '37 22 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Do not open issues (report them in the log only)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: pantau-kalender
+  cancel-in-progress: false
+
+jobs:
+  pantau:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: State from branch pantau
+        run: |
+          if git fetch --depth=1 origin pantau:pantau; then
+            git worktree add state pantau
+          else
+            git worktree add --orphan -b pantau state
+          fi
+
+      - name: Run the monitor
+        id: run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MONITOR_DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+        run: node monitor/run.mjs state/state.json
+
+      - name: Save state (material change or weekly heartbeat)
+        if: steps.run.outputs.commit == 'true'
+        working-directory: state
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add state.json
+          git commit -m "chore: calendar monitor state $(date -u +%F)"
+          git push origin pantau
