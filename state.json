@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "issues": {},
+  "consecutiveFailures": 0,
+  "lastRunAt": "2026-11-15T21:50:34.819Z",
+  "robots": {
+    "fetchedAt": "2026-11-15T21:50:34.819Z",
+    "rules": [
+      {
+        "allow": false,
+        "path": "/search/"
+      },
+      {
+        "allow": false,
+        "path": "/*?s="
+      },
+      {
+        "allow": false,
+        "path": "/*&s="
+      },
+      {
+        "allow": false,
+        "path": "/*lang=*search*"
+      },
+      {
+        "allow": false,
+        "path": "/*jet_blog_ajax="
+      },
+      {
+        "allow": false,
+        "path": "/*jet_smart_filters="
+      },
+      {
+        "allow": false,
+        "path": "/*nocache="
+      },
+      {
+        "allow": false,
+        "path": "/xmlrpc.php"
+      },
+      {
+        "allow": false,
+        "path": "/wp-admin/"
+      },
+      {
+        "allow": true,
+        "path": "/wp-admin/admin-ajax.php"
+      }
+    ]
+  },
+  "sitemap": {
+    "checkedAt": "2026-11-15T21:50:34.819Z",
+    "loc": "https://www.unhas.ac.id/kalender-akademik/?lang=id",
+    "lastmod": "2026-10-21T09:53:25+08:00"
+  },
+  "page": {
+    "fetchedAt": "2026-11-15T21:50:34.819Z",
+    "lastmod": "2026-10-21T09:53:25+08:00",
+    "rows": [
+      "Kegiatan | Semester awal (ganjil) | Semester akhir (genap)",
+      "Pembayaran UKT | 13 Jul–7 Agu 2026 | 2 Jan–5 Feb 2027",
+      "Pengisian KRS daring | 20 Jul–14 Agu 2026 | 3 Jan–12 Feb 2027",
+      "Kuliah perdana | 18 Agu 2026 | 15 Feb 2027 (mahasiswa baru S2, S3, spesialis, profesi)",
+      "Ujian tengah semester (UTS) | 5–9 Okt 2026 | 5–10 Apr 2027",
+      "Ujian final (UAS) | 30 Nov–5 Des 2026 | 14–18 Jun 2027",
+      "Akhir perkuliahan | 4 Des 2026 | 25 Jun 2027",
+      "Libur semester | 7 Des 2026–13 Feb 2027 | Mulai 28 Jun 2027",
+      "Tanggal | Kegiatan",
+      "26 Jun 2026 | Akhir perkuliahan Semester Akhir T.A. 2025/2026",
+      "29 Jun–17 Jul 2026 | Penginputan jadwal kuliah Semester Awal ke NeoSIA",
+      "10 Jul 2026 | Batas akhir penginputan nilai daring Semester Akhir T.A. 2025/2026",
+      "13–15 Jul 2026 | Penginputan perubahan nilai Semester Akhir T.A. 2025/2026",
+      "13 Jul–7 Agu 2026 | Pembayaran UKT Semester Awal",
+      "17 Jul 2026 | Evaluasi masa studi dan kelanjutan studi (angkatan dan jenjang yang dievaluasi tercantum di PDF)",
+      "17–19 Jul 2026 | Pengecekan dan batas akhir penginputan jadwal kuliah ke NeoSIA",
+      "20 Jul–14 Agu 2026 | Pengisian KRS daring Semester Awal",
+      "24 Jul 2026 | Batas akhir masa studi bagi angkatan yang dievaluasi (rincian di PDF)",
+      "7 Agu 2026 | Mahasiswa yang memiliki surat izin ujian atau surat pendaftaran wisuda tidak dikenakan UKT Semester Awal",
+      "10–13 Agu 2026 | Prosesi penerimaan mahasiswa baru S1/D4",
+      "14 Agu 2026 | Batas akhir permohonan cuti akademik Semester Awal",
+      "14 Agu 2026 | Prosesi penerimaan mahasiswa baru S3, S2, spesialis, dan profesi oleh fakultas/Sekolah Pascasarjana",
+      "18 Agu 2026 | Kuliah perdana Semester Awal untuk semua jenjang",
+      "28 Agu 2026 | Batas akhir pembatalan/penggantian mata kuliah",
+      "5–9 Okt 2026 | Ujian tengah semester (UTS)",
+      "6 Nov 2026 | Batas akhir pengunduran diri dari semua mata kuliah",
+      "30 Nov–5 Des 2026 | Ujian final (UAS)",
+      "4 Des 2026 | Akhir perkuliahan Semester Awal",
+      "7 Des 2026–13 Feb 2027 | Libur semester",
+      "7–24 Des 2026 | Penginputan jadwal kuliah Semester Akhir ke NeoSIA",
+      "18 Des 2026 | Batas akhir penginputan nilai daring Semester Awal",
+      "21–27 Des 2026 | Penginputan perubahan nilai Semester Awal",
+      "26–31 Des 2026 | Pengecekan dan batas akhir penginputan jadwal kuliah Semester Akhir ke NeoSIA",
+      "31 Des 2026 | Evaluasi masa studi dan kelanjutan studi (rincian di PDF)",
+      "Des 2026–Feb 2027 | Kuliah Kerja Nyata (KKN) Reguler",
+      "Tanggal | Kegiatan",
+      "2 Jan–5 Feb 2027 | Pembayaran UKT Semester Akhir",
+      "3 Jan–12 Feb 2027 | Pengisian KRS daring Semester Akhir",
+      "22 Jan 2027 | Batas akhir masa studi bagi angkatan yang dievaluasi (rincian di PDF)",
+      "4 Feb 2027 | Mahasiswa yang memiliki surat izin ujian atau surat pendaftaran wisuda tidak dikenakan UKT Semester Akhir",
+      "12 Feb 2027 | Batas akhir permohonan cuti akademik Semester Akhir",
+      "12 Feb 2027 | Prosesi penerimaan mahasiswa baru S3, S2, spesialis, dan profesi oleh fakultas/Sekolah Pascasarjana",
+      "15 Feb 2027 | Kuliah perdana mahasiswa baru S3, S2, spesialis, dan profesi",
+      "27 Feb 2027 | Batas akhir pembatalan/penggantian mata kuliah",
+      "5–10 Apr 2027 | Ujian tengah semester (UTS)",
+      "18 Mei 2027 | Batas akhir pengunduran diri dari semua mata kuliah",
+      "14–18 Jun 2027 | Ujian final (UAS)",
+      "25 Jun 2027 | Akhir perkuliahan Semester Akhir",
+      "Mulai 28 Jun 2027 | Libur semester",
+      "Jun–Agu 2027 | Kuliah Kerja Nyata (KKN) Reguler",
+      "Tanggal | Periode wisuda",
+      "22–23 Jun 2026 | Juni 2026",
+      "28–30 Jul 2026 | Juli 2026",
+      "1–3 Sep 2026 | September 2026",
+      "26–27 Okt 2026 | Oktober 2026",
+      "15–17 Des 2026 | Desember 2026",
+      "2–4 Feb 2027 | Februari 2027",
+      "30 Mar–1 Apr 2027 | Maret 2027",
+      "11–13 Mei 2027 | Mei 2027",
+      "22–24 Jun 2027 | Juni 2027",
+      "Periode | Jenjang dan jalur",
+      "Sep 2026–Jan 2027 | Magister (S2) dan doktor (S3), masuk Semester Akhir 2026/2027",
+      "Sep 2026–Jan 2027 | Profesi dan spesialis, masuk Semester Akhir 2026/2027",
+      "Jan–Apr 2027 | Sarjana jalur SNBP 2027/2028",
+      "Feb–Agu 2027 | Magister (S2) dan doktor (S3), masuk Semester Awal 2027/2028",
+      "Feb–Jul 2027 | Profesi dan spesialis, masuk Semester Awal 2027/2028",
+      "Feb–Agu 2027 | Sarjana jalur mandiri Talent Showcase dan Kelas Internasional 2027/2028",
+      "Mar–Mei 2027 | Sarjana jalur UTBK-SNBT 2027/2028",
+      "Mar–Jul 2027 | Sarjana dan sarjana terapan jalur mandiri SMK Berprestasi 2027/2028",
+      "Mar–Jul 2027 | Sarjana jalur mandiri Ketua OSIS dan Non-UTBK 2027/2028",
+      "Mar–Jul 2027 | Sarjana jalur mandiri UTBK dan Prestasi Olahraga, Seni, dan Keilmuan (POSK) 2027/2028"
+    ],
+    "sk": [
+      "08429/UN4.1/KEP/2026"
+    ],
+    "pdfLinks": [
+      "https://www.unhas.ac.id/wp-content/uploads/2023/07/Kalender-Akademik-TA-20232024-2.pdf",
+      "https://www.unhas.ac.id/wp-content/uploads/2026/10/kalender-akademik-unhas-2026-2027.pdf"
+    ]
+  },
+  "pdfHead": {
+    "checkedAt": "2026-11-15T21:50:34.819Z",
+    "status": 200,
+    "contentLength": "11411426",
+    "lastModified": "Wed, 14 Oct 2026 06:13:55 GMT",
+    "etag": null
+  },
+  "pdfFull": {
+    "checkedAt": "2026-11-15T21:50:34.819Z",
+    "sha256": "e778ecddb0833418d2a0547f0872fca09d6ed1ef4676880175904aea6bd8155b",
+    "bytes": 11411426
+  },
+  "lastError": null,
+  "lastSuccessAt": "2026-11-15T21:50:34.819Z",
+  "lastCommitAt": "2026-11-15T21:50:34.819Z"
+}
