@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- Generated from lib/privacy/content.ts by scripts/build-public-privacy.ts. Do not edit by hand. -->
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sulo: Kebijakan Privasi</title>
+<style>
+:root { color-scheme: light dark; --bg: #fafafb; --text: #111114; --muted: #5f5f6b; --link: #111114; }
+@media (prefers-color-scheme: dark) { :root { --bg: #0b0b0e; --text: #f2f2f5; --muted: #8a8a96; --link: #f2f2f5; } }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 68ch; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 24px; line-height: 1.3; margin: 0 0 4px; }
+h2 { font-size: 18px; margin: 32px 0 8px; }
+p.meta, nav { color: var(--muted); font-size: 14px; }
+a { color: var(--link); text-underline-offset: 2px; }
+ul, ol { padding-left: 24px; }
+</style>
+</head>
+<body>
+<main>
+<nav><a href="privacy.html" hreflang="en">English</a></nav>
+<h1>Sulo: Kebijakan Privasi</h1>
+<p class="meta">Terakhir diperbarui: 18 November 2026</p>
+<p>Sulo adalah pendamping akademik tidak resmi untuk mahasiswa Universitas Hasanuddin. Sulo tidak berafiliasi dengan dan tidak didukung oleh Universitas Hasanuddin.</p>
+<p>Sulo masih dalam tahap awal. Kebijakan ini menjelaskan aturan yang diikuti proyek, dan menyebutnya kalau sebuah fitur masih direncanakan. Singkatnya: semua data tetap di browsermu, dan tidak ada yang dikirim ke pengembang atau pihak ketiga.</p>
+<h2>Yang dibaca Sulo</h2>
+<p>Sulo memakai sesi SIKOLA yang sudah ada di browsermu untuk membaca datamu sendiri:</p>
+<ul><li>daftar mata kuliahmu</li><li>tugas dan tenggatnya, termasuk tenggat kuis</li><li>susunan tiap mata kuliah aktif (bagian dan aktivitas), beberapa kali sehari, untuk mengetahui materi dan tugas baru</li><li>20 notifikasi SIKOLA terbarumu, untuk mengetahui nilai, feedback, dan kabar forum baru</li></ul>
+<p>Sulo hanya membaca. Sulo tidak pernah mengumpulkan tugas, tidak menandai apa pun sebagai dibaca, tidak mengubah data di SIKOLA, tidak membaca isi kuis, dan tidak membaca data mahasiswa lain.</p>
+<h2>Yang disimpan Sulo, dan di mana</h2>
+<p>Semuanya disimpan lokal di browser (chrome.storage) pada perangkatmu sendiri:</p>
+<ul><li>mata kuliah, tugas, dan tenggat</li><li>susunan mata kuliah terakhir yang terlihat dan log &quot;Kabar terbaru&quot; (paling banyak 200 entri)</li><li>pilihanmu: mata kuliah yang dipantau, tugas yang ditandai selesai, nama tampilan dan warna mata kuliah, serta nama panggilan yang kamu isi sendiri</li><li>log teknis 300 pemeriksaan terakhir ke SIKOLA: hanya waktu, nama fungsi, dan status, tanpa isi apa pun; tidak pernah dikirim, dan hanya ikut kalau kamu sendiri menyalin &quot;info untuk laporan bug&quot;</li><li>penghitung pemakaian lokal, yang tidak pernah keluar dari perangkatmu kecuali kamu sendiri mengekspornya</li></ul>
+<p>Dari notifikasi SIKOLA, Sulo hanya menyimpan id, subjek, komponen dan jenis kejadian, waktu dibuat, status dibaca, alamat halaman terkait (hanya halaman SIKOLA yang dikenal, tanpa parameter selain id), dan nomor mata kuliahnya. Isi pesan (text, fullmessage, fullmessagehtml, smallmessage) dan data tambahan (customdata), yang bisa memuat nilai atau komentar dosen, dibuang saat dibaca dan tidak pernah disimpan. Notifikasi Sulo tentang nilai tidak pernah menyebut angka nilai atau isi komentar.</p>
+<p>Statistik pemakaian lokal (berapa kali popup dan dashboard dibuka, tugas ditandai selesai, dan pengingat tampil) hanya berupa angka dan tersimpan di browsermu. Sulo tidak pernah mengirimnya. Di Pengaturan kamu bisa mengekspornya sebagai berkas dan memutuskan sendiri mau mengirimnya atau tidak.</p>
+<p>Data terikat ke akun SIKOLA-mu, dikenali dari nomor pengguna SIKOLA (userid) yang disimpan apa adanya di browsermu. Kalau akun lain masuk ke SIKOLA di browser yang sama, data akun sebelumnya langsung disembunyikan dan Sulo berhenti memeriksa serta mengingatkan. Data itu baru dihapus setelah kamu memilih &quot;Pakai akun ini&quot;, atau saat kamu memakai &quot;Hapus semua data&quot;. Kalau kamu masuk lagi dengan akun sebelumnya, semuanya muncul kembali.</p>
+<h2>Yang tidak pernah dilakukan Sulo</h2>
+<ul><li>Tidak pernah meminta, membaca, atau menyimpan username dan password.</li><li>Tidak menyimpan cookie, kunci sesi, atau token melewati sesi browser yang sedang berjalan.</li><li>Tidak pernah mengirim datamu ke pengembang, server, atau pihak ketiga mana pun.</li><li>Tanpa analytics, tanpa telemetri, tanpa iklan.</li><li>Tanpa otomatisasi akademik: Sulo tidak mengisi KRS, survei, atau presensi.</li></ul>
+<h2>Koneksi jaringan</h2>
+<p>Sulo hanya menghubungi dua tempat:</p>
+<ol><li>SIKOLA (sikola-v2.unhas.ac.id), untuk membaca datamu sendiri. Maksimal 40 request per hari (biasanya 5 sampai 10), satu per satu, tidak pada jam tenang (00.00 sampai 06.00), dan tidak saat komputermu sedang tidak dipakai.</li><li>Repo data publik Sulo di GitHub Pages (ikrar06.github.io/sulo-data), untuk mengambil berkas konfigurasi kecil dan data kalender akademik. Permintaan ini tidak membawa informasi apa pun tentangmu (tanpa cookie, header tambahan, atau parameter) dan paling sering sekali sehari per berkas. Seperti situs mana pun, GitHub dapat melihat alamat IP-mu saat berkas diambil.</li></ol>
+<p>&quot;Tambah ke Google Calendar&quot; di menu tugas hanya membuka halaman Google Calendar di tab baru, saat kamu mengekliknya. Halaman itu sudah berisi nama tugas, nama mata kuliah, tenggat, dan tautan ke tugas di SIKOLA. Sulo sendiri tidak mengirim apa pun ke Google dan tidak butuh login; kamu yang memutuskan menyimpannya di Google Calendar.</p>
+<p>Tombol &quot;Traktir kopi&quot; (Trakteer), tautan media sosial, dan &quot;Kirim masukan&quot; (Google Form) di halaman Tentang, serta tautan PDF kalender resmi, hanya membuka situs itu di tab baru saat kamu mengekliknya. Sebelum diklik, Sulo tidak menghubungi situs itu sama sekali, dan tidak ada script, gambar, atau font dari situs itu yang dimuat di halaman Sulo. Sulo tidak mengirim data apa pun ke sana dan tidak mengisi formulir untukmu.</p>
+<h2>Modul opsional</h2>
+<p>Modul opsional, seperti modul NEOSIA yang direncanakan, mati secara bawaan. Sebelum diaktifkan, Sulo menampilkan layar persetujuan yang menjelaskan apa yang dibaca, apa yang dibuang, dan cara mematikannya.</p>
+<ul><li>Sulo tidak akan pernah mengirim request ke NEOSIA. Sulo hanya membaca data dari halaman NEOSIA yang kamu buka sendiri.</li><li>Data identitas (seperti NIK, alamat, tanggal lahir, dan kontak), nominal pembayaran, dan nomor induk dosen dibuang sebelum apa pun disimpan.</li><li>Nilai dan IPK tersembunyi secara bawaan dan tidak pernah ikut ekspor.</li><li>Mematikan modul menghapus datanya dan mencabut izinnya.</li></ul>
+<h2>Menghapus datamu</h2>
+<ul><li>Mencopot ekstensi dari browser menghapus semua datanya. Ini sudah berlaku sekarang.</li><li>&quot;Hapus semua data&quot; di menu pengaturan popup menghapus semua yang Sulo simpan di browser ini (tugas, mata kuliah, pengingat, kabar terbaru, dan pengaturan) tanpa mencopot ekstensi. Data di SIKOLA tidak tersentuh.</li></ul>
+<h2>Perubahan kebijakan</h2>
+<p>Perubahan diterbitkan bersama versi Sulo yang baru, dan tanggal di atas diperbarui. Kalau isi pemberitahuan privasi di pengaturan awal berubah, Sulo menampilkannya lagi.</p>
+<h2>Kontak</h2>
+<p>Pertanyaan soal privasi bisa dikirim lewat formulir masukan: <a href="https://forms.gle/XsBuWXGHNR4pPTs17">https://forms.gle/XsBuWXGHNR4pPTs17</a>. Jangan sertakan NIM, password, nilai, atau data pribadi lain di pesanmu.</p>
+</main>
+</body>
+</html>
