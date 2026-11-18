@@ -1,5 +1,13 @@
 {
   "enabled": true,
   "minIntervalMinutes": 180,
-  "message": ""
+  "message": "",
+  "mobile": {
+    "backgroundKeepAlive": {
+      "enabled": true,
+      "dayIntervalMinutes": 20,
+      "nightIntervalMinutes": 60,
+      "radarEvery": 3
+    }
+  }
 }
