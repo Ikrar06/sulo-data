@@ -1,8 +1,8 @@
 {
   "version": 1,
   "issues": {},
-  "consecutiveFailures": 1,
-  "lastRunAt": "2026-11-18T03:50:52.940Z",
+  "consecutiveFailures": 2,
+  "lastRunAt": "2026-11-19T03:48:54.458Z",
   "robots": {
     "fetchedAt": "2026-11-15T21:50:34.819Z",
     "rules": [
@@ -150,9 +150,9 @@
     "bytes": 11411426
   },
   "lastError": {
-    "at": "2026-11-18T03:50:52.940Z",
+    "at": "2026-11-19T03:48:54.458Z",
     "message": "GET https://www.unhas.ac.id/page-sitemap1.xml: jaringan gagal"
   },
   "lastSuccessAt": "2026-11-17T04:45:12.765Z",
-  "lastCommitAt": "2026-11-18T03:50:52.940Z"
+  "lastCommitAt": "2026-11-19T03:48:54.458Z"
 }
