@@ -39,6 +39,28 @@ Sulo is an unofficial academic companion for Universitas Hasanuddin students. **
 
 Unknown fields are rejected by the schema in this repository, and ignored by the extension.
 
+### mobile.release (Android app)
+
+The Android app reads this same file, so announcing a version costs no extra request. Example:
+
+```json
+"mobile": {
+  "release": {
+    "versionCode": 906,
+    "versionName": "0.9.6",
+    "url": "https://github.com/Ikrar06/sulo/releases/download/v0.9.6/sulo-0.9.6-android.apk",
+    "sha256": "<64 hex characters of the APK>",
+    "minVersionCode": 0,
+    "notes": { "id": "Pengingat lebih tepat waktu.", "en": "Reminders on time more often." }
+  }
+}
+```
+
+- A `versionCode` above the installed one shows a calm card with a Download button that opens `url` in the browser. Sulo never downloads or installs anything itself. Closing the card hides it for 3 days.
+- `versionCode` is `major * 10000 + minor * 100 + patch`, so 0.9.x stays below 1.0.0.
+- `url` must be an APK asset of one of Ikrar06's GitHub releases. Any invalid field makes the app ignore the whole section.
+- `minVersionCode` is only for security fixes. Below it, the app shows one "update required" screen and sends nothing to SIKOLA until updated, and user data stays. It is never above `versionCode`.
+
 ## Academic calendar 2026/2027
 
 **Unofficial.** Compiled by Sulo, not by Universitas Hasanuddin. The official document always prevails; please check it for anything important.

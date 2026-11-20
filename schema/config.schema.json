@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://ikrar06.github.io/sulo-data/schema/config.schema.json",
   "title": "Sulo remote configuration",
-  "description": "Remote kill switch and pacing for the Sulo extension and the Sulo Android app. Mirrors remoteConfigSchema (packages/core/src/remote/remote-config.ts) and the Android app's keep-alive reader (packages/core/src/remote/keep-alive.ts). This schema is stricter than the apps: unknown keys are rejected here, while the apps ignore them, and the Android app replaces any out-of-range field with its built-in default.",
+  "description": "Remote kill switch and pacing for the Sulo extension and the Sulo Android app. Mirrors remoteConfigSchema (packages/core/src/remote/remote-config.ts), the Android app's keep-alive reader (packages/core/src/remote/keep-alive.ts) and its release reader (packages/core/src/remote/release.ts). This schema is stricter than the apps: unknown keys are rejected here, while the apps ignore them, and the Android app replaces any out-of-range field with its built-in default.",
   "type": "object",
   "properties": {
     "enabled": {
@@ -72,6 +72,67 @@
               "additionalProperties": false
             }
           },
+          "additionalProperties": false
+        },
+        "release": {
+          "type": "object",
+          "description": "The latest Android release (Sulo 0.9 and later), read from this file the app already fetches: no extra request. A newer versionCode shows a calm card in the app with a Download button that opens `url` in the browser; Sulo never downloads or installs anything itself. Below minVersionCode the app shows one 'update required' screen and stops every request to SIKOLA until updated (security fixes only); user data stays. The app ignores the whole section when any field is invalid.",
+          "properties": {
+            "versionCode": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2099999999,
+              "description": "Android versionCode: major * 10000 + minor * 100 + patch (0.9.6 = 906, 1.0.0 = 10000)."
+            },
+            "versionName": {
+              "type": "string",
+              "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+              "description": "Digits and dots only, e.g. 0.9.6."
+            },
+            "url": {
+              "type": "string",
+              "pattern": "^https://github\\.com/Ikrar06/[A-Za-z0-9_-][A-Za-z0-9._-]*/releases/download/[A-Za-z0-9_-][A-Za-z0-9._-]*/[A-Za-z0-9_-][A-Za-z0-9._-]*\\.apk$",
+              "description": "The APK asset of a GitHub release of Ikrar06. Anything else makes the app ignore this section."
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{64}$",
+              "description": "SHA-256 of the APK at `url` (shown to testers to compare; hidden from 1.0.0)."
+            },
+            "minVersionCode": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2099999999,
+              "description": "Installed versions below this must update (security fixes only). 0 or absent: never required. Never above versionCode (the app ignores the section otherwise)."
+            },
+            "notes": {
+              "type": "object",
+              "description": "One short line on what changed. Plain text, never HTML. Both languages or none.",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 300
+                },
+                "en": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 300
+                }
+              },
+              "required": [
+                "id",
+                "en"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "versionCode",
+            "versionName",
+            "url",
+            "sha256"
+          ],
           "additionalProperties": false
         }
       },
