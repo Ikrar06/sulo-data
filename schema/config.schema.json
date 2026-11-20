@@ -42,7 +42,7 @@
               "type": "integer",
               "minimum": 30,
               "maximum": 110,
-              "description": "Minutes between checks from 23.00 to 05.59 device time. Default 60."
+              "description": "Minutes between checks from 23.00 to 05.59 device time. Default 110."
             },
             "radarEvery": {
               "type": "integer",
