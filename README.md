@@ -100,7 +100,9 @@ Tells the Android app that a new version exists. It is left out until the first 
 
 - **Source:** Keputusan Rektor No. 08429/UN4.1/KEP/2026, *Kalender Akademik Tahun Akademik 2026/2027*, Direktorat Pendidikan Universitas Hasanuddin ([PDF](https://www.unhas.ac.id/wp-content/uploads/2026/10/kalender-akademik-unhas-2026-2027.pdf)).
 - **How it is made:** the ICS from the Unhas calendar page is converted, then corrected and completed from the PDF. Each event says how it was checked (`status_verifikasi`), and every difference from the ICS is listed in [`calendar/selisih-2026-2027.md`](calendar/selisih-2026-2027.md).
+- **Checked:** 16 November 2026 (`diverifikasi_pada`), every event against the PDF. Each event says how (`status_verifikasi`); the few marked `perlu_cek` are unclear in the source itself.
 - **Coverage:** 1 June 2026 to 30 June 2027, in Asia/Makassar dates. Sulo only accepts a higher `revisi` or a newer academic year.
+- **Not yet known:** the first lecture day of the even semester, so its teaching weeks are empty (`pekan.akhir` is `null`).
 
 ### Subscribe in Google Calendar
 
