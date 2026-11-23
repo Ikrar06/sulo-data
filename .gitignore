@@ -1,0 +1,9 @@
+# macOS and editor leftovers
+.DS_Store
+._*
+*.swp
+*~
+Thumbs.db
+
+# Local tools
+node_modules/
