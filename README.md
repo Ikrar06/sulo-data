@@ -1,137 +1,141 @@
 # sulo-data
 
-Public data files for the Sulo browser extension: the remote configuration and the Universitas Hasanuddin academic calendar 2026/2027.
+Public data files read by Sulo, the study companion for Unhas students: the remote configuration, the academic calendar and the privacy page.
 
-Sulo is an unofficial academic companion for Universitas Hasanuddin students. **This repository and the Sulo extension are unofficial and are not affiliated with or endorsed by Universitas Hasanuddin.**
+**Not an official Unhas project.** This repository and Sulo are independent, not affiliated with or endorsed by Universitas Hasanuddin.
 
 [![validate](https://github.com/Ikrar06/sulo-data/actions/workflows/validate.yml/badge.svg)](https://github.com/Ikrar06/sulo-data/actions/workflows/validate.yml)
 
-## Contents
+Everything here is served by GitHub Pages at `https://ikrar06.github.io/sulo-data/` and read by installed copies of Sulo. **Changing a file's content or address changes what users get.** Read "Making a change" below first.
 
-| File | Purpose | Status |
-|---|---|---|
-| `config.json` | Remote kill switch and pacing for the extension | Live |
-| `schema/config.schema.json` | JSON Schema for `config.json` | Live |
-| `calendar/2026-2027.json` | Academic calendar 2026/2027 (revision 1), from the official ICS, corrected from the official PDF | Live |
-| `calendar/latest.json` | Same as the newest academic year; the extension reads this one | Live |
-| `calendar/sulo-inti-s1.ics` | Subscribable feed: core dates for undergraduates (KRS, lectures, UTS, UAS, breaks, grades, evaluations, KKN, deadlines) | Live |
-| `calendar/sulo-wisuda.ics` | Subscribable feed: the nine graduation periods | Live |
-| `calendar/sulo-libur-nasional.ics` | Subscribable feed: national holidays and joint leave days as listed in the calendar PDF | Live |
-| `calendar/selisih-2026-2027.md` | Every difference between the official ICS and this data, with the reason | Live |
-| `schema/calendar.schema.json` | JSON Schema for the calendar files (generated from the extension's Zod schema) | Live |
-| `monitor/` | Daily monitor of the official calendar page (see below) | Live |
+## What is here, and who reads it
+
+| File | Read by | What it is |
+| --- | --- | --- |
+| `config.json` | the extension and the Android app (and the app's background checks) | remote switches and pacing |
+| `schema/config.schema.json` | `validate` | the rules `config.json` must follow |
+| `calendar/latest.json` | the extension and the Android app | the newest academic year of the calendar |
+| `calendar/2026-2027.json` | people, and anything that wants a fixed year | the academic calendar 2026/2027 |
+| `calendar/sulo-inti-s1.ics`, `sulo-wisuda.ics`, `sulo-libur-nasional.ics` | Google Calendar and other calendar apps, when a user subscribes | core undergraduate dates, graduations, national holidays |
+| `calendar/selisih-2026-2027.md` | people | every difference between the official ICS and this data, with the reason |
+| `schema/calendar.schema.json` | `validate` | the rules the calendar files must follow (generated from Sulo's own schema) |
+| `privasi.html`, `privacy.html` | people, the store listings, and Sulo's links | the privacy policy, in Indonesian and in English |
+| `monitor/` | the monitor workflow | the daily check of the official calendar page |
 
 ## config.json
+
+Today's file:
 
 ```json
 {
   "enabled": true,
   "minIntervalMinutes": 180,
-  "message": ""
-}
-```
-
-| Field | Type | Allowed values | Effect in the extension |
-|---|---|---|---|
-| `enabled` | boolean | `true` or `false` | `false` is a kill switch: every installation stops all requests to SIKOLA and shows `message` instead. `true` resumes normal operation |
-| `minIntervalMinutes` | integer | `0` or more | Minimum minutes between background syncs. It can only slow Sulo down. Values below the built-in 180 minutes are ignored |
-| `message` | string | Up to 500 characters, optional, default empty | Short plain-text note in Indonesian, shown to users while `enabled` is `false`. Never rendered as HTML |
-
-Unknown fields are rejected by the schema in this repository, and ignored by the extension.
-
-### mobile.release (Android app)
-
-The Android app reads this same file, so announcing a version costs no extra request. Example:
-
-```json
-"mobile": {
-  "release": {
-    "versionCode": 906,
-    "versionName": "0.9.6",
-    "url": "https://github.com/Ikrar06/sulo/releases/download/v0.9.6/sulo-0.9.6-android.apk",
-    "sha256": "<64 hex characters of the APK>",
-    "minVersionCode": 0,
-    "notes": { "id": "Pengingat lebih tepat waktu.", "en": "Reminders on time more often." }
+  "message": "",
+  "mobile": {
+    "backgroundKeepAlive": {
+      "enabled": true,
+      "dayIntervalMinutes": 20,
+      "nightIntervalMinutes": 110,
+      "radarEvery": 3
+    }
   }
 }
 ```
 
-- A `versionCode` above the installed one shows a calm card with a Download button that opens `url` in the browser. Sulo never downloads or installs anything itself. Closing the card hides it for 3 days.
-- `versionCode` is `major * 10000 + minor * 100 + patch`, so 0.9.x stays below 1.0.0.
-- `url` must be an APK asset of one of Ikrar06's GitHub releases. Any invalid field makes the app ignore the whole section.
-- `minVersionCode` is only for security fixes. Below it, the app shows one "update required" screen and sends nothing to SIKOLA until updated, and user data stays. It is never above `versionCode`.
+| Field | Now | Meaning |
+| --- | --- | --- |
+| `enabled` | `true` | The off switch. `false` stops every request from Sulo to SIKOLA, in the extension and the Android app, and shows `message` instead. |
+| `minIntervalMinutes` | `180` | The extension's minimum minutes between automatic checks. It can only slow Sulo down: anything below the built-in 180 is ignored. |
+| `message` | `""` | Short plain text (at most 500 characters) shown while `enabled` is `false`. Never rendered as HTML. Empty: Sulo shows its own sentence. |
+| `mobile.backgroundKeepAlive.enabled` | `true` | The Android app's background checks ("Pantau tugas baru"), for the users who turned them on. `false` stops them on every phone; the switch in the app's settings turns off and shows `mobile.backgroundKeepAlive.message`. |
+| `mobile.backgroundKeepAlive.dayIntervalMinutes` | `20` | Minutes between background checks from 06.00 to 22.59, phone time. Allowed 15 to 110. |
+| `mobile.backgroundKeepAlive.nightIntervalMinutes` | `110` | The same from 23.00 to 05.59. Allowed 30 to 110. |
+| `mobile.backgroundKeepAlive.radarEvery` | `3` | Course structure checks ride on every n-th daytime check, at most 4 courses each. Allowed 1 to 6. |
+| `mobile.backgroundKeepAlive.message` | absent | Optional `{ "id": "...", "en": "..." }`, at most 200 characters each, shown under the switch while it is off. Both languages or none. |
+| `mobile.release` | absent, on purpose | A new Android version (below). Left out until the first public release. |
 
-## Academic calendar 2026/2027
+How Sulo reads the file:
 
-**Unofficial.** Compiled by Sulo, not by Universitas Hasanuddin. The official document always prevails; please check it for anything important.
+- `enabled` and `minIntervalMinutes` are required. Unknown fields are rejected by `validate` (at every level) and ignored by Sulo.
+- A file that cannot be fetched, is not valid JSON or does not pass Sulo's own checks changes nothing: Sulo keeps the last good value, or its built-in default (`enabled: true`) if it never had one.
+- In `mobile.backgroundKeepAlive`, each number is read on its own: one out of range takes its default (the values above). `enabled` is the exception: if it is there and not `true` or `false`, the whole file counts as invalid, so a broken switch is never read as permission.
+- The requests carry nothing about the user: no cookies, no extra headers, no query parameters.
 
-- **Source:** Keputusan Rektor No. 08429/UN4.1/KEP/2026, *Kalender Akademik Tahun Akademik 2026/2027*, Direktorat Pendidikan Universitas Hasanuddin ([PDF](https://www.unhas.ac.id/wp-content/uploads/2026/10/kalender-akademik-unhas-2026-2027.pdf), [page](https://www.unhas.ac.id/kalender-akademik/?lang=id)). SHA-256 of the PDF used: `e778ecddb0833418d2a0547f0872fca09d6ed1ef4676880175904aea6bd8155b`.
-- **Verified:** 16 November 2026, every event checked against the PDF by the maintainer. Each event carries `status_verifikasi`: `cocok_ics_pdf` (ICS and PDF agree), `cocok_pdf` (only in the PDF), `cocok_skb` (holiday checked against the joint ministerial decree), `perlu_cek` (unclear in the source, see `catatan`).
-- **How it is made:** the ICS from the Unhas page is converted, then corrected and completed from the PDF with a reviewed override file (in the extension's repository). Every difference between the ICS and this data, with the reason, is listed in [`calendar/selisih-2026-2027.md`](calendar/selisih-2026-2027.md).
-- **Coverage:** 1 June 2026 to 30 June 2027. Dates are inclusive local dates (Asia/Makassar); the ICS feeds use exclusive end dates as RFC 5545 requires.
-- **Not yet known:** the first lecture day of the even semester for S1, so teaching weeks of that semester are `null`.
+### How fast a change reaches users
+
+GitHub Pages serves the file with `Cache-Control: max-age=600`, so a change is visible to new requests within about 10 minutes of the Pages deploy. After that, it depends on when each copy of Sulo reads the file:
+
+| Where | When it reads `config.json` |
+| --- | --- |
+| Extension | at most once every 24 hours, at an hour picked by each installation; any hour once 48 hours have passed |
+| Android app | when it is opened, if the last read is more than 6 hours old; otherwise once a day |
+| Android background checks | the phone reads the file itself at most every 6 hours while background checks are on, without the app being opened |
+
+So `enabled: false` stops the Android background checks within about 6 hours, and every extension within a day or two. Two more limits on the phone: if no read has succeeded for 72 hours, the background checks send nothing to SIKOLA until one does; and if the app has not been opened for 7 days, they stop with one notice.
+
+To switch something off: a pull request that changes `config.json` (see "Making a change"); it takes effect on the next reads above. GitHub's web editor works from a phone too.
+
+### mobile.release
+
+Tells the Android app that a new version exists. It is left out until the first public release, because testers cannot open the download link while the main repository is private. When it is filled in, it sits inside `mobile`, next to `backgroundKeepAlive`:
+
+```json
+"release": {
+  "versionCode": 10000,
+  "versionName": "1.0.0",
+  "url": "https://github.com/Ikrar06/sulo/releases/download/v1.0.0/sulo-1.0.0-android.apk",
+  "sha256": "<64 hex characters of the APK>",
+  "notes": { "id": "...", "en": "..." }
+}
+```
+
+- A `versionCode` above the installed one shows a card with a Download button that opens `url` in the browser. Sulo never downloads or installs anything itself. Closing the card hides it for 3 days.
+- `versionCode` is `major * 10000 + minor * 100 + patch`, so every 0.9.x stays below 1.0.0.
+- `url` must be an APK asset of one of Ikrar06's GitHub releases; `sha256` is 64 hex characters; each note is at most 300 characters. One invalid field makes the app ignore the whole section.
+- `minVersionCode` (optional, never above `versionCode`) is only for security fixes. Below it the app shows one "update required" screen and sends nothing to SIKOLA until it is updated; the user's data stays.
+
+## Academic calendar
+
+**Unofficial.** Compiled for Sulo from the official documents of Universitas Hasanuddin. **The official document always prevails**; check it for anything important.
+
+- **Source:** Keputusan Rektor No. 08429/UN4.1/KEP/2026, *Kalender Akademik Tahun Akademik 2026/2027*, Direktorat Pendidikan Universitas Hasanuddin ([PDF](https://www.unhas.ac.id/wp-content/uploads/2026/10/kalender-akademik-unhas-2026-2027.pdf)).
+- **How it is made:** the ICS from the Unhas calendar page is converted, then corrected and completed from the PDF. Each event says how it was checked (`status_verifikasi`), and every difference from the ICS is listed in [`calendar/selisih-2026-2027.md`](calendar/selisih-2026-2027.md).
+- **Checked:** 16 November 2026 (`diverifikasi_pada`), every event against the PDF. Each event says how (`status_verifikasi`); the few marked `perlu_cek` are unclear in the source itself.
+- **Coverage:** 1 June 2026 to 30 June 2027, in Asia/Makassar dates. Sulo only accepts a higher `revisi` or a newer academic year.
+- **Not yet known:** the first lecture day of the even semester, so its teaching weeks are empty (`pekan.akhir` is `null`).
 
 ### Subscribe in Google Calendar
 
-1. Open Google Calendar on a computer.
-2. Next to "Other calendars", click **+**, then **From URL**.
-3. Paste one of these addresses and click **Add calendar**:
-   - Core dates for S1: `https://ikrar06.github.io/sulo-data/calendar/sulo-inti-s1.ics`
-   - Graduation: `https://ikrar06.github.io/sulo-data/calendar/sulo-wisuda.ics`
-   - National holidays: `https://ikrar06.github.io/sulo-data/calendar/sulo-libur-nasional.ics`
+On a computer, next to "Other calendars", click **+**, then **From URL**, and paste one of:
 
-Google Calendar refreshes subscribed calendars on its own schedule, which can take several hours to a day. The feeds contain public academic dates only, never anything personal. Events have stable ids, so a new revision updates them instead of duplicating them.
+- `https://ikrar06.github.io/sulo-data/calendar/sulo-inti-s1.ics` (core dates for undergraduates)
+- `https://ikrar06.github.io/sulo-data/calendar/sulo-wisuda.ics` (graduations)
+- `https://ikrar06.github.io/sulo-data/calendar/sulo-libur-nasional.ics` (national holidays)
 
-### Monitor
+Google Calendar refreshes subscriptions on its own schedule, sometimes a day later. The feeds hold public dates only.
 
-`.github/workflows/pantau-kalender.yml` runs daily at minute 37 (06:37 WITA) with the User-Agent `sulo-data-monitor (+https://github.com/Ikrar06/sulo-data)` and follows `robots.txt`:
+### The monitor, and the `pantau` branch
 
-- every day it reads only `page-sitemap1.xml`, for the `lastmod` of the calendar page
-- it reads the calendar page only when `lastmod` changed, or once a week as a fallback
-- it sends a HEAD request for the PDF once a week, and downloads it for a SHA-256 once a month (the first download is compared with the verified hash above)
-- if the server refuses, blocks or fails, it does not retry in that run; after 3 failed runs in a row it opens an issue
-- changes become issues with a readable diff; **calendar data is never changed automatically**
+`.github/workflows/pantau-kalender.yml` checks the official calendar page once a day (06.37 WITA), politely: it follows `robots.txt`, reads the sitemap daily and the page only when it changed or once a week, and checks the PDF weekly. When it sees a change it **opens an issue with a readable diff**; it never edits the calendar data. Three failed runs in a row also open an issue.
 
-Its state is kept on the `pantau` branch (`state.json`), committed when something changed and at least once a week.
+It keeps what it has seen on the **`pantau` branch** (`state.json`), because `main` only accepts changes that pass `validate`, which a bot cannot do. **Do not delete the `pantau` branch**: without it the monitor starts over and reports everything as new.
 
-## How the extension uses this repository
+## Privacy page
 
-- Sulo fetches each file at most once a day.
-- The request carries nothing that identifies the user: no cookies, no extra headers, no query parameters.
-- Files are data only and never code. The extension validates each file against its schema before using it.
-- If a file cannot be fetched or is invalid, the extension keeps the last valid value. If it has none yet, it uses its built-in default (`enabled: true`).
-- These requests do not count against Sulo's daily request budget for SIKOLA, because they do not go to SIKOLA.
+- Indonesian: https://ikrar06.github.io/sulo-data/privasi.html
+- English: https://ikrar06.github.io/sulo-data/privacy.html
 
-## No personal data
+Sulo, its store listings and its first-run guide link to these addresses, so they do not move.
 
-This repository never contains personal data: no names, student numbers, grades, schedules of individual students or anything else about a person. Only public, general information belongs here. The subscribable calendar will contain public academic dates only. Personal calendars (assignments, class schedules) are generated locally inside the extension and are never hosted anywhere.
+## Making a change
 
-## Changes and review
+1. A branch and a pull request; nothing is pushed straight to `main`.
+2. `validate` must pass before the pull request can be merged. It checks that both schemas are valid, that `config.json` and the calendar files match them, that `calendar/latest.json` is the newest academic year, that the ICS feeds are well formed (line endings, line length, unique ids, no alarms), and runs the monitor's tests.
+3. The maintainer, [@Ikrar06](https://github.com/Ikrar06), reviews and merges.
 
-- Only the maintainer, [@Ikrar06](https://github.com/Ikrar06), can change the data.
-- The `main` branch is protected: pull requests must pass `validate` before they can be merged. `validate` checks both schemas, validates `config.json` and the calendar files, checks the ICS feeds, and runs the monitor's tests. The maintainer may push directly, and those pushes run `validate` too.
-- Academic calendar data is checked against the official PDF before it is published. Each file names its source, revision and verification date. A new revision raises `revisi`; the extension only accepts a higher revision or a newer academic year.
-- Corrections are welcome as issues or pull requests. Please link the official source.
+Calendar corrections are welcome as issues or pull requests; please link the official source. This repository never holds personal data: no names, student numbers, grades or anything about one person.
 
-## Public URLs
+## Links
 
-Served with GitHub Pages:
-
-- https://ikrar06.github.io/sulo-data/config.json
-- https://ikrar06.github.io/sulo-data/schema/config.schema.json
-- https://ikrar06.github.io/sulo-data/calendar/latest.json
-- https://ikrar06.github.io/sulo-data/calendar/2026-2027.json
-- https://ikrar06.github.io/sulo-data/calendar/sulo-inti-s1.ics
-- https://ikrar06.github.io/sulo-data/calendar/sulo-wisuda.ics
-- https://ikrar06.github.io/sulo-data/calendar/sulo-libur-nasional.ics
-- https://ikrar06.github.io/sulo-data/schema/calendar.schema.json
-
-## Main project
-
-The extension lives in [Ikrar06/sulo](https://github.com/Ikrar06/sulo). That repository is private for now and will be opened after talking with the university's system administrators.
-
-## License
-
-The data in this repository is dedicated to the public domain under [CC0 1.0 Universal](LICENSE).
-
-Academic calendar data is derived from official documents of Universitas Hasanuddin. Each file names its source document, and the official document remains authoritative. Whether Unhas permits republishing its calendar in this form has not been confirmed yet; if it objects, the calendar files will be taken down.
+- Sulo: [Ikrar06/sulo](https://github.com/Ikrar06/sulo) (private for now).
+- License: the data here is dedicated to the public domain under [CC0 1.0](LICENSE). The calendar is derived from official documents of Universitas Hasanuddin, which remain authoritative; whether Unhas permits republishing it in this form has not been confirmed yet, and the calendar files will be removed if it objects.
