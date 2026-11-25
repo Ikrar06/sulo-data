@@ -120,6 +120,12 @@ Google Calendar refreshes subscriptions on its own schedule, sometimes a day lat
 
 It keeps what it has seen on the **`pantau` branch** (`state.json`), because `main` only accepts changes that pass `validate`, which a bot cannot do. **Do not delete the `pantau` branch**: without it the monitor starts over and reports everything as new.
 
+## Download counts, and the `unduhan` branch
+
+`.github/workflows/unduhan.yml` writes one row a day (23.20 WITA) with how many times Sulo's release files have been downloaded: the Android APK and the extension zip, as GitHub itself counts them on the [release page](https://github.com/Ikrar06/sulo/releases). These are public totals of files, not of people: nobody is tracked, and nothing is added to the apps or the website for it. A download is not an install, and automated fetches are counted too.
+
+To look: open the [`unduhan` branch](https://github.com/Ikrar06/sulo-data/tree/unduhan). Its front page shows the totals, today, the last 7 days and a bar a day. The rows are on that branch too: `unduhan.csv` (date in Makassar, the total and that day's rise for each app) and `unduhan.json` (each file's own count on the last run). They are kept there for the same reason as the monitor's state: a bot cannot push to `main`. GitHub keeps only the running total, so **deleting the `unduhan` branch loses the daily history**.
+
 ## Privacy page
 
 - Indonesian: https://ikrar06.github.io/sulo-data/privasi.html

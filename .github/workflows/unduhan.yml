@@ -1,0 +1,59 @@
+name: unduhan
+
+# Writes one row a day with the download counts of Sulo's release files (the
+# Android APK and the extension zip), as GitHub itself counts them on the
+# release page of Ikrar06/sulo. Nobody is tracked: these are public totals,
+# and nothing is added to the apps or the website. The rows live on the
+# unprotected branch "unduhan" (main requires the validate check, which a bot
+# push cannot pass): README.md (the counts at a glance), unduhan.csv (a row a
+# day) and unduhan.json (each file's own count).
+on:
+  schedule:
+    # Daily at 15:20 UTC = 23:20 WITA: near the end of the day in Makassar,
+    # early enough that a late start still lands on the same date.
+    - cron: '20 15 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: unduhan
+  cancel-in-progress: false
+
+jobs:
+  catat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Rows from branch unduhan
+        run: |
+          if git fetch --depth=1 origin unduhan:unduhan; then
+            git worktree add data unduhan
+          else
+            git worktree add --orphan -b unduhan data
+          fi
+
+      - name: Write today's row
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node unduhan/catat.mjs data
+
+      - name: Save
+        working-directory: data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add unduhan.csv unduhan.json README.md
+          if git diff --cached --quiet; then
+            echo "Tidak ada yang berubah."
+          else
+            git commit -m "chore: download counts $(TZ=Asia/Makassar date +%F)"
+            git push origin unduhan
+          fi

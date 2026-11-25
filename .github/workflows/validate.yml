@@ -30,4 +30,4 @@ jobs:
         run: node monitor/check-calendar.mjs
 
       - name: Monitor tests
-        run: node --test 'monitor/*.test.mjs'
+        run: node --test 'monitor/*.test.mjs' 'unduhan/*.test.mjs'
