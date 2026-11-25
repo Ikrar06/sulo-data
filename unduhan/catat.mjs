@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Writes the download counts: today's row, and a reading with its time when a
-// total changed. Run by the workflow "unduhan" once an hour; it reads only
+// total changed. Run by the workflow "unduhan" every ten minutes; it reads only
 // the public release list of the Sulo repository.
 //
 //   node unduhan/catat.mjs <folder that holds unduhan.csv>
@@ -8,7 +8,7 @@
 // UNDUHAN_COBA=1 prints the page it would write and writes nothing.
 import { appendFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { catat, catatJam, halaman, jumlahkan, ringkasan, tanggalWita } from './lib.mjs';
+import { catat, catatJam, halaman, jumlahkan, ringkasan, tanggalWita, waktuCatatan } from './lib.mjs';
 
 const REPO = 'Ikrar06/sulo';
 const folder = process.argv[2];
@@ -34,12 +34,17 @@ async function semuaRilis() {
 
 try {
   const total = jumlahkan(await semuaRilis());
+  const waktu = `${new Date().toISOString().slice(0, 19)}Z`;
   const tanggal = tanggalWita(new Date());
   const csvPath = join(folder, 'unduhan.csv');
   const csv = catat(existsSync(csvPath) ? readFileSync(csvPath, 'utf8') : '', tanggal, total);
   const jamPath = join(folder, 'unduhan-jam.csv');
-  const csvJam = catatJam(existsSync(jamPath) ? readFileSync(jamPath, 'utf8') : '', `${new Date().toISOString().slice(0, 19)}Z`, total);
-  const rinci = `${JSON.stringify({ tanggal, apk: total.apk, ekstensi: total.ekstensi, berkas: total.rinci }, null, 2)}\n`;
+  const rinciPath = join(folder, 'unduhan.json');
+  // The reading before this one: what is new now was downloaded after it.
+  const sejak = waktuCatatan(existsSync(rinciPath) ? readFileSync(rinciPath, 'utf8') : '');
+  const csvJam = catatJam(existsSync(jamPath) ? readFileSync(jamPath, 'utf8') : '', waktu, total, sejak);
+  // The time of this reading too: the live page falls back to this file when GitHub limits its requests.
+  const rinci = `${JSON.stringify({ tanggal, waktu, apk: total.apk, ekstensi: total.ekstensi, berkas: total.rinci }, null, 2)}\n`;
   const tabel = ringkasan(csv);
   const jam = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Makassar', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date());
   const muka = halaman(csv, total.rinci, jam, csvJam);
@@ -51,7 +56,7 @@ try {
     // The readings with their times: a row whenever a total changed.
     writeFileSync(jamPath, csvJam);
     // Each file's own count on the last run (by version).
-    writeFileSync(join(folder, 'unduhan.json'), rinci);
+    writeFileSync(rinciPath, rinci);
     // The page to open: the counts at a glance.
     writeFileSync(join(folder, 'README.md'), muka);
     if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Unduhan Sulo\n\n${tabel}\n`);

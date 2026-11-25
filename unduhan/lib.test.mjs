@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { catat, catatJam, halaman, jenisBerkas, jumlahkan, kenaikan, KEPALA, KEPALA_JAM, ringkasan, tanggalWita, waktuWita } from './lib.mjs';
+import { catat, catatJam, halaman, jenisBerkas, jumlahkan, kapan, kenaikan, KEPALA, KEPALA_JAM, ringkasan, tanggalWita, waktuCatatan, waktuWita } from './lib.mjs';
 
 const RILIS = [
   {
@@ -85,21 +85,45 @@ test('a day without downloads has no bar, and an empty file still makes a page',
   assert.match(halaman('', [], '23.20'), /\| APK Android \| \*\*0\*\* \| 0 \| 0 \|/);
 });
 
-test('a reading is kept only when a total changed', () => {
+test('a reading is kept only when a total changed, with the time of the reading before it', () => {
   const satu = catatJam('', '2026-11-25T06:20:00Z', { apk: 8, ekstensi: 11 });
-  assert.equal(satu, `${KEPALA_JAM}\n2026-11-25T06:20:00Z,8,11\n`);
-  assert.equal(catatJam(satu, '2026-11-25T07:20:00Z', { apk: 8, ekstensi: 11 }), satu);
-  assert.equal(catatJam(satu, '2026-11-25T08:20:00Z', { apk: 11, ekstensi: 11 }), `${satu}2026-11-25T08:20:00Z,11,11\n`);
+  assert.equal(satu, `${KEPALA_JAM}\n2026-11-25T06:20:00Z,8,11,\n`);
+  assert.equal(catatJam(satu, '2026-11-25T07:20:00Z', { apk: 8, ekstensi: 11 }, '2026-11-25T07:10:00Z'), satu);
+  assert.equal(catatJam(satu, '2026-11-25T08:20:00Z', { apk: 11, ekstensi: 11 }, '2026-11-25T08:10:00Z'), `${satu}2026-11-25T08:20:00Z,11,11,2026-11-25T08:10:00Z\n`);
+  // A time that cannot be the reading before (unreadable, or not earlier) is left out.
+  assert.equal(catatJam(satu, '2026-11-25T08:20:00Z', { apk: 11, ekstensi: 11 }, 'kemarin'), `${satu}2026-11-25T08:20:00Z,11,11,\n`);
+  assert.equal(catatJam(satu, '2026-11-25T08:20:00Z', { apk: 11, ekstensi: 11 }, '2026-11-25T09:00:00Z'), `${satu}2026-11-25T08:20:00Z,11,11,\n`);
 });
 
-test('the rises: when a reading saw new downloads, newest first, the first reading left out', () => {
-  const csv = `${KEPALA_JAM}\n2026-11-25T06:20:00Z,8,11\n2026-11-25T08:20:00Z,11,11\n2026-11-25T15:20:00Z,12,14\n`;
+test('rows written before the fourth column are still read', () => {
+  const lama = 'waktu,apk_total,ekstensi_total\n2026-11-25T07:01:51Z,12,14\n';
+  assert.equal(catatJam(lama, '2026-11-25T10:07:00Z', { apk: 30, ekstensi: 15 }, '2026-11-25T09:57:00Z'), `${KEPALA_JAM}\n2026-11-25T07:01:51Z,12,14,\n2026-11-25T10:07:00Z,30,15,2026-11-25T09:57:00Z\n`);
+});
+
+test('the rises: newest first, the first reading left out, each with the time its old total was last seen', () => {
+  const csv = `${KEPALA_JAM}\n2026-11-25T06:20:00Z,8,11,\n2026-11-25T08:20:00Z,11,11,2026-11-25T08:10:00Z\n2026-11-25T15:20:00Z,12,14,\n`;
   assert.deepEqual(kenaikan(csv), [
-    { waktu: '2026-11-25T15:20:00Z', apk: 1, ekstensi: 3 },
-    { waktu: '2026-11-25T08:20:00Z', apk: 3, ekstensi: 0 },
+    // No reading time kept: the row before is the last time the old total was known.
+    { waktu: '2026-11-25T15:20:00Z', sejak: '2026-11-25T08:20:00Z', apk: 1, ekstensi: 3 },
+    { waktu: '2026-11-25T08:20:00Z', sejak: '2026-11-25T08:10:00Z', apk: 3, ekstensi: 0 },
   ]);
   assert.deepEqual(kenaikan(''), []);
   assert.equal(kenaikan(csv, 1).length, 1);
+});
+
+test('the time of the last reading comes from the counts file, or nothing', () => {
+  assert.equal(waktuCatatan('{"waktu":"2026-11-25T09:57:00Z","apk":12}'), '2026-11-25T09:57:00Z');
+  assert.equal(waktuCatatan('{"apk":12}'), '');
+  assert.equal(waktuCatatan('{"waktu":"tadi"}'), '');
+  assert.equal(waktuCatatan('bukan json'), '');
+  assert.equal(waktuCatatan(''), '');
+});
+
+test('a rise is named by its reading, or by the span when readings were missed', () => {
+  assert.equal(kapan('2026-11-25T08:10:00Z', '2026-11-25T08:20:00Z'), '25 Nov 16.20');
+  assert.equal(kapan('', '2026-11-25T08:20:00Z'), '25 Nov 16.20');
+  assert.equal(kapan('2026-11-25T07:01:51Z', '2026-11-25T10:07:00Z'), '25 Nov 15.01 sampai 18.07');
+  assert.equal(kapan('2026-11-25T15:10:00Z', '2026-11-25T18:05:00Z'), '25 Nov 23.10 sampai 26 Nov 02.05');
 });
 
 test('a reading\'s time is shown as the clock in Makassar', () => {
@@ -108,8 +132,9 @@ test('a reading\'s time is shown as the clock in Makassar', () => {
 });
 
 test('the page lists the last readings that saw downloads', () => {
-  const jam = `${KEPALA_JAM}\n2026-11-25T06:20:00Z,8,11\n2026-11-25T08:20:00Z,11,11\n`;
-  const h = halaman(`${KEPALA}\n2026-11-25,11,11,11,11\n`, [], '16.20', jam);
+  const jam = `${KEPALA_JAM}\n2026-11-25T06:20:00Z,8,11,\n2026-11-25T08:20:00Z,11,11,2026-11-25T08:10:00Z\n2026-11-25T12:00:00Z,12,11,2026-11-25T09:00:00Z\n`;
+  const h = halaman(`${KEPALA}\n2026-11-25,12,12,11,11\n`, [], '20.00', jam);
   assert.match(h, /\| 25 Nov 16\.20 \| \+3 \|  \|/);
+  assert.match(h, /\| 25 Nov 17\.00 sampai 20\.00 \| \+1 \|  \|/);
   assert.match(halaman(`${KEPALA}\n2026-11-25,11,11,11,11\n`, [], '16.20'), /Belum ada unduhan baru/);
 });

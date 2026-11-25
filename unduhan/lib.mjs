@@ -69,39 +69,61 @@ export function ringkasan(csv, banyak = 14) {
   return ['| Tanggal | APK total | APK hari itu | Ekstensi total | Ekstensi hari itu |', '| --- | ---: | ---: | ---: | ---: |', ...baris.map((b) => `| ${b.split(',').join(' | ')} |`)].join('\n');
 }
 
-export const KEPALA_JAM = 'waktu,apk_total,ekstensi_total';
+export const KEPALA_JAM = 'waktu,apk_total,ekstensi_total,sejak';
+
+const waktuSah = (teks) => typeof teks === 'string' && !Number.isNaN(Date.parse(teks));
 
 function bacaJam(csv) {
   return csv
     .split('\n')
     .map((b) => b.trim())
-    .filter((b) => b && b !== KEPALA_JAM)
+    .filter(Boolean)
     .map((b) => {
-      const [waktu, apk, ekstensi] = b.split(',');
-      return { waktu, apk: Number(apk), ekstensi: Number(ekstensi) };
+      const [waktu, apk, ekstensi, sejak = ''] = b.split(',');
+      return { waktu, apk: Number(apk), ekstensi: Number(ekstensi), sejak: waktuSah(sejak) ? sejak : '' };
     })
-    .filter((b) => !Number.isNaN(Date.parse(b.waktu)) && Number.isFinite(b.apk) && Number.isFinite(b.ekstensi));
+    // The header falls out here too (the one with three columns as well): its first cell is not a time.
+    .filter((b) => waktuSah(b.waktu) && Number.isFinite(b.apk) && Number.isFinite(b.ekstensi));
 }
 
 /**
  * The readings file with this reading added, but only when a total changed
  * since the last one (or there is none yet): GitHub keeps no time for a
  * download, so the time of the reading that first saw it is the nearest
- * there is. `waktu` is an ISO time in UTC.
+ * there is. `sejak` is the time of the reading before this one, when the old
+ * total was last seen: the downloads happened between the two. Times are ISO
+ * in UTC.
  */
-export function catatJam(csv, waktu, total) {
+export function catatJam(csv, waktu, total, sejak = '') {
   const baris = bacaJam(csv);
   const akhir = baris.at(-1);
-  if (!akhir || akhir.apk !== total.apk || akhir.ekstensi !== total.ekstensi) baris.push({ waktu, apk: total.apk, ekstensi: total.ekstensi });
-  return `${[KEPALA_JAM, ...baris.map((b) => [b.waktu, b.apk, b.ekstensi].join(','))].join('\n')}\n`;
+  if (!akhir || akhir.apk !== total.apk || akhir.ekstensi !== total.ekstensi) {
+    const sebelum = akhir && waktuSah(sejak) && Date.parse(sejak) < Date.parse(waktu) ? sejak : '';
+    baris.push({ waktu, apk: total.apk, ekstensi: total.ekstensi, sejak: sebelum });
+  }
+  return `${[KEPALA_JAM, ...baris.map((b) => [b.waktu, b.apk, b.ekstensi, b.sejak].join(','))].join('\n')}\n`;
 }
 
-/** The readings that saw new downloads, newest first: when, and how many of each. The first reading is where counting starts, not a rise. */
+/** The time of the last reading, from the counts file it wrote (unduhan.json), or '' when there is none to read. */
+export function waktuCatatan(json) {
+  try {
+    const waktu = JSON.parse(json)?.waktu;
+    return waktuSah(waktu) ? waktu : '';
+  } catch {
+    return '';
+  }
+}
+
+/**
+ * The readings that saw new downloads, newest first: when, how many of each,
+ * and since when (the reading before it, or the row before when that time
+ * was not kept). The first reading is where counting starts, not a rise.
+ */
 export function kenaikan(csvJam, banyak = 12) {
   const baris = bacaJam(csvJam);
   return baris
     .slice(1)
-    .map((b, i) => ({ waktu: b.waktu, apk: Math.max(0, b.apk - baris[i].apk), ekstensi: Math.max(0, b.ekstensi - baris[i].ekstensi) }))
+    .map((b, i) => ({ waktu: b.waktu, sejak: b.sejak || baris[i].waktu, apk: Math.max(0, b.apk - baris[i].apk), ekstensi: Math.max(0, b.ekstensi - baris[i].ekstensi) }))
     .filter((b) => b.apk > 0 || b.ekstensi > 0)
     .reverse()
     .slice(0, banyak);
@@ -113,6 +135,17 @@ export function waktuWita(iso) {
   return `${pendek(`${b.year}-${b.month}-${b.day}`)} ${b.hour}.${b.minute}`;
 }
 
+/** Readings are ten minutes apart. Further apart than this, a reading was missed and the hour of a download is not known. */
+export const JEDA_TEPAT = 30 * 60_000;
+
+/** When a rise happened: the time it was read, or the span since the reading before when readings were missed. */
+export function kapan(sejak, waktu) {
+  if (!waktuSah(sejak) || Date.parse(waktu) - Date.parse(sejak) <= JEDA_TEPAT) return waktuWita(waktu);
+  const [dari, sampai] = [waktuWita(sejak), waktuWita(waktu)];
+  const hari = (teks) => teks.slice(0, teks.lastIndexOf(' '));
+  return `${dari} sampai ${hari(dari) === hari(sampai) ? sampai.slice(sampai.lastIndexOf(' ') + 1) : sampai}`;
+}
+
 const BULAN = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
 const pendek = (tanggal) => `${Number(tanggal.slice(8))} ${BULAN[Number(tanggal.slice(5, 7)) - 1]}`;
 const batang = (n, terbesar, lebar = 24) => (n > 0 ? '█'.repeat(Math.max(1, Math.round((n / terbesar) * lebar))) : '');
@@ -120,7 +153,7 @@ const batang = (n, terbesar, lebar = 24) => (n > 0 ? '█'.repeat(Math.max(1, Ma
 /**
  * The page a person opens to see the counts at a glance (README.md on the
  * "unduhan" branch): totals, today, the last 7 days, a bar a day, and each
- * file's own count. `jam` is the time of the run in Makassar ("23.20"),
+ * file's own count. `jam` is the time of the run in Makassar ("23.23"),
  * `csvJam` the readings file.
  */
 export function halaman(csv, rinci, jam, csvJam = '') {
@@ -140,7 +173,7 @@ export function halaman(csv, rinci, jam, csvJam = '') {
   return [
     '# Unduhan Sulo',
     '',
-    `Diperbarui ${akhir.tanggal ? pendek(akhir.tanggal) : ''} ${akhir.tanggal.slice(0, 4)}, ${jam} WITA. Dibuat ulang otomatis sekali sejam, kalau ada unduhan baru.`,
+    `Diperbarui ${akhir.tanggal ? pendek(akhir.tanggal) : ''} ${akhir.tanggal.slice(0, 4)}, ${jam} WITA. Dibaca ulang otomatis sekitar tiap 10 menit.`,
     '',
     '| | Total | Hari ini | 7 hari terakhir |',
     '| --- | ---: | ---: | ---: |',
@@ -164,10 +197,10 @@ export function halaman(csv, rinci, jam, csvJam = '') {
     '## Unduhan terakhir',
     '',
     ...(terakhir.length
-      ? ['| Terbaca pukul (WITA) | APK | Ekstensi |', '| --- | ---: | ---: |', ...terakhir.map((b) => `| ${waktuWita(b.waktu)} | ${b.apk ? `+${b.apk}` : ''} | ${b.ekstensi ? `+${b.ekstensi}` : ''} |`)]
-      : ['Belum ada unduhan baru sejak pencatatan per jam dimulai.']),
+      ? ['| Waktu (WITA) | APK | Ekstensi |', '| --- | ---: | ---: |', ...terakhir.map((b) => `| ${kapan(b.sejak, b.waktu)} | ${b.apk ? `+${b.apk}` : ''} | ${b.ekstensi ? `+${b.ekstensi}` : ''} |`)]
+      : ['Belum ada unduhan baru sejak pencatatan waktu dimulai.']),
     '',
-    'GitHub tidak menyimpan waktu tiap unduhan. Totalnya dibaca sekali sejam, jadi unduhan di baris ini terjadi dalam satu jam sebelum waktu yang tertulis.',
+    'GitHub tidak menyimpan waktu tiap unduhan. Totalnya dibaca sekitar tiap 10 menit, jadi unduhan di sebuah baris terjadi tidak lama sebelum waktu yang tertulis. Kalau pembacaan sempat terlewat, baris itu menulis rentangnya.',
     '',
     '## Per versi',
     '',
