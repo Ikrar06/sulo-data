@@ -1,14 +1,14 @@
 {
-  "tanggal": "2026-11-25",
-  "waktu": "2026-11-25T11:47:07Z",
-  "apk": 36,
+  "tanggal": "2026-11-26",
+  "waktu": "2026-11-25T19:58:22Z",
+  "apk": 68,
   "ekstensi": 16,
   "berkas": [
     {
       "tag": "v1.0.0",
       "berkas": "sulo-1.0.0-android.apk",
       "jenis": "apk",
-      "total": 36
+      "total": 68
     },
     {
       "tag": "v1.0.0",
