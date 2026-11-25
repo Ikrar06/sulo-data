@@ -122,9 +122,11 @@ It keeps what it has seen on the **`pantau` branch** (`state.json`), because `ma
 
 ## Download counts, and the `unduhan` branch
 
-`.github/workflows/unduhan.yml` writes one row a day (23.20 WITA) with how many times Sulo's release files have been downloaded: the Android APK and the extension zip, as GitHub itself counts them on the [release page](https://github.com/Ikrar06/sulo/releases). These are public totals of files, not of people: nobody is tracked, and nothing is added to the apps or the website for it. A download is not an install, and automated fetches are counted too.
+`.github/workflows/unduhan.yml` reads, once an hour, how many times Sulo's release files have been downloaded: the Android APK and the extension zip, as GitHub itself counts them on the [release page](https://github.com/Ikrar06/sulo/releases). These are public totals of files, not of people: nobody is tracked, and nothing is added to the apps or the website for it. A download is not an install, and automated fetches are counted too. GitHub keeps no time for a download, so reading every hour is what tells roughly when one happened: within the hour before the reading that first saw it.
 
-To look: open the [`unduhan` branch](https://github.com/Ikrar06/sulo-data/tree/unduhan). Its front page shows the totals, today, the last 7 days and a bar a day. The rows are on that branch too: `unduhan.csv` (date in Makassar, the total and that day's rise for each app) and `unduhan.json` (each file's own count on the last run). They are kept there for the same reason as the monitor's state: a bot cannot push to `main`. GitHub keeps only the running total, so **deleting the `unduhan` branch loses the daily history**.
+To look, live: [ikrar06.github.io/sulo-data/unduhan.html](https://ikrar06.github.io/sulo-data/unduhan.html) reads the totals from GitHub while it is open (again every two minutes, and with its Segarkan button) and the history from the `unduhan` branch: a column an hour for the last 48 hours, the last downloads with the time they were read, and a bar a day. That page loads nothing from outside and sends nothing anywhere else.
+
+The files are on the **`unduhan` branch**, which changes only when a total changed: `README.md` (the counts at a glance), `unduhan.csv` (a row a day: the date in Makassar, the total and that day's rise for each app), `unduhan-jam.csv` (a reading with its time whenever a total changed) and `unduhan.json` (each file's own count on the last run). They are kept there for the same reason as the monitor's state: a bot cannot push to `main`. GitHub keeps only the running total, so **deleting the `unduhan` branch loses the history**.
 
 ## Privacy page
 

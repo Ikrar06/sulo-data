@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { catat, halaman, jenisBerkas, jumlahkan, KEPALA, ringkasan, tanggalWita } from './lib.mjs';
+import { catat, catatJam, halaman, jenisBerkas, jumlahkan, kenaikan, KEPALA, KEPALA_JAM, ringkasan, tanggalWita, waktuWita } from './lib.mjs';
 
 const RILIS = [
   {
@@ -83,4 +83,33 @@ test('a day without downloads has no bar, and an empty file still makes a page',
   const h = halaman(`${KEPALA}\n2026-11-25,8,8,11,11\n2026-11-26,8,0,12,1\n`, [], '23.20');
   assert.match(h, /26 Nov   0/);
   assert.match(halaman('', [], '23.20'), /\| APK Android \| \*\*0\*\* \| 0 \| 0 \|/);
+});
+
+test('a reading is kept only when a total changed', () => {
+  const satu = catatJam('', '2026-11-25T06:20:00Z', { apk: 8, ekstensi: 11 });
+  assert.equal(satu, `${KEPALA_JAM}\n2026-11-25T06:20:00Z,8,11\n`);
+  assert.equal(catatJam(satu, '2026-11-25T07:20:00Z', { apk: 8, ekstensi: 11 }), satu);
+  assert.equal(catatJam(satu, '2026-11-25T08:20:00Z', { apk: 11, ekstensi: 11 }), `${satu}2026-11-25T08:20:00Z,11,11\n`);
+});
+
+test('the rises: when a reading saw new downloads, newest first, the first reading left out', () => {
+  const csv = `${KEPALA_JAM}\n2026-11-25T06:20:00Z,8,11\n2026-11-25T08:20:00Z,11,11\n2026-11-25T15:20:00Z,12,14\n`;
+  assert.deepEqual(kenaikan(csv), [
+    { waktu: '2026-11-25T15:20:00Z', apk: 1, ekstensi: 3 },
+    { waktu: '2026-11-25T08:20:00Z', apk: 3, ekstensi: 0 },
+  ]);
+  assert.deepEqual(kenaikan(''), []);
+  assert.equal(kenaikan(csv, 1).length, 1);
+});
+
+test('a reading\'s time is shown as the clock in Makassar', () => {
+  assert.equal(waktuWita('2026-11-25T06:20:00Z'), '25 Nov 14.20');
+  assert.equal(waktuWita('2026-11-25T16:05:00Z'), '26 Nov 00.05');
+});
+
+test('the page lists the last readings that saw downloads', () => {
+  const jam = `${KEPALA_JAM}\n2026-11-25T06:20:00Z,8,11\n2026-11-25T08:20:00Z,11,11\n`;
+  const h = halaman(`${KEPALA}\n2026-11-25,11,11,11,11\n`, [], '16.20', jam);
+  assert.match(h, /\| 25 Nov 16\.20 \| \+3 \|  \|/);
+  assert.match(halaman(`${KEPALA}\n2026-11-25,11,11,11,11\n`, [], '16.20'), /Belum ada unduhan baru/);
 });
