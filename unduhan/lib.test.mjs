@@ -1,0 +1,68 @@
+import assert from 'node:assert/strict';
+import { test } from 'node:test';
+import { catat, jenisBerkas, jumlahkan, KEPALA, ringkasan, tanggalWita } from './lib.mjs';
+
+const RILIS = [
+  {
+    tag_name: 'v1.0.1',
+    assets: [
+      { name: 'sulo-1.0.1-android.apk', download_count: 5 },
+      { name: 'sulo-1.0.1-ekstensi.zip', download_count: 2 },
+    ],
+  },
+  {
+    tag_name: 'v1.0.0',
+    assets: [
+      { name: 'sulo-1.0.0-android.apk', download_count: 40 },
+      { name: 'sulo-1.0.0-android.apk.sha256', download_count: 9 },
+      { name: 'sulo-1.0.0-ekstensi.zip', download_count: 30 },
+      { name: 'sulo-1.0.0-ekstensi.zip.sha256', download_count: 7 },
+    ],
+  },
+];
+
+test('the date is the day in Makassar, not in UTC', () => {
+  assert.equal(tanggalWita(new Date('2026-11-25T15:20:00Z')), '2026-11-25');
+  assert.equal(tanggalWita(new Date('2026-11-25T16:00:00Z')), '2026-11-26');
+});
+
+test('a file is an app by its ending; checksums are not counted', () => {
+  assert.equal(jenisBerkas('sulo-1.0.0-android.apk'), 'apk');
+  assert.equal(jenisBerkas('sulo-1.0.0-ekstensi.zip'), 'ekstensi');
+  assert.equal(jenisBerkas('sulo-1.0.0-android.apk.sha256'), null);
+});
+
+test('totals run over every release', () => {
+  const t = jumlahkan(RILIS);
+  assert.deepEqual([t.apk, t.ekstensi], [45, 32]);
+  assert.equal(t.rinci.length, 4);
+  assert.deepEqual(jumlahkan([]), { apk: 0, ekstensi: 0, rinci: [] });
+});
+
+test('a count that cannot be read stops the run instead of writing a wrong row', () => {
+  assert.throws(() => jumlahkan({ message: 'rate limited' }));
+  assert.throws(() => jumlahkan([{ tag_name: 'v1.0.0', assets: [{ name: 'a.apk' }] }]));
+});
+
+test('the first row rises by its own total; the next by the difference', () => {
+  const satu = catat('', '2026-11-25', { apk: 8, ekstensi: 11 });
+  assert.equal(satu, `${KEPALA}\n2026-11-25,8,8,11,11\n`);
+  const dua = catat(satu, '2026-11-26', { apk: 20, ekstensi: 15 });
+  assert.equal(dua, `${KEPALA}\n2026-11-25,8,8,11,11\n2026-11-26,20,12,15,4\n`);
+});
+
+test('a second run on the same day replaces that day, and later days follow', () => {
+  const awal = `${KEPALA}\n2026-11-25,8,8,11,11\n2026-11-26,20,12,15,4\n`;
+  assert.equal(catat(awal, '2026-11-26', { apk: 23, ekstensi: 15 }), `${KEPALA}\n2026-11-25,8,8,11,11\n2026-11-26,23,15,15,4\n`);
+});
+
+test('a total that went down (a release taken down) is not a negative day', () => {
+  const awal = `${KEPALA}\n2026-11-25,40,40,30,30\n`;
+  assert.equal(catat(awal, '2026-11-26', { apk: 12, ekstensi: 31 }), `${KEPALA}\n2026-11-25,40,40,30,30\n2026-11-26,12,0,31,1\n`);
+});
+
+test('the summary is a table of the last rows', () => {
+  const t = ringkasan(`${KEPALA}\n2026-11-25,8,8,11,11\n2026-11-26,20,12,15,4\n`, 1);
+  assert.match(t, /\| 2026-11-26 \| 20 \| 12 \| 15 \| 4 \|/);
+  assert.doesNotMatch(t, /2026-11-25/);
+});
