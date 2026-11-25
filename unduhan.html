@@ -113,7 +113,7 @@
     </table>
   </div>
 
-  <p class="catatan">Angka ini jumlah unduhan berkas di halaman rilis GitHub, bukan jumlah orang atau pemasangan. Unduhan ulang dan pengambilan otomatis ikut terhitung. Totalnya langsung dari GitHub saat halaman ini terbuka (GitHub sendiri bisa terlambat sekitar satu menit). GitHub tidak menyimpan waktu tiap unduhan: totalnya dibaca sekali sejam, jadi sebuah unduhan tercatat di jam ia pertama terbaca, paling lama satu jam setelah terjadi. Hari pertama memuat semua unduhan sebelum pencatatan dimulai.</p>
+  <p class="catatan">Angka ini jumlah unduhan berkas di halaman rilis GitHub, bukan jumlah orang atau pemasangan. Unduhan ulang dan pengambilan otomatis ikut terhitung. Totalnya langsung dari GitHub saat halaman ini terbuka (GitHub sendiri bisa terlambat sekitar satu menit). GitHub membatasi 60 pembacaan per jam dari satu jaringan; kalau batas itu kena, halaman ini menampilkan catatan per jam yang terakhir. GitHub tidak menyimpan waktu tiap unduhan: totalnya dibaca sekali sejam, jadi sebuah unduhan tercatat di jam ia pertama terbaca, paling lama satu jam setelah terjadi. Hari pertama memuat semua unduhan sebelum pencatatan dimulai.</p>
 </main>
 
 <script>
@@ -122,9 +122,13 @@
   const RILIS = 'https://api.github.com/repos/Ikrar06/sulo/releases?per_page=100';
   const RIWAYAT = 'https://raw.githubusercontent.com/Ikrar06/sulo-data/unduhan/unduhan.csv';
   const BACAAN = 'https://raw.githubusercontent.com/Ikrar06/sulo-data/unduhan/unduhan-jam.csv';
+  const CATATAN = 'https://raw.githubusercontent.com/Ikrar06/sulo-data/unduhan/unduhan.json';
   const SEJAM = 3_600_000;
-  /** Seconds between two automatic reads while the page is in front (GitHub allows 60 an hour without signing in). */
-  const SELANG = 120;
+  /**
+   * Seconds between two automatic reads while the page is in front. GitHub allows 60 reads an hour from one network
+   * without signing in, shared by every tab and device on it, so this stays well under.
+   */
+  const SELANG = 300;
   const BULAN = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
   const el = (id) => document.getElementById(id);
 
@@ -291,38 +295,59 @@
     }));
   }
 
+  /** The last totals the hourly workflow wrote down, for when GitHub will not answer: the same shape as the live totals, with their time. */
+  async function catatanTerakhir() {
+    const j = await fetch(CATATAN, { cache: 'no-store' });
+    if (!j.ok) throw new Error('catatan terakhir tidak terbaca');
+    const c = await j.json();
+    if (!Number.isInteger(c?.apk) || !Number.isInteger(c?.ekstensi) || !Array.isArray(c?.berkas)) throw new Error('catatan terakhir tidak terbaca');
+    const rinci = c.berkas.filter((b) => jenis(String(b?.berkas ?? '')) && Number.isInteger(b?.total)).map((b) => ({ tag: String(b.tag ?? ''), berkas: String(b.berkas), jenis: jenis(String(b.berkas)), total: b.total }));
+    return { kini: { apk: c.apk, ekstensi: c.ekstensi, rinci }, saat: Date.parse(c.waktu ?? '') };
+  }
+
   let sedang = false;
   async function ambil() {
     if (sedang) return;
     sedang = true;
     const status = el('status');
-    try {
-      // The history is a help, not a need: without it the totals still show.
-      const [rilis, riwayat, bacaan] = await Promise.all([
-        fetch(RILIS, { headers: { accept: 'application/vnd.github+json' }, cache: 'no-store' }).then((j) => {
-          if (j.status === 403 || j.status === 429) throw new Error('GitHub membatasi permintaan dari jaringan ini. Coba lagi beberapa menit lagi.');
-          if (!j.ok) throw new Error(`GitHub menjawab ${j.status}.`);
-          return j.json();
-        }),
-        fetch(RIWAYAT, { cache: 'no-store' }).then((j) => (j.ok ? j.text() : '')).catch(() => ''),
-        fetch(BACAAN, { cache: 'no-store' }).then((j) => (j.ok ? j.text() : '')).catch(() => ''),
-      ]);
-      const kini = jumlahkan(rilis);
-      const sekarang = Date.now();
+    const teks = (url) => fetch(url, { cache: 'no-store' }).then((j) => (j.ok ? j.text() : '')).catch(() => '');
+    // The history is a help, not a need: without it the totals still show.
+    const [riwayat, bacaan] = await Promise.all([teks(RIWAYAT), teks(BACAAN)]);
+    const tampil = (kini, sekarang) => {
       gambar(kini, bacaRiwayat(riwayat));
       gambarJam(kenaikan(bacaBacaan(bacaan), kini, sekarang), sekarang);
+    };
+    try {
+      // The browser's own cache answers a repeat within a minute, and asks GitHub "changed?" after that.
+      const j = await fetch(RILIS, { headers: { accept: 'application/vnd.github+json' } });
+      if (j.status === 403 || j.status === 429) {
+        const pulih = Number(j.headers.get('x-ratelimit-reset'));
+        throw Object.assign(new Error('batas'), { pulih: Number.isFinite(pulih) && pulih > 0 ? pulih * 1000 : 0 });
+      }
+      if (!j.ok) throw new Error(`GitHub menjawab ${j.status}.`);
+      tampil(jumlahkan(await j.json()), Date.now());
       status.className = 'status';
       status.textContent = `Langsung dari GitHub, diperbarui ${jamWita(new Date())} WITA.`;
     } catch (galat) {
-      status.className = 'status masalah';
-      status.textContent = `Angka belum bisa diambil. ${galat instanceof Error ? galat.message : ''}`.trim();
+      // GitHub will not answer now: show what was last written down, and say so, instead of nothing.
+      const sebab = galat?.message === 'batas' ? `GitHub membatasi permintaan dari jaringan ini${galat.pulih ? ` sampai ${jamWita(new Date(galat.pulih)).slice(0, 5)} WITA` : ''}.` : 'GitHub belum bisa dihubungi.';
+      try {
+        const c = await catatanTerakhir();
+        tampil(c.kini, Number.isFinite(c.saat) ? c.saat : Date.now());
+        const w = Number.isFinite(c.saat) ? bagianWita(new Date(c.saat)) : null;
+        status.className = 'status';
+        status.textContent = `${sebab} Ini catatan terakhir${w ? `, ${pendek(`${w.year}-${w.month}-${w.day}`)} pukul ${w.hour}.${w.minute} WITA` : ''}.`;
+      } catch {
+        status.className = 'status masalah';
+        status.textContent = `Angka belum bisa diambil. ${sebab}`;
+      }
     } finally {
       sedang = false;
     }
   }
 
   el('segarkan').addEventListener('click', ambil);
-  // Read again when the page comes back to the front, and every two minutes while it stays there.
+  // Read again when the page comes back to the front, and every five minutes while it stays there.
   document.addEventListener('visibilitychange', () => { if (!document.hidden) ambil(); });
   setInterval(() => { if (!document.hidden) ambil(); }, SELANG * 1000);
   ambil();

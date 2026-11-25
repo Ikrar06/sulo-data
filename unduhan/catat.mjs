@@ -34,12 +34,14 @@ async function semuaRilis() {
 
 try {
   const total = jumlahkan(await semuaRilis());
+  const waktu = `${new Date().toISOString().slice(0, 19)}Z`;
   const tanggal = tanggalWita(new Date());
   const csvPath = join(folder, 'unduhan.csv');
   const csv = catat(existsSync(csvPath) ? readFileSync(csvPath, 'utf8') : '', tanggal, total);
   const jamPath = join(folder, 'unduhan-jam.csv');
-  const csvJam = catatJam(existsSync(jamPath) ? readFileSync(jamPath, 'utf8') : '', `${new Date().toISOString().slice(0, 19)}Z`, total);
-  const rinci = `${JSON.stringify({ tanggal, apk: total.apk, ekstensi: total.ekstensi, berkas: total.rinci }, null, 2)}\n`;
+  const csvJam = catatJam(existsSync(jamPath) ? readFileSync(jamPath, 'utf8') : '', waktu, total);
+  // The time of this reading too: the live page falls back to this file when GitHub limits its requests.
+  const rinci = `${JSON.stringify({ tanggal, waktu, apk: total.apk, ekstensi: total.ekstensi, berkas: total.rinci }, null, 2)}\n`;
   const tabel = ringkasan(csv);
   const jam = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Makassar', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date());
   const muka = halaman(csv, total.rinci, jam, csvJam);
