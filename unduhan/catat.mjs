@@ -4,10 +4,10 @@
 //
 //   node unduhan/catat.mjs <folder that holds unduhan.csv>
 //
-// UNDUHAN_COBA=1 prints what it would write and writes nothing.
+// UNDUHAN_COBA=1 prints the page it would write and writes nothing.
 import { appendFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { catat, jumlahkan, ringkasan, tanggalWita } from './lib.mjs';
+import { catat, halaman, jumlahkan, ringkasan, tanggalWita } from './lib.mjs';
 
 const REPO = 'Ikrar06/sulo';
 const folder = process.argv[2];
@@ -38,13 +38,17 @@ try {
   const csv = catat(existsSync(csvPath) ? readFileSync(csvPath, 'utf8') : '', tanggal, total);
   const rinci = `${JSON.stringify({ tanggal, apk: total.apk, ekstensi: total.ekstensi, berkas: total.rinci }, null, 2)}\n`;
   const tabel = ringkasan(csv);
+  const jam = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Makassar', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date());
+  const muka = halaman(csv, total.rinci, jam);
   console.log(`unduhan ${tanggal}: APK ${total.apk}, ekstensi ${total.ekstensi}`);
   if (process.env.UNDUHAN_COBA === '1') {
-    console.log(csv);
+    console.log(muka);
   } else {
     writeFileSync(csvPath, csv);
     // Each file's own count on the last run (by version).
     writeFileSync(join(folder, 'unduhan.json'), rinci);
+    // The page to open: the counts at a glance.
+    writeFileSync(join(folder, 'README.md'), muka);
     if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Unduhan Sulo\n\n${tabel}\n`);
   }
 } catch (galat) {

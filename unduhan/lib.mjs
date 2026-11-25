@@ -68,3 +68,60 @@ export function ringkasan(csv, banyak = 14) {
   const baris = csv.trim().split('\n').slice(1).slice(-banyak);
   return ['| Tanggal | APK total | APK hari itu | Ekstensi total | Ekstensi hari itu |', '| --- | ---: | ---: | ---: | ---: |', ...baris.map((b) => `| ${b.split(',').join(' | ')} |`)].join('\n');
 }
+
+const BULAN = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+const pendek = (tanggal) => `${Number(tanggal.slice(8))} ${BULAN[Number(tanggal.slice(5, 7)) - 1]}`;
+const batang = (n, terbesar, lebar = 24) => (n > 0 ? '█'.repeat(Math.max(1, Math.round((n / terbesar) * lebar))) : '');
+
+/**
+ * The page a person opens to see the counts at a glance (README.md on the
+ * "unduhan" branch): totals, today, the last 7 days, a bar a day, and each
+ * file's own count. `jam` is the time of the run in Makassar ("23.20").
+ */
+export function halaman(csv, rinci, jam) {
+  const baris = baca(csv).sort((a, b) => a.tanggal.localeCompare(b.tanggal));
+  const hari = baris.map((b, i) => {
+    const lalu = baris[i - 1] ?? { apk: 0, ekstensi: 0 };
+    return { ...b, apkTambah: Math.max(0, b.apk - lalu.apk), ekstensiTambah: Math.max(0, b.ekstensi - lalu.ekstensi) };
+  });
+  const akhir = hari.at(-1) ?? { tanggal: '', apk: 0, ekstensi: 0, apkTambah: 0, ekstensiTambah: 0 };
+  const tujuh = hari.slice(-7);
+  const jumlah = (kunci) => tujuh.reduce((n, h) => n + h[kunci], 0);
+  const empatBelas = hari.slice(-14);
+  const terbesar = Math.max(1, ...empatBelas.flatMap((h) => [h.apkTambah, h.ekstensiTambah]));
+  const deret = (kunci) => empatBelas.map((h) => `${pendek(h.tanggal).padStart(6)}  ${batang(h[kunci], terbesar)} ${h[kunci]}`).join('\n');
+  const perVersi = [...rinci].sort((a, b) => b.tag.localeCompare(a.tag, undefined, { numeric: true }) || a.berkas.localeCompare(b.berkas));
+  return [
+    '# Unduhan Sulo',
+    '',
+    `Diperbarui ${akhir.tanggal ? pendek(akhir.tanggal) : ''} ${akhir.tanggal.slice(0, 4)}, ${jam} WITA. Dibuat ulang otomatis sekali sehari.`,
+    '',
+    '| | Total | Hari ini | 7 hari terakhir |',
+    '| --- | ---: | ---: | ---: |',
+    `| APK Android | **${akhir.apk}** | ${akhir.apkTambah} | ${jumlah('apkTambah')} |`,
+    `| Ekstensi (zip) | **${akhir.ekstensi}** | ${akhir.ekstensiTambah} | ${jumlah('ekstensiTambah')} |`,
+    '',
+    '## Per hari, 14 hari terakhir',
+    '',
+    'APK Android',
+    '',
+    '```',
+    deret('apkTambah'),
+    '```',
+    '',
+    'Ekstensi (zip)',
+    '',
+    '```',
+    deret('ekstensiTambah'),
+    '```',
+    '',
+    '## Per versi',
+    '',
+    '| Versi | Berkas | Unduhan |',
+    '| --- | --- | ---: |',
+    ...perVersi.map((b) => `| ${b.tag} | \`${b.berkas}\` | ${b.total} |`),
+    '',
+    'Angka ini jumlah unduhan berkas di halaman rilis GitHub, bukan jumlah orang atau pemasangan. Unduhan ulang dan pengambilan otomatis ikut terhitung. Hari pertama memuat semua unduhan sebelum pencatatan dimulai. Riwayat lengkap: `unduhan.csv`.',
+    '',
+  ].join('\n');
+}

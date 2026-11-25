@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { catat, jenisBerkas, jumlahkan, KEPALA, ringkasan, tanggalWita } from './lib.mjs';
+import { catat, halaman, jenisBerkas, jumlahkan, KEPALA, ringkasan, tanggalWita } from './lib.mjs';
 
 const RILIS = [
   {
@@ -65,4 +65,22 @@ test('the summary is a table of the last rows', () => {
   const t = ringkasan(`${KEPALA}\n2026-11-25,8,8,11,11\n2026-11-26,20,12,15,4\n`, 1);
   assert.match(t, /\| 2026-11-26 \| 20 \| 12 \| 15 \| 4 \|/);
   assert.doesNotMatch(t, /2026-11-25/);
+});
+
+test('the page shows totals, today, the last 7 days, a bar a day and each file', () => {
+  const csv = `${KEPALA}\n2026-11-25,8,8,11,11\n2026-11-26,20,12,15,4\n`;
+  const h = halaman(csv, jumlahkan(RILIS).rinci, '23.20');
+  assert.match(h, /Diperbarui 26 Nov 2026, 23\.20 WITA/);
+  assert.match(h, /\| APK Android \| \*\*20\*\* \| 12 \| 20 \|/);
+  assert.match(h, /\| Ekstensi \(zip\) \| \*\*15\*\* \| 4 \| 15 \|/);
+  assert.match(h, /26 Nov  █+ 12/);
+  assert.match(h, /\| v1\.0\.1 \| `sulo-1\.0\.1-android\.apk` \| 5 \|/);
+  // The newest version comes first.
+  assert.ok(h.indexOf('v1.0.1') < h.indexOf('v1.0.0'));
+});
+
+test('a day without downloads has no bar, and an empty file still makes a page', () => {
+  const h = halaman(`${KEPALA}\n2026-11-25,8,8,11,11\n2026-11-26,8,0,12,1\n`, [], '23.20');
+  assert.match(h, /26 Nov   0/);
+  assert.match(halaman('', [], '23.20'), /\| APK Android \| \*\*0\*\* \| 0 \| 0 \|/);
 });
