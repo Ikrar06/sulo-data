@@ -1,30 +1,31 @@
 # Unduhan Sulo
 
-Diperbarui 25 Nov 2026, 18.14 WITA. Dibaca ulang otomatis sekitar tiap 10 menit.
+Diperbarui 25 Nov 2026, 19.47 WITA. Dibaca ulang otomatis sekitar tiap 10 menit.
 
 | | Total | Hari ini | 7 hari terakhir |
 | --- | ---: | ---: | ---: |
-| APK Android | **31** | 31 | 31 |
-| Ekstensi (zip) | **15** | 15 | 15 |
+| APK Android | **36** | 36 | 36 |
+| Ekstensi (zip) | **16** | 16 | 16 |
 
 ## Per hari, 14 hari terakhir
 
 APK Android
 
 ```
-25 Nov  ████████████████████████ 31
+25 Nov  ████████████████████████ 36
 ```
 
 Ekstensi (zip)
 
 ```
-25 Nov  ████████████ 15
+25 Nov  ███████████ 16
 ```
 
 ## Unduhan terakhir
 
 | Waktu (WITA) | APK | Ekstensi |
 | --- | ---: | ---: |
+| 25 Nov 18.14 sampai 19.47 | +5 | +1 |
 | 25 Nov 18.13 | +1 |  |
 | 25 Nov 15.01 sampai 18.06 | +18 | +1 |
 
@@ -34,7 +35,7 @@ GitHub tidak menyimpan waktu tiap unduhan. Totalnya dibaca sekitar tiap 10 menit
 
 | Versi | Berkas | Unduhan |
 | --- | --- | ---: |
-| v1.0.0 | `sulo-1.0.0-android.apk` | 31 |
-| v1.0.0 | `sulo-1.0.0-ekstensi.zip` | 15 |
+| v1.0.0 | `sulo-1.0.0-android.apk` | 36 |
+| v1.0.0 | `sulo-1.0.0-ekstensi.zip` | 16 |
 
 Angka ini jumlah unduhan berkas di halaman rilis GitHub, bukan jumlah orang atau pemasangan. Unduhan ulang dan pengambilan otomatis ikut terhitung. Hari pertama memuat semua unduhan sebelum pencatatan dimulai. Riwayat lengkap: `unduhan.csv`.
