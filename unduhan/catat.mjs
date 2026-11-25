@@ -1,13 +1,14 @@
 #!/usr/bin/env node
-// Writes today's row of download counts. Run by the workflow "unduhan" once a
-// day; it reads only the public release list of the Sulo repository.
+// Writes the download counts: today's row, and a reading with its time when a
+// total changed. Run by the workflow "unduhan" once an hour; it reads only
+// the public release list of the Sulo repository.
 //
 //   node unduhan/catat.mjs <folder that holds unduhan.csv>
 //
 // UNDUHAN_COBA=1 prints the page it would write and writes nothing.
 import { appendFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { catat, halaman, jumlahkan, ringkasan, tanggalWita } from './lib.mjs';
+import { catat, catatJam, halaman, jumlahkan, ringkasan, tanggalWita } from './lib.mjs';
 
 const REPO = 'Ikrar06/sulo';
 const folder = process.argv[2];
@@ -36,15 +37,19 @@ try {
   const tanggal = tanggalWita(new Date());
   const csvPath = join(folder, 'unduhan.csv');
   const csv = catat(existsSync(csvPath) ? readFileSync(csvPath, 'utf8') : '', tanggal, total);
+  const jamPath = join(folder, 'unduhan-jam.csv');
+  const csvJam = catatJam(existsSync(jamPath) ? readFileSync(jamPath, 'utf8') : '', `${new Date().toISOString().slice(0, 19)}Z`, total);
   const rinci = `${JSON.stringify({ tanggal, apk: total.apk, ekstensi: total.ekstensi, berkas: total.rinci }, null, 2)}\n`;
   const tabel = ringkasan(csv);
   const jam = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Makassar', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date());
-  const muka = halaman(csv, total.rinci, jam);
+  const muka = halaman(csv, total.rinci, jam, csvJam);
   console.log(`unduhan ${tanggal}: APK ${total.apk}, ekstensi ${total.ekstensi}`);
   if (process.env.UNDUHAN_COBA === '1') {
     console.log(muka);
   } else {
     writeFileSync(csvPath, csv);
+    // The readings with their times: a row whenever a total changed.
+    writeFileSync(jamPath, csvJam);
     // Each file's own count on the last run (by version).
     writeFileSync(join(folder, 'unduhan.json'), rinci);
     // The page to open: the counts at a glance.
