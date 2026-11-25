@@ -8,6 +8,16 @@
       "dayIntervalMinutes": 20,
       "nightIntervalMinutes": 110,
       "radarEvery": 3
+    },
+    "release": {
+      "versionCode": 10000,
+      "versionName": "1.0.0",
+      "url": "https://github.com/Ikrar06/sulo/releases/download/v1.0.0/sulo-1.0.0-android.apk",
+      "sha256": "5cd8ae8ff5401d9c0cb3944dbf47a27794ecac695a6a72912b8120c2127188ce",
+      "notes": {
+        "id": "Versi 1.0.0. Bukan aplikasi resmi Unhas.",
+        "en": "Version 1.0.0. Not an official Unhas app."
+      }
     }
   }
 }
