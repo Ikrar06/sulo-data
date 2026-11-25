@@ -56,6 +56,8 @@
   .jam > div { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column-reverse; height: 100%; }
   .jam i { display: block; width: 100%; }
   .jam i:last-child { border-radius: 3px 3px 0 0; }
+  /* Downloads whose hour is not known (readings were missed): the same colour, paler. */
+  .jam i.kira, .titik.kira { opacity: 0.4; }
   .sumbu { display: flex; gap: 2px; margin-top: 6px; height: 30px; }
   .sumbu > div { flex: 1 1 0; min-width: 0; font-size: 11px; line-height: 1.3; color: var(--redup); white-space: nowrap; font-variant-numeric: tabular-nums; }
   .legenda { display: flex; gap: 16px; margin-bottom: 14px; font-size: 13px; color: var(--redup); }
@@ -94,13 +96,13 @@
 
   <h2>Per jam, 48 jam terakhir</h2>
   <div class="kartu">
-    <div class="legenda"><span><span class="titik" style="background: var(--apk)"></span>APK</span><span><span class="titik" style="background: var(--ekstensi)"></span>Ekstensi</span><span id="puncak"></span></div>
+    <div class="legenda"><span><span class="titik" style="background: var(--apk)"></span>APK</span><span><span class="titik" style="background: var(--ekstensi)"></span>Ekstensi</span><span id="ket-kira" hidden><span class="titik kira" style="background: var(--tinta)"></span>Pudar: perkiraan</span><span id="puncak"></span></div>
     <div class="jam" id="per-jam" role="img" aria-label="Unduhan per jam dalam 48 jam terakhir"></div>
     <div class="sumbu" id="sumbu-jam" aria-hidden="true"></div>
   </div>
 
   <h2>Unduhan terakhir</h2>
-  <div class="kartu" id="terakhir"><p class="kosong">Belum ada unduhan baru sejak pencatatan per jam dimulai.</p></div>
+  <div class="kartu" id="terakhir"><p class="kosong">Belum ada unduhan baru sejak pencatatan waktu dimulai.</p></div>
 
   <h2>Per hari, 14 hari terakhir</h2>
   <div class="kartu" id="per-hari"><p class="kosong">Belum ada riwayat.</p></div>
@@ -113,7 +115,7 @@
     </table>
   </div>
 
-  <p class="catatan">Angka ini jumlah unduhan berkas di halaman rilis GitHub, bukan jumlah orang atau pemasangan. Unduhan ulang dan pengambilan otomatis ikut terhitung. Totalnya langsung dari GitHub saat halaman ini terbuka (GitHub sendiri bisa terlambat sekitar satu menit). GitHub membatasi 60 pembacaan per jam dari satu jaringan; kalau batas itu kena, halaman ini menampilkan catatan per jam yang terakhir. GitHub tidak menyimpan waktu tiap unduhan: totalnya dibaca sekali sejam, jadi sebuah unduhan tercatat di jam ia pertama terbaca, paling lama satu jam setelah terjadi. Hari pertama memuat semua unduhan sebelum pencatatan dimulai.</p>
+  <p class="catatan">Angka ini jumlah unduhan berkas di halaman rilis GitHub, bukan jumlah orang atau pemasangan. Unduhan ulang dan pengambilan otomatis ikut terhitung. Totalnya langsung dari GitHub saat halaman ini terbuka (GitHub sendiri bisa terlambat sekitar satu menit). GitHub membatasi 60 pembacaan per jam dari satu jaringan; kalau batas itu kena, halaman ini menampilkan catatan yang terakhir. GitHub tidak menyimpan waktu tiap unduhan: totalnya dibaca sekitar tiap 10 menit, jadi sebuah unduhan tercatat di jam ia pertama terbaca. Jadwal GitHub kadang terlambat atau terlewat. Unduhan di jeda seperti itu dibagi rata ke jam jam di antaranya dan digambar pudar sebagai perkiraan. Hari pertama memuat semua unduhan sebelum pencatatan dimulai.</p>
 </main>
 
 <script>
@@ -124,6 +126,8 @@
   const BACAAN = 'https://raw.githubusercontent.com/Ikrar06/sulo-data/unduhan/unduhan-jam.csv';
   const CATATAN = 'https://raw.githubusercontent.com/Ikrar06/sulo-data/unduhan/unduhan.json';
   const SEJAM = 3_600_000;
+  /** Readings are ten minutes apart. Further apart than this, a reading was missed and the hour of a download is not known. */
+  const JEDA_TEPAT = 30 * 60_000;
   /**
    * Seconds between two automatic reads while the page is in front. GitHub allows 60 reads an hour from one network
    * without signing in, shared by every tab and device on it, so this stays well under.
@@ -170,44 +174,77 @@
     });
   }
 
-  /** The timed readings: the totals at the moments they were seen to have changed. */
+  /** The timed readings: the totals at the moments they were seen to have changed, and the time of the reading before each (when kept). */
   function bacaBacaan(csv) {
     return csv.split('\n').slice(1).map((b) => {
-      const [waktu, apk, ekstensi] = b.trim().split(',');
-      return { saat: Date.parse(waktu), apk: Number(apk), ekstensi: Number(ekstensi) };
+      const [waktu, apk, ekstensi, sejak = ''] = b.trim().split(',');
+      return { saat: Date.parse(waktu), apk: Number(apk), ekstensi: Number(ekstensi), sejak: Date.parse(sejak) };
     }).filter((b) => Number.isFinite(b.saat) && Number.isFinite(b.apk) && Number.isFinite(b.ekstensi)).sort((a, b) => a.saat - b.saat);
   }
 
-  /** Each reading's rise over the one before, with the live totals as the last reading. The first reading is where counting starts. */
-  function kenaikan(bacaan, kini, sekarang) {
-    const semua = [...bacaan, { saat: sekarang, apk: kini.apk, ekstensi: kini.ekstensi, langsung: true }];
-    return semua.slice(1).map((b, i) => ({ saat: b.saat, langsung: Boolean(b.langsung), apk: Math.max(0, b.apk - semua[i].apk), ekstensi: Math.max(0, b.ekstensi - semua[i].ekstensi) })).filter((b) => b.apk > 0 || b.ekstensi > 0);
+  /**
+   * Each reading's rise over the one before, with the live totals as the last reading. A rise happened between `dari`
+   * (the last time the old total was seen) and `saat`. The first reading is where counting starts. `terbaca` is the
+   * time of the workflow's last reading: what is new on top of it was downloaded after it.
+   */
+  function kenaikan(bacaan, kini, sekarang, terbaca) {
+    const akhir = bacaan.at(-1);
+    const semua = [...bacaan, { saat: sekarang, apk: kini.apk, ekstensi: kini.ekstensi, sejak: akhir && terbaca >= akhir.saat && terbaca < sekarang ? terbaca : NaN, langsung: true }];
+    return semua.slice(1).map((b, i) => ({
+      saat: b.saat,
+      dari: Number.isFinite(b.sejak) && b.sejak >= semua[i].saat && b.sejak < b.saat ? b.sejak : semua[i].saat,
+      langsung: Boolean(b.langsung),
+      apk: Math.max(0, b.apk - semua[i].apk),
+      ekstensi: Math.max(0, b.ekstensi - semua[i].ekstensi),
+    })).filter((b) => b.apk > 0 || b.ekstensi > 0);
   }
+
+  /** A rise whose readings are too far apart to name its hour. */
+  const kira = (n) => n.saat - n.dari > JEDA_TEPAT;
+  const bilangan = (n) => (Number.isInteger(n) ? n.toLocaleString('id-ID') : `sekitar ${n.toLocaleString('id-ID', { maximumFractionDigits: 1 })}`);
 
   const bagianWita = (saat) => Object.fromEntries(new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Makassar', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(saat).map((p) => [p.type, p.value]));
 
   function gambarJam(naik, sekarang) {
     // 48 columns, an hour each, the last one the hour we are in. Whole hours are the same hours in Makassar.
     const jamIni = Math.floor(sekarang / SEJAM);
-    const kolom = Array.from({ length: 48 }, (_, i) => ({ jam: jamIni - 47 + i, apk: 0, ekstensi: 0 }));
+    const awal = jamIni - 47;
+    const kolom = Array.from({ length: 48 }, (_, i) => ({ jam: awal + i, apk: 0, ekstensi: 0, apkKira: 0, ekstensiKira: 0 }));
     for (const n of naik) {
-      const k = kolom[Math.floor(n.saat / SEJAM) - (jamIni - 47)];
-      if (k) {
-        k.apk += n.apk;
-        k.ekstensi += n.ekstensi;
+      if (!kira(n)) {
+        const k = kolom[Math.floor(n.saat / SEJAM) - awal];
+        if (k) {
+          k.apk += n.apk;
+          k.ekstensi += n.ekstensi;
+        }
+        continue;
+      }
+      // Readings were missed: the hour is not known, so each hour of the span gets its share of the time.
+      for (const k of kolom) {
+        const bagian = Math.max(0, Math.min(n.saat, (k.jam + 1) * SEJAM) - Math.max(n.dari, k.jam * SEJAM)) / (n.saat - n.dari);
+        k.apkKira += n.apk * bagian;
+        k.ekstensiKira += n.ekstensi * bagian;
       }
     }
-    const terbesar = Math.max(1, ...kolom.map((k) => k.apk + k.ekstensi));
-    el('puncak').textContent = `Paling ramai: ${terbesar.toLocaleString('id-ID')} dalam sejam`;
+    const jumlah = (k) => k.apk + k.ekstensi + k.apkKira + k.ekstensiKira;
+    const ramai = kolom.reduce((a, k) => (jumlah(k) > jumlah(a) ? k : a), kolom[0]);
+    const terbesar = Math.max(1, jumlah(ramai));
+    const adaKira = kolom.some((k) => k.apkKira > 0 || k.ekstensiKira > 0);
+    el('ket-kira').hidden = !adaKira;
+    el('puncak').textContent = `Paling ramai: ${bilangan(Math.round(jumlah(ramai) * 10) / 10)} dalam sejam`;
     el('per-jam').replaceChildren(...kolom.map((k) => {
       const w = bagianWita(new Date(k.jam * SEJAM));
       const tiang = document.createElement('div');
-      tiang.title = `${pendek(`${w.year}-${w.month}-${w.day}`)} pukul ${w.hour}.00: ${k.apk} APK, ${k.ekstensi} ekstensi`;
-      for (const j of ['apk', 'ekstensi']) {
-        if (!k[j]) continue;
+      const dikira = k.apkKira > 0 || k.ekstensiKira > 0;
+      const bulat = (n) => Math.round(n * 10) / 10;
+      tiang.title = `${pendek(`${w.year}-${w.month}-${w.day}`)} pukul ${w.hour}.00: ${bilangan(bulat(k.apk + k.apkKira))} APK, ${bilangan(bulat(k.ekstensi + k.ekstensiKira))} ekstensi${dikira ? ' (perkiraan, pembacaan sempat terlewat)' : ''}`;
+      // From the bottom: the APK, its estimated part, the extension, its estimated part.
+      for (const [kunci, warna, pudar] of [['apk', 'apk', false], ['apkKira', 'apk', true], ['ekstensi', 'ekstensi', false], ['ekstensiKira', 'ekstensi', true]]) {
+        if (!k[kunci]) continue;
         const isi = document.createElement('i');
-        isi.style.height = `${Math.max(3, (k[j] / terbesar) * 100)}%`;
-        isi.style.background = `var(--${j})`;
+        isi.style.height = `${Math.max(3, (k[kunci] / terbesar) * 100)}%`;
+        isi.style.background = `var(--${warna})`;
+        if (pudar) isi.className = 'kira';
         tiang.append(isi);
       }
       return tiang;
@@ -233,13 +270,22 @@
     daftar.className = 'terakhir';
     for (const n of baru) {
       const w = bagianWita(new Date(n.saat));
+      const d = bagianWita(new Date(n.dari));
+      const hari = (b) => pendek(`${b.year}-${b.month}-${b.day}`);
+      const jam = (b) => `${b.hour}.${b.minute}`;
+      // Named by its reading, or by the span when readings were missed.
+      const kapan = !kira(n)
+        ? (n.langsung ? 'Baru saja, belum tercatat' : `${hari(w)}, terbaca ${jam(w)}`)
+        : n.langsung
+          ? `Sejak ${hari(d) === hari(w) ? jam(d) : `${hari(d)} ${jam(d)}`}, belum tercatat`
+          : hari(d) === hari(w) ? `${hari(w)}, antara ${jam(d)} dan ${jam(w)}` : `Antara ${hari(d)} ${jam(d)} dan ${hari(w)} ${jam(w)}`;
       const sel = (teks, kelas) => {
         const d = document.createElement('div');
         if (kelas) d.className = kelas;
         d.textContent = teks;
         return d;
       };
-      daftar.append(sel(n.langsung ? 'Baru saja, belum tercatat' : `${pendek(`${w.year}-${w.month}-${w.day}`)}, terbaca ${w.hour}.${w.minute}`, 'kapan'), sel(n.apk ? `+${n.apk} APK` : ''), sel(n.ekstensi ? `+${n.ekstensi} ekstensi` : ''));
+      daftar.append(sel(kapan, 'kapan'), sel(n.apk ? `+${n.apk} APK` : ''), sel(n.ekstensi ? `+${n.ekstensi} ekstensi` : ''));
     }
     wadah.replaceChildren(daftar);
   }
@@ -295,11 +341,9 @@
     }));
   }
 
-  /** The last totals the hourly workflow wrote down, for when GitHub will not answer: the same shape as the live totals, with their time. */
-  async function catatanTerakhir() {
-    const j = await fetch(CATATAN, { cache: 'no-store' });
-    if (!j.ok) throw new Error('catatan terakhir tidak terbaca');
-    const c = await j.json();
+  /** The last totals the workflow wrote down (unduhan.json), for when GitHub will not answer: the same shape as the live totals, with their time. */
+  function bacaCatatan(teks) {
+    const c = JSON.parse(teks);
     if (!Number.isInteger(c?.apk) || !Number.isInteger(c?.ekstensi) || !Array.isArray(c?.berkas)) throw new Error('catatan terakhir tidak terbaca');
     const rinci = c.berkas.filter((b) => jenis(String(b?.berkas ?? '')) && Number.isInteger(b?.total)).map((b) => ({ tag: String(b.tag ?? ''), berkas: String(b.berkas), jenis: jenis(String(b.berkas)), total: b.total }));
     return { kini: { apk: c.apk, ekstensi: c.ekstensi, rinci }, saat: Date.parse(c.waktu ?? '') };
@@ -312,10 +356,16 @@
     const status = el('status');
     const teks = (url) => fetch(url, { cache: 'no-store' }).then((j) => (j.ok ? j.text() : '')).catch(() => '');
     // The history is a help, not a need: without it the totals still show.
-    const [riwayat, bacaan] = await Promise.all([teks(RIWAYAT), teks(BACAAN)]);
+    const [riwayat, bacaan, catatan] = await Promise.all([teks(RIWAYAT), teks(BACAAN), teks(CATATAN)]);
+    let tercatat = null;
+    try {
+      tercatat = bacaCatatan(catatan);
+    } catch {
+      // No written-down totals to read: the live ones still show, and there is nothing to fall back on.
+    }
     const tampil = (kini, sekarang) => {
       gambar(kini, bacaRiwayat(riwayat));
-      gambarJam(kenaikan(bacaBacaan(bacaan), kini, sekarang), sekarang);
+      gambarJam(kenaikan(bacaBacaan(bacaan), kini, sekarang, tercatat?.saat ?? NaN), sekarang);
     };
     try {
       // The browser's own cache answers a repeat within a minute, and asks GitHub "changed?" after that.
@@ -332,7 +382,8 @@
       // GitHub will not answer now: show what was last written down, and say so, instead of nothing.
       const sebab = galat?.message === 'batas' ? `GitHub membatasi permintaan dari jaringan ini${galat.pulih ? ` sampai ${jamWita(new Date(galat.pulih)).slice(0, 5)} WITA` : ''}.` : 'GitHub belum bisa dihubungi.';
       try {
-        const c = await catatanTerakhir();
+        if (!tercatat) throw new Error('catatan terakhir tidak terbaca');
+        const c = tercatat;
         tampil(c.kini, Number.isFinite(c.saat) ? c.saat : Date.now());
         const w = Number.isFinite(c.saat) ? bagianWita(new Date(c.saat)) : null;
         status.className = 'status';

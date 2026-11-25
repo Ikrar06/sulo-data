@@ -1,21 +1,23 @@
 name: unduhan
 
-# Reads the download counts of Sulo's release files once an hour (the Android
-# APK and the extension zip), as GitHub itself counts them on the release page
-# of Ikrar06/sulo, and writes them down when they changed. Nobody is tracked:
-# these are public totals, and nothing is added to the apps or the website.
-# GitHub keeps no time for a download, so reading every hour is what tells
-# roughly when one happened. The files live on the unprotected branch
-# "unduhan" (main requires the validate check, which a bot push cannot pass):
-# README.md (the counts at a glance), unduhan.csv (a row a day),
-# unduhan-jam.csv (a reading with its time whenever a total changed) and
-# unduhan.json (each file's own count).
+# Reads the download counts of Sulo's release files every ten minutes (the
+# Android APK and the extension zip), as GitHub itself counts them on the
+# release page of Ikrar06/sulo, and writes them down when they changed. Nobody
+# is tracked: these are public totals, and nothing is added to the apps or the
+# website. GitHub keeps no time for a download, so the reading that first sees
+# it is what tells roughly when it happened. The files live on the unprotected
+# branch "unduhan" (main requires the validate check, which a bot push cannot
+# pass): README.md (the counts at a glance), unduhan.csv (a row a day),
+# unduhan-jam.csv (a reading with its time whenever a total changed, and the
+# time of the reading before it) and unduhan.json (each file's own count and
+# the time of the last reading).
 on:
   schedule:
-    # Every hour at minute 20, not on the hour (the busiest minute for
-    # scheduled workflows). A day's row is the last reading of that day in
-    # Makassar, so its final value is the 23.20 WITA run.
-    - cron: '20 * * * *'
+    # GitHub runs a schedule when it has room, not on the minute: in this
+    # repository a daily job has started hours late. Asking every ten minutes
+    # (off the hour, its busiest minute) is what keeps readings close together;
+    # a reading that still goes missing is written down as a span, not a guess.
+    - cron: '3-59/10 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -38,7 +40,9 @@ jobs:
 
       - name: Rows from branch unduhan
         run: |
-          if git fetch --depth=1 origin unduhan:unduhan; then
+          # Two commits deep, not one: the save step may replace the last
+          # commit, and at depth 1 that commit has no parent to keep.
+          if git fetch --depth=2 origin unduhan:unduhan; then
             git worktree add data unduhan
           else
             git worktree add --orphan -b unduhan data
@@ -55,9 +59,19 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add unduhan.csv unduhan-jam.csv unduhan.json README.md
+          lama=$(git rev-parse --verify --quiet HEAD || true)
           if git diff --cached --quiet; then
             echo "Tidak ada yang berubah."
-          else
+          elif [ -z "$lama" ] || ! git diff --cached --quiet -- unduhan.csv unduhan-jam.csv; then
+            # A count changed: a commit of its own, kept in the history.
             git commit -m "chore: download counts $(TZ=Asia/Makassar date +%F)"
+            git push origin unduhan
+          elif [ "$(git log -1 --format=%s)" = "chore: reading time" ]; then
+            # Only the time of the reading moved, as in the commit before:
+            # replace that one, so a quiet day is one commit and not 144.
+            git commit --amend -m "chore: reading time"
+            git push --force-with-lease="unduhan:$lama" origin unduhan
+          else
+            git commit -m "chore: reading time"
             git push origin unduhan
           fi
