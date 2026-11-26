@@ -1,20 +1,20 @@
 {
   "tanggal": "2026-11-26",
-  "waktu": "2026-11-26T02:37:31Z",
-  "apk": 143,
-  "ekstensi": 17,
+  "waktu": "2026-11-26T11:28:03Z",
+  "apk": 225,
+  "ekstensi": 21,
   "berkas": [
     {
       "tag": "v1.0.0",
       "berkas": "sulo-1.0.0-android.apk",
       "jenis": "apk",
-      "total": 143
+      "total": 225
     },
     {
       "tag": "v1.0.0",
       "berkas": "sulo-1.0.0-ekstensi.zip",
       "jenis": "ekstensi",
-      "total": 17
+      "total": 21
     }
   ]
 }
