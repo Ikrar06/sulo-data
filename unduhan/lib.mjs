@@ -1,8 +1,16 @@
 // Download counts of Sulo's release files, a row a day. Pure functions:
 // what the GitHub API says goes in, text comes out. Nothing about a person
 // is read or kept: these are the totals GitHub already shows for each file.
+//
+// Three kinds since 1.1.0: the Android APK, the extension zip and the iPhone
+// .ipa. The iPhone's columns come last in both files, so rows written before
+// it are read as they were (its count there is 0).
 
-export const KEPALA = 'tanggal,apk_total,apk_tambah,ekstensi_total,ekstensi_tambah';
+export const KEPALA = 'tanggal,apk_total,apk_tambah,ekstensi_total,ekstensi_tambah,iphone_total,iphone_tambah';
+
+/** The kinds counted, in the order they are shown. */
+export const JENIS = ['apk', 'ekstensi', 'iphone'];
+const NOL = { apk: 0, ekstensi: 0, iphone: 0 };
 
 /** A date as YYYY-MM-DD where the students are (Makassar), from the clock given. */
 export function tanggalWita(saat) {
@@ -13,6 +21,7 @@ export function tanggalWita(saat) {
 export function jenisBerkas(nama) {
   if (/\.apk$/i.test(nama)) return 'apk';
   if (/\.zip$/i.test(nama)) return 'ekstensi';
+  if (/\.ipa$/i.test(nama)) return 'iphone';
   return null;
 }
 
@@ -33,20 +42,26 @@ export function jumlahkan(rilis) {
     }
   }
   const jumlah = (jenis) => rinci.filter((b) => b.jenis === jenis).reduce((n, b) => n + b.total, 0);
-  return { apk: jumlah('apk'), ekstensi: jumlah('ekstensi'), rinci };
+  return { apk: jumlah('apk'), ekstensi: jumlah('ekstensi'), iphone: jumlah('iphone'), rinci };
 }
+
+/** A count cell: a number, or 0 for a column a row was written before. */
+const angka = (sel) => (sel === undefined || sel === '' ? 0 : Number(sel));
 
 function baca(csv) {
   return csv
     .split('\n')
     .map((b) => b.trim())
-    .filter((b) => b && b !== KEPALA)
+    .filter((b) => b && !b.startsWith('tanggal,'))
     .map((b) => {
-      const [tanggal, apk, , ekstensi] = b.split(',');
-      return { tanggal, apk: Number(apk), ekstensi: Number(ekstensi) };
+      const [tanggal, apk, , ekstensi, , iphone] = b.split(',');
+      return { tanggal, apk: Number(apk), ekstensi: Number(ekstensi), iphone: angka(iphone) };
     })
-    .filter((b) => /^\d{4}-\d{2}-\d{2}$/.test(b.tanggal) && Number.isFinite(b.apk) && Number.isFinite(b.ekstensi));
+    .filter((b) => /^\d{4}-\d{2}-\d{2}$/.test(b.tanggal) && JENIS.every((j) => Number.isFinite(b[j])));
 }
+
+/** Each kind's rise since the row before; a total that went down (a release taken down) is not a negative day. */
+const naik = (b, lalu) => Object.fromEntries(JENIS.map((j) => [j, Math.max(0, b[j] - lalu[j])]));
 
 /**
  * The file with today's row written: a day has one row (a second run on the
@@ -54,22 +69,30 @@ function baca(csv) {
  * first row has nothing before it, so its rise is its total.
  */
 export function catat(csv, tanggal, total) {
-  const baris = [...baca(csv).filter((b) => b.tanggal !== tanggal), { tanggal, apk: total.apk, ekstensi: total.ekstensi }].sort((a, b) => a.tanggal.localeCompare(b.tanggal));
+  const kini = { tanggal, apk: total.apk, ekstensi: total.ekstensi, iphone: total.iphone ?? 0 };
+  const baris = [...baca(csv).filter((b) => b.tanggal !== tanggal), kini].sort((a, b) => a.tanggal.localeCompare(b.tanggal));
   const teks = baris.map((b, i) => {
-    const lalu = baris[i - 1] ?? { apk: 0, ekstensi: 0 };
-    // A release that was taken down lowers the total: that is not a negative day.
-    return [b.tanggal, b.apk, Math.max(0, b.apk - lalu.apk), b.ekstensi, Math.max(0, b.ekstensi - lalu.ekstensi)].join(',');
+    const tambah = naik(b, baris[i - 1] ?? NOL);
+    return [b.tanggal, ...JENIS.flatMap((j) => [b[j], tambah[j]])].join(',');
   });
   return `${[KEPALA, ...teks].join('\n')}\n`;
 }
 
 /** The last rows as a Markdown table, for the run's summary. */
 export function ringkasan(csv, banyak = 14) {
-  const baris = csv.trim().split('\n').slice(1).slice(-banyak);
-  return ['| Tanggal | APK total | APK hari itu | Ekstensi total | Ekstensi hari itu |', '| --- | ---: | ---: | ---: | ---: |', ...baris.map((b) => `| ${b.split(',').join(' | ')} |`)].join('\n');
+  const semua = baca(csv);
+  const awal = Math.max(0, semua.length - banyak);
+  return [
+    '| Tanggal | APK total | APK hari itu | Ekstensi total | Ekstensi hari itu | iPhone total | iPhone hari itu |',
+    '| --- | ---: | ---: | ---: | ---: | ---: | ---: |',
+    ...semua.slice(awal).map((b, i) => {
+      const tambah = naik(b, semua[awal + i - 1] ?? NOL);
+      return `| ${[b.tanggal, ...JENIS.flatMap((j) => [b[j], tambah[j]])].join(' | ')} |`;
+    }),
+  ].join('\n');
 }
 
-export const KEPALA_JAM = 'waktu,apk_total,ekstensi_total,sejak';
+export const KEPALA_JAM = 'waktu,apk_total,ekstensi_total,sejak,iphone_total';
 
 const waktuSah = (teks) => typeof teks === 'string' && !Number.isNaN(Date.parse(teks));
 
@@ -79,11 +102,11 @@ function bacaJam(csv) {
     .map((b) => b.trim())
     .filter(Boolean)
     .map((b) => {
-      const [waktu, apk, ekstensi, sejak = ''] = b.split(',');
-      return { waktu, apk: Number(apk), ekstensi: Number(ekstensi), sejak: waktuSah(sejak) ? sejak : '' };
+      const [waktu, apk, ekstensi, sejak = '', iphone] = b.split(',');
+      return { waktu, apk: Number(apk), ekstensi: Number(ekstensi), iphone: angka(iphone), sejak: waktuSah(sejak) ? sejak : '' };
     })
-    // The header falls out here too (the one with three columns as well): its first cell is not a time.
-    .filter((b) => waktuSah(b.waktu) && Number.isFinite(b.apk) && Number.isFinite(b.ekstensi));
+    // The header falls out here too (the ones with three or four columns as well): its first cell is not a time.
+    .filter((b) => waktuSah(b.waktu) && JENIS.every((j) => Number.isFinite(b[j])));
 }
 
 /**
@@ -97,11 +120,12 @@ function bacaJam(csv) {
 export function catatJam(csv, waktu, total, sejak = '') {
   const baris = bacaJam(csv);
   const akhir = baris.at(-1);
-  if (!akhir || akhir.apk !== total.apk || akhir.ekstensi !== total.ekstensi) {
+  const kini = { apk: total.apk, ekstensi: total.ekstensi, iphone: total.iphone ?? 0 };
+  if (!akhir || JENIS.some((j) => akhir[j] !== kini[j])) {
     const sebelum = akhir && waktuSah(sejak) && Date.parse(sejak) < Date.parse(waktu) ? sejak : '';
-    baris.push({ waktu, apk: total.apk, ekstensi: total.ekstensi, sejak: sebelum });
+    baris.push({ waktu, ...kini, sejak: sebelum });
   }
-  return `${[KEPALA_JAM, ...baris.map((b) => [b.waktu, b.apk, b.ekstensi, b.sejak].join(','))].join('\n')}\n`;
+  return `${[KEPALA_JAM, ...baris.map((b) => [b.waktu, b.apk, b.ekstensi, b.sejak, b.iphone].join(','))].join('\n')}\n`;
 }
 
 /** The time of the last reading, from the counts file it wrote (unduhan.json), or '' when there is none to read. */
@@ -123,8 +147,8 @@ export function kenaikan(csvJam, banyak = 12) {
   const baris = bacaJam(csvJam);
   return baris
     .slice(1)
-    .map((b, i) => ({ waktu: b.waktu, sejak: b.sejak || baris[i].waktu, apk: Math.max(0, b.apk - baris[i].apk), ekstensi: Math.max(0, b.ekstensi - baris[i].ekstensi) }))
-    .filter((b) => b.apk > 0 || b.ekstensi > 0)
+    .map((b, i) => ({ waktu: b.waktu, sejak: b.sejak || baris[i].waktu, ...naik(b, baris[i]) }))
+    .filter((b) => JENIS.some((j) => b[j] > 0))
     .reverse()
     .slice(0, banyak);
 }
@@ -150,6 +174,10 @@ const BULAN = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'O
 const pendek = (tanggal) => `${Number(tanggal.slice(8))} ${BULAN[Number(tanggal.slice(5, 7)) - 1]}`;
 const batang = (n, terbesar, lebar = 24) => (n > 0 ? '█'.repeat(Math.max(1, Math.round((n / terbesar) * lebar))) : '');
 
+/** Each kind's name in the page. */
+const NAMA = { apk: 'APK Android', ekstensi: 'Ekstensi (zip)', iphone: 'iPhone (ipa)' };
+const KOLOM = { apk: 'APK', ekstensi: 'Ekstensi', iphone: 'iPhone' };
+
 /**
  * The page a person opens to see the counts at a glance (README.md on the
  * "unduhan" branch): totals, today, the last 7 days, a bar a day, and each
@@ -159,14 +187,14 @@ const batang = (n, terbesar, lebar = 24) => (n > 0 ? '█'.repeat(Math.max(1, Ma
 export function halaman(csv, rinci, jam, csvJam = '') {
   const baris = baca(csv).sort((a, b) => a.tanggal.localeCompare(b.tanggal));
   const hari = baris.map((b, i) => {
-    const lalu = baris[i - 1] ?? { apk: 0, ekstensi: 0 };
-    return { ...b, apkTambah: Math.max(0, b.apk - lalu.apk), ekstensiTambah: Math.max(0, b.ekstensi - lalu.ekstensi) };
+    const tambah = naik(b, baris[i - 1] ?? NOL);
+    return { ...b, apkTambah: tambah.apk, ekstensiTambah: tambah.ekstensi, iphoneTambah: tambah.iphone };
   });
-  const akhir = hari.at(-1) ?? { tanggal: '', apk: 0, ekstensi: 0, apkTambah: 0, ekstensiTambah: 0 };
+  const akhir = hari.at(-1) ?? { tanggal: '', apk: 0, ekstensi: 0, iphone: 0, apkTambah: 0, ekstensiTambah: 0, iphoneTambah: 0 };
   const tujuh = hari.slice(-7);
   const jumlah = (kunci) => tujuh.reduce((n, h) => n + h[kunci], 0);
   const empatBelas = hari.slice(-14);
-  const terbesar = Math.max(1, ...empatBelas.flatMap((h) => [h.apkTambah, h.ekstensiTambah]));
+  const terbesar = Math.max(1, ...empatBelas.flatMap((h) => JENIS.map((j) => h[`${j}Tambah`])));
   const deret = (kunci) => empatBelas.map((h) => `${pendek(h.tanggal).padStart(6)}  ${batang(h[kunci], terbesar)} ${h[kunci]}`).join('\n');
   const terakhir = kenaikan(csvJam);
   const perVersi = [...rinci].sort((a, b) => b.tag.localeCompare(a.tag, undefined, { numeric: true }) || a.berkas.localeCompare(b.berkas));
@@ -177,27 +205,15 @@ export function halaman(csv, rinci, jam, csvJam = '') {
     '',
     '| | Total | Hari ini | 7 hari terakhir |',
     '| --- | ---: | ---: | ---: |',
-    `| APK Android | **${akhir.apk}** | ${akhir.apkTambah} | ${jumlah('apkTambah')} |`,
-    `| Ekstensi (zip) | **${akhir.ekstensi}** | ${akhir.ekstensiTambah} | ${jumlah('ekstensiTambah')} |`,
+    ...JENIS.map((j) => `| ${NAMA[j]} | **${akhir[j]}** | ${akhir[`${j}Tambah`]} | ${jumlah(`${j}Tambah`)} |`),
     '',
     '## Per hari, 14 hari terakhir',
     '',
-    'APK Android',
-    '',
-    '```',
-    deret('apkTambah'),
-    '```',
-    '',
-    'Ekstensi (zip)',
-    '',
-    '```',
-    deret('ekstensiTambah'),
-    '```',
-    '',
+    ...JENIS.flatMap((j) => [NAMA[j], '', '```', deret(`${j}Tambah`), '```', '']),
     '## Unduhan terakhir',
     '',
     ...(terakhir.length
-      ? ['| Waktu (WITA) | APK | Ekstensi |', '| --- | ---: | ---: |', ...terakhir.map((b) => `| ${kapan(b.sejak, b.waktu)} | ${b.apk ? `+${b.apk}` : ''} | ${b.ekstensi ? `+${b.ekstensi}` : ''} |`)]
+      ? [`| Waktu (WITA) | ${JENIS.map((j) => KOLOM[j]).join(' | ')} |`, '| --- | ---: | ---: | ---: |', ...terakhir.map((b) => `| ${kapan(b.sejak, b.waktu)} | ${JENIS.map((j) => (b[j] ? `+${b[j]}` : '')).join(' | ')} |`)]
       : ['Belum ada unduhan baru sejak pencatatan waktu dimulai.']),
     '',
     'GitHub tidak menyimpan waktu tiap unduhan. Totalnya dibaca sekitar tiap 10 menit, jadi unduhan di sebuah baris terjadi tidak lama sebelum waktu yang tertulis. Kalau pembacaan sempat terlewat, baris itu menulis rentangnya.',

@@ -44,11 +44,11 @@ try {
   const sejak = waktuCatatan(existsSync(rinciPath) ? readFileSync(rinciPath, 'utf8') : '');
   const csvJam = catatJam(existsSync(jamPath) ? readFileSync(jamPath, 'utf8') : '', waktu, total, sejak);
   // The time of this reading too: the live page falls back to this file when GitHub limits its requests.
-  const rinci = `${JSON.stringify({ tanggal, waktu, apk: total.apk, ekstensi: total.ekstensi, berkas: total.rinci }, null, 2)}\n`;
+  const rinci = `${JSON.stringify({ tanggal, waktu, apk: total.apk, ekstensi: total.ekstensi, iphone: total.iphone, berkas: total.rinci }, null, 2)}\n`;
   const tabel = ringkasan(csv);
   const jam = new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Makassar', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date());
   const muka = halaman(csv, total.rinci, jam, csvJam);
-  console.log(`unduhan ${tanggal}: APK ${total.apk}, ekstensi ${total.ekstensi}`);
+  console.log(`unduhan ${tanggal}: APK ${total.apk}, ekstensi ${total.ekstensi}, iPhone ${total.iphone}`);
   if (process.env.UNDUHAN_COBA === '1') {
     console.log(muka);
   } else {

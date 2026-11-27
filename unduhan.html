@@ -16,10 +16,10 @@
 <style>
   :root {
     --latar: #fafafb; --permukaan: #ffffff; --tinta: #111114; --redup: #5f5f6b; --garis: #e4e4ea;
-    --apk: #111114; --ekstensi: #ff5a2a; --masalah: #b3261e;
+    --apk: #111114; --ekstensi: #ff5a2a; --iphone: #2f6fdf; --masalah: #b3261e;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --latar: #0b0b0e; --permukaan: #15151a; --tinta: #f2f2f5; --redup: #8a8a96; --garis: #26262c; --apk: #f2f2f5; --ekstensi: #ff6a3d; --masalah: #ff8a80; }
+    :root { --latar: #0b0b0e; --permukaan: #15151a; --tinta: #f2f2f5; --redup: #8a8a96; --garis: #26262c; --apk: #f2f2f5; --ekstensi: #ff6a3d; --iphone: #7aa7ff; --masalah: #ff8a80; }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--latar); color: var(--tinta); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
@@ -32,7 +32,7 @@
   button { height: 36px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--garis); background: var(--permukaan); color: var(--tinta); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
   button:active { transform: scale(0.96); }
   button:focus-visible { outline: 2px solid var(--tinta); outline-offset: 2px; }
-  .ubin { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+  .ubin { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 20px; }
   .kartu { background: var(--permukaan); border: 1px solid var(--garis); border-radius: 18px; padding: 16px 18px; }
   .label { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--redup); font-weight: 600; }
   .titik { width: 10px; height: 10px; border-radius: 3px; flex: none; }
@@ -62,9 +62,9 @@
   .sumbu > div { flex: 1 1 0; min-width: 0; font-size: 11px; line-height: 1.3; color: var(--redup); white-space: nowrap; font-variant-numeric: tabular-nums; }
   .legenda { display: flex; gap: 16px; margin-bottom: 14px; font-size: 13px; color: var(--redup); }
   .legenda span { display: inline-flex; align-items: center; gap: 6px; }
-  .terakhir { display: grid; grid-template-columns: 1fr auto auto; gap: 0 16px; font-size: 14px; }
+  .terakhir { display: grid; grid-template-columns: 1fr auto auto auto; gap: 0 16px; font-size: 14px; }
   .terakhir > div { padding: 8px 0; border-top: 1px solid var(--garis); font-variant-numeric: tabular-nums; }
-  .terakhir > div:nth-child(-n + 3) { border-top: 0; }
+  .terakhir > div:nth-child(-n + 4) { border-top: 0; }
   .terakhir .kapan { color: var(--redup); }
   .catatan { margin-top: 28px; font-size: 13px; color: var(--redup); }
   .kosong { color: var(--redup); font-size: 14px; }
@@ -92,11 +92,16 @@
       <div class="angka" id="ekstensi-total">0</div>
       <div class="kecil"><b id="ekstensi-hari">0</b> hari ini, <b id="ekstensi-tujuh">0</b> dalam 7 hari</div>
     </div>
+    <div class="kartu">
+      <div class="label"><span class="titik" style="background: var(--iphone)"></span>iPhone (ipa)</div>
+      <div class="angka" id="iphone-total">0</div>
+      <div class="kecil"><b id="iphone-hari">0</b> hari ini, <b id="iphone-tujuh">0</b> dalam 7 hari</div>
+    </div>
   </div>
 
   <h2>Per jam, 48 jam terakhir</h2>
   <div class="kartu">
-    <div class="legenda"><span><span class="titik" style="background: var(--apk)"></span>APK</span><span><span class="titik" style="background: var(--ekstensi)"></span>Ekstensi</span><span id="ket-kira" hidden><span class="titik kira" style="background: var(--tinta)"></span>Pudar: perkiraan</span><span id="puncak"></span></div>
+    <div class="legenda"><span><span class="titik" style="background: var(--apk)"></span>APK</span><span><span class="titik" style="background: var(--ekstensi)"></span>Ekstensi</span><span><span class="titik" style="background: var(--iphone)"></span>iPhone</span><span id="ket-kira" hidden><span class="titik kira" style="background: var(--tinta)"></span>Pudar: perkiraan</span><span id="puncak"></span></div>
     <div class="jam" id="per-jam" role="img" aria-label="Unduhan per jam dalam 48 jam terakhir"></div>
     <div class="sumbu" id="sumbu-jam" aria-hidden="true"></div>
   </div>
@@ -139,7 +144,12 @@
   const tanggalWita = (saat) => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Makassar', year: 'numeric', month: '2-digit', day: '2-digit' }).format(saat);
   const jamWita = (saat) => new Intl.DateTimeFormat('id-ID', { timeZone: 'Asia/Makassar', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).format(saat);
   const pendek = (tanggal) => `${Number(tanggal.slice(8))} ${BULAN[Number(tanggal.slice(5, 7)) - 1]}`;
-  const jenis = (nama) => (/\.apk$/i.test(nama) ? 'apk' : /\.zip$/i.test(nama) ? 'ekstensi' : null);
+  const jenis = (nama) => (/\.apk$/i.test(nama) ? 'apk' : /\.zip$/i.test(nama) ? 'ekstensi' : /\.ipa$/i.test(nama) ? 'iphone' : null);
+  /** The kinds, in the order shown; the iPhone's columns came last (1.1.0), so older rows read it as 0. */
+  const JENIS = ['apk', 'ekstensi', 'iphone'];
+  const NAMA_PENDEK = { apk: 'APK', ekstensi: 'ekstensi', iphone: 'iPhone' };
+  const angka = (sel) => (sel === undefined || sel === '' ? 0 : Number(sel));
+  const naik = (b, lalu) => Object.fromEntries(JENIS.map((j) => [j, Math.max(0, b[j] - lalu[j])]));
 
   /** Totals over every release, and each file's own count. Throws when the list is not what GitHub's API returns. */
   function jumlahkan(rilis) {
@@ -154,32 +164,29 @@
       }
     }
     const jumlah = (j) => rinci.filter((b) => b.jenis === j).reduce((n, b) => n + b.total, 0);
-    return { apk: jumlah('apk'), ekstensi: jumlah('ekstensi'), rinci };
+    return { apk: jumlah('apk'), ekstensi: jumlah('ekstensi'), iphone: jumlah('iphone'), rinci };
   }
 
-  /** The history file's rows: a date and the two totals at the end of that day. */
+  /** The history file's rows: a date and the totals at the end of that day. */
   function bacaRiwayat(csv) {
     return csv.split('\n').slice(1).map((b) => {
-      const [tanggal, apk, , ekstensi] = b.trim().split(',');
-      return { tanggal, apk: Number(apk), ekstensi: Number(ekstensi) };
-    }).filter((b) => /^\d{4}-\d{2}-\d{2}$/.test(b.tanggal) && Number.isFinite(b.apk) && Number.isFinite(b.ekstensi));
+      const [tanggal, apk, , ekstensi, , iphone] = b.trim().split(',');
+      return { tanggal, apk: Number(apk), ekstensi: Number(ekstensi), iphone: angka(iphone) };
+    }).filter((b) => /^\d{4}-\d{2}-\d{2}$/.test(b.tanggal) && JENIS.every((j) => Number.isFinite(b[j])));
   }
 
   /** The days to show: the recorded days before today, then today from the live totals. Each day's rise is over the day before. */
   function hariHari(riwayat, kini, hariIni) {
-    const baris = [...riwayat.filter((b) => b.tanggal < hariIni), { tanggal: hariIni, apk: kini.apk, ekstensi: kini.ekstensi }];
-    return baris.map((b, i) => {
-      const lalu = baris[i - 1] ?? { apk: 0, ekstensi: 0 };
-      return { tanggal: b.tanggal, apk: Math.max(0, b.apk - lalu.apk), ekstensi: Math.max(0, b.ekstensi - lalu.ekstensi) };
-    });
+    const baris = [...riwayat.filter((b) => b.tanggal < hariIni), { tanggal: hariIni, apk: kini.apk, ekstensi: kini.ekstensi, iphone: kini.iphone }];
+    return baris.map((b, i) => ({ tanggal: b.tanggal, ...naik(b, baris[i - 1] ?? { apk: 0, ekstensi: 0, iphone: 0 }) }));
   }
 
   /** The timed readings: the totals at the moments they were seen to have changed, and the time of the reading before each (when kept). */
   function bacaBacaan(csv) {
     return csv.split('\n').slice(1).map((b) => {
-      const [waktu, apk, ekstensi, sejak = ''] = b.trim().split(',');
-      return { saat: Date.parse(waktu), apk: Number(apk), ekstensi: Number(ekstensi), sejak: Date.parse(sejak) };
-    }).filter((b) => Number.isFinite(b.saat) && Number.isFinite(b.apk) && Number.isFinite(b.ekstensi)).sort((a, b) => a.saat - b.saat);
+      const [waktu, apk, ekstensi, sejak = '', iphone] = b.trim().split(',');
+      return { saat: Date.parse(waktu), apk: Number(apk), ekstensi: Number(ekstensi), iphone: angka(iphone), sejak: Date.parse(sejak) };
+    }).filter((b) => Number.isFinite(b.saat) && JENIS.every((j) => Number.isFinite(b[j]))).sort((a, b) => a.saat - b.saat);
   }
 
   /**
@@ -189,14 +196,13 @@
    */
   function kenaikan(bacaan, kini, sekarang, terbaca) {
     const akhir = bacaan.at(-1);
-    const semua = [...bacaan, { saat: sekarang, apk: kini.apk, ekstensi: kini.ekstensi, sejak: akhir && terbaca >= akhir.saat && terbaca < sekarang ? terbaca : NaN, langsung: true }];
+    const semua = [...bacaan, { saat: sekarang, apk: kini.apk, ekstensi: kini.ekstensi, iphone: kini.iphone, sejak: akhir && terbaca >= akhir.saat && terbaca < sekarang ? terbaca : NaN, langsung: true }];
     return semua.slice(1).map((b, i) => ({
       saat: b.saat,
       dari: Number.isFinite(b.sejak) && b.sejak >= semua[i].saat && b.sejak < b.saat ? b.sejak : semua[i].saat,
       langsung: Boolean(b.langsung),
-      apk: Math.max(0, b.apk - semua[i].apk),
-      ekstensi: Math.max(0, b.ekstensi - semua[i].ekstensi),
-    })).filter((b) => b.apk > 0 || b.ekstensi > 0);
+      ...naik(b, semua[i]),
+    })).filter((b) => JENIS.some((j) => b[j] > 0));
   }
 
   /** A rise whose readings are too far apart to name its hour. */
@@ -209,37 +215,33 @@
     // 48 columns, an hour each, the last one the hour we are in. Whole hours are the same hours in Makassar.
     const jamIni = Math.floor(sekarang / SEJAM);
     const awal = jamIni - 47;
-    const kolom = Array.from({ length: 48 }, (_, i) => ({ jam: awal + i, apk: 0, ekstensi: 0, apkKira: 0, ekstensiKira: 0 }));
+    const kolom = Array.from({ length: 48 }, (_, i) => ({ jam: awal + i, apk: 0, ekstensi: 0, iphone: 0, apkKira: 0, ekstensiKira: 0, iphoneKira: 0 }));
     for (const n of naik) {
       if (!kira(n)) {
         const k = kolom[Math.floor(n.saat / SEJAM) - awal];
-        if (k) {
-          k.apk += n.apk;
-          k.ekstensi += n.ekstensi;
-        }
+        if (k) for (const j of JENIS) k[j] += n[j];
         continue;
       }
       // Readings were missed: the hour is not known, so each hour of the span gets its share of the time.
       for (const k of kolom) {
         const bagian = Math.max(0, Math.min(n.saat, (k.jam + 1) * SEJAM) - Math.max(n.dari, k.jam * SEJAM)) / (n.saat - n.dari);
-        k.apkKira += n.apk * bagian;
-        k.ekstensiKira += n.ekstensi * bagian;
+        for (const j of JENIS) k[`${j}Kira`] += n[j] * bagian;
       }
     }
-    const jumlah = (k) => k.apk + k.ekstensi + k.apkKira + k.ekstensiKira;
+    const jumlah = (k) => JENIS.reduce((n, j) => n + k[j] + k[`${j}Kira`], 0);
     const ramai = kolom.reduce((a, k) => (jumlah(k) > jumlah(a) ? k : a), kolom[0]);
     const terbesar = Math.max(1, jumlah(ramai));
-    const adaKira = kolom.some((k) => k.apkKira > 0 || k.ekstensiKira > 0);
+    const adaKira = kolom.some((k) => JENIS.some((j) => k[`${j}Kira`] > 0));
     el('ket-kira').hidden = !adaKira;
     el('puncak').textContent = `Paling ramai: ${bilangan(Math.round(jumlah(ramai) * 10) / 10)} dalam sejam`;
     el('per-jam').replaceChildren(...kolom.map((k) => {
       const w = bagianWita(new Date(k.jam * SEJAM));
       const tiang = document.createElement('div');
-      const dikira = k.apkKira > 0 || k.ekstensiKira > 0;
+      const dikira = JENIS.some((j) => k[`${j}Kira`] > 0);
       const bulat = (n) => Math.round(n * 10) / 10;
-      tiang.title = `${pendek(`${w.year}-${w.month}-${w.day}`)} pukul ${w.hour}.00: ${bilangan(bulat(k.apk + k.apkKira))} APK, ${bilangan(bulat(k.ekstensi + k.ekstensiKira))} ekstensi${dikira ? ' (perkiraan, pembacaan sempat terlewat)' : ''}`;
-      // From the bottom: the APK, its estimated part, the extension, its estimated part.
-      for (const [kunci, warna, pudar] of [['apk', 'apk', false], ['apkKira', 'apk', true], ['ekstensi', 'ekstensi', false], ['ekstensiKira', 'ekstensi', true]]) {
+      tiang.title = `${pendek(`${w.year}-${w.month}-${w.day}`)} pukul ${w.hour}.00: ${JENIS.map((j) => `${bilangan(bulat(k[j] + k[`${j}Kira`]))} ${NAMA_PENDEK[j]}`).join(', ')}${dikira ? ' (perkiraan, pembacaan sempat terlewat)' : ''}`;
+      // From the bottom: each kind, then its estimated part (APK, extension, iPhone).
+      for (const [kunci, warna, pudar] of JENIS.flatMap((j) => [[j, j, false], [`${j}Kira`, j, true]])) {
         if (!k[kunci]) continue;
         const isi = document.createElement('i');
         isi.style.height = `${Math.max(3, (k[kunci] / terbesar) * 100)}%`;
@@ -285,7 +287,7 @@
         d.textContent = teks;
         return d;
       };
-      daftar.append(sel(kapan, 'kapan'), sel(n.apk ? `+${n.apk} APK` : ''), sel(n.ekstensi ? `+${n.ekstensi} ekstensi` : ''));
+      daftar.append(sel(kapan, 'kapan'), ...JENIS.map((j) => sel(n[j] ? `+${n[j]} ${NAMA_PENDEK[j]}` : '')));
     }
     wadah.replaceChildren(daftar);
   }
@@ -294,13 +296,13 @@
     const hari = hariHari(riwayat, kini, tanggalWita(new Date()));
     const akhir = hari.at(-1);
     const tujuh = hari.slice(-7);
-    for (const j of ['apk', 'ekstensi']) {
+    for (const j of JENIS) {
       el(`${j}-total`).textContent = kini[j].toLocaleString('id-ID');
       el(`${j}-hari`).textContent = akhir[j].toLocaleString('id-ID');
       el(`${j}-tujuh`).textContent = tujuh.reduce((n, h) => n + h[j], 0).toLocaleString('id-ID');
     }
     const empatBelas = hari.slice(-14).reverse();
-    const terbesar = Math.max(1, ...empatBelas.flatMap((h) => [h.apk, h.ekstensi]));
+    const terbesar = Math.max(1, ...empatBelas.flatMap((h) => JENIS.map((j) => h[j])));
     const wadah = el('per-hari');
     wadah.replaceChildren(...empatBelas.map((h) => {
       const baris = document.createElement('div');
@@ -309,7 +311,7 @@
       tgl.className = 'tgl';
       tgl.textContent = pendek(h.tanggal);
       const batang = document.createElement('div');
-      for (const j of ['apk', 'ekstensi']) {
+      for (const j of JENIS) {
         const b = document.createElement('div');
         b.className = 'batang';
         const lintasan = document.createElement('div');
@@ -318,7 +320,7 @@
         isi.style.background = `var(--${j})`;
         lintasan.append(isi);
         const n = document.createElement('span');
-        n.textContent = `${h[j].toLocaleString('id-ID')} ${j === 'apk' ? 'APK' : 'ekstensi'}`;
+        n.textContent = `${h[j].toLocaleString('id-ID')} ${NAMA_PENDEK[j]}`;
         b.append(lintasan, n);
         batang.append(b);
       }
@@ -346,7 +348,8 @@
     const c = JSON.parse(teks);
     if (!Number.isInteger(c?.apk) || !Number.isInteger(c?.ekstensi) || !Array.isArray(c?.berkas)) throw new Error('catatan terakhir tidak terbaca');
     const rinci = c.berkas.filter((b) => jenis(String(b?.berkas ?? '')) && Number.isInteger(b?.total)).map((b) => ({ tag: String(b.tag ?? ''), berkas: String(b.berkas), jenis: jenis(String(b.berkas)), total: b.total }));
-    return { kini: { apk: c.apk, ekstensi: c.ekstensi, rinci }, saat: Date.parse(c.waktu ?? '') };
+    // Written before 1.1.0 there is no iPhone count: 0.
+    return { kini: { apk: c.apk, ekstensi: c.ekstensi, iphone: Number.isInteger(c.iphone) ? c.iphone : 0, rinci }, saat: Date.parse(c.waktu ?? '') };
   }
 
   let sedang = false;
