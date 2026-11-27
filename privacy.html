@@ -73,6 +73,7 @@ ul, ol { padding-left: 24px; }
 <p>Data is tied to your SIKOLA account. When another account signs in, the previous account’s data is hidden at once and Sulo stops checking and reminding, background watching included. That data, its NEOSIA data too, is deleted only after you choose &quot;Use this account&quot;.</p>
 <h3>Where it is stored</h3>
 <p>Everything is in the app’s private storage on this phone, which other apps cannot read. Android backup and transfer to another phone are turned off for Sulo, so the data never goes into a cloud backup.</p>
+<p>Add to the phone’s calendar opens the new-event screen of your calendar app, and you save it there. Sulo neither reads nor writes the calendar itself, and asks for no calendar permission.</p>
 <h3>Encryption</h3>
 <ul><li>The SIKOLA session is encrypted with AES-256-GCM. Its key lives in the Android Keystore and cannot leave the phone.</li><li>The session never reaches the app’s interface code, never goes into a log, and is never part of the bug report info.</li><li>The optional app lock asks for your fingerprint or the phone’s screen lock whenever Sulo opens.</li><li>Sulo’s data can only be opened after the phone has been unlocked once since it was turned on. If the session key is lost or can no longer be used, the unreadable session is deleted and Sulo asks you to sign in again.</li></ul>
 <h3>Servers the app contacts</h3>
@@ -98,6 +99,7 @@ ul, ol { padding-left: 24px; }
 <p>Data is tied to your SIKOLA account. When another account signs in, the previous account’s data is hidden at once and Sulo stops checking and reminding, the session keeper included. That data, its NEOSIA data too, is deleted only after you choose &quot;Use this account&quot;.</p>
 <h3>Where it is stored</h3>
 <p>Everything is in the app’s private storage on this iPhone, which other apps cannot read. Sulo’s files, the data of NEOSIA’s pages opened inside Sulo included, are excluded from iCloud and computer backups. All a backup still holds is two flags without data (whether a session is connected, and whether an update waits for the app to open) and the Keychain items, which only work on this iPhone.</p>
+<p>Add to iPhone Calendar uses iOS’s own add-event sheet: you save it, and the event lives in Calendar, not in Sulo. Sulo never reads your calendar. iOS 17 and later ask for no permission; on iOS 16 the iPhone asks for Calendar access once, the first time.</p>
 <h3>Encryption</h3>
 <ul><li>The SIKOLA session is kept in the iPhone’s Keychain, for this iPhone only: it never moves to another iPhone, through a backup either.</li><li>The session never reaches the app’s interface code, never goes into a log, and is never part of the bug report info.</li><li>The optional app lock asks for Face ID, Touch ID or the iPhone’s passcode whenever Sulo opens.</li><li>Sulo’s data can only be opened after the iPhone has been unlocked once since it was turned on. If the session can no longer be read, it is deleted and Sulo asks you to sign in again. When Sulo is installed from scratch, anything an earlier install left in the Keychain is deleted at once.</li></ul>
 <h3>Servers the app contacts</h3>

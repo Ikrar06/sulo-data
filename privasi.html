@@ -73,6 +73,7 @@ ul, ol { padding-left: 24px; }
 <p>Data terikat ke akun SIKOLA-mu. Kalau akun lain masuk, data akun sebelumnya langsung disembunyikan dan Sulo berhenti mengecek serta mengingatkan, termasuk pemantauan latar belakang. Data itu, juga data NEOSIA-nya, baru dihapus setelah kamu memilih &quot;Pakai akun ini&quot;.</p>
 <h3>Di mana disimpan</h3>
 <p>Semuanya di penyimpanan pribadi aplikasi di HP ini, yang tidak bisa dibaca aplikasi lain. Cadangan Android dan pemindahan data ke HP lain dimatikan untuk Sulo, jadi datanya tidak ikut ke cadangan cloud.</p>
+<p>Tambah ke kalender HP membuka layar acara baru di aplikasi kalender HP-mu, dan kamu yang menyimpannya di sana. Sulo tidak membaca atau menulis kalender sendiri, dan tidak meminta izin Kalender.</p>
 <h3>Enkripsi</h3>
 <ul><li>Sesi SIKOLA dienkripsi dengan AES-256-GCM. Kuncinya ada di Android Keystore dan tidak bisa dikeluarkan dari HP.</li><li>Sesi itu tidak pernah sampai ke bagian tampilan aplikasi, tidak masuk log, dan tidak ikut info laporan bug.</li><li>Kunci aplikasi (opsional) meminta sidik jari atau kunci layar HP setiap Sulo dibuka.</li><li>Data Sulo baru bisa dibuka setelah HP dibuka pertama kali sejak dinyalakan. Kalau kunci sesi hilang atau tidak bisa dipakai lagi, sesi yang tidak terbaca dihapus dan Sulo meminta kamu masuk lagi.</li></ul>
 <h3>Server yang dihubungi</h3>
@@ -98,6 +99,7 @@ ul, ol { padding-left: 24px; }
 <p>Data terikat ke akun SIKOLA-mu. Kalau akun lain masuk, data akun sebelumnya langsung disembunyikan dan Sulo berhenti mengecek serta mengingatkan, termasuk penjaga sesi. Data itu, juga data NEOSIA-nya, baru dihapus setelah kamu memilih &quot;Pakai akun ini&quot;.</p>
 <h3>Di mana disimpan</h3>
 <p>Semuanya di penyimpanan pribadi aplikasi di iPhone ini, yang tidak bisa dibaca aplikasi lain. Berkas Sulo, termasuk data halaman NEOSIA yang terbuka di dalam Sulo, dikecualikan dari cadangan iCloud dan cadangan ke komputer. Yang tetap ikut cadangan hanya dua penanda tanpa data (apakah sesi tersambung, dan apakah ada pembaruan yang menunggu aplikasi dibuka), serta isi Keychain yang hanya bisa dipakai di iPhone ini.</p>
+<p>Tambah ke Kalender iPhone memakai lembar tambah-acara bawaan iOS: kamu yang menyimpannya, dan acaranya ada di Kalender, bukan di Sulo. Sulo tidak membaca kalendermu. Di iOS 17 ke atas tidak ada izin yang diminta; di iOS 16, iPhone meminta izin Kalender sekali, saat pertama dipakai.</p>
 <h3>Enkripsi</h3>
 <ul><li>Sesi SIKOLA disimpan di Keychain iPhone, hanya untuk iPhone ini: tidak pindah ke iPhone lain, juga lewat cadangan.</li><li>Sesi itu tidak pernah sampai ke bagian tampilan aplikasi, tidak masuk log, dan tidak ikut info laporan bug.</li><li>Kunci aplikasi (opsional) meminta Face ID, Touch ID, atau kode iPhone setiap Sulo dibuka.</li><li>Data Sulo baru bisa dibuka setelah iPhone dibuka pertama kali sejak dinyalakan. Kalau sesi tidak bisa dibaca lagi, sesi itu dihapus dan Sulo meminta kamu masuk lagi. Saat Sulo dipasang dari awal, isi Keychain yang tersisa dari pemasangan sebelumnya langsung dihapus.</li></ul>
 <h3>Server yang dihubungi</h3>
