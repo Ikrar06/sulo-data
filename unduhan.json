@@ -1,27 +1,27 @@
 {
-  "tanggal": "2026-11-28",
-  "waktu": "2026-11-28T10:55:45Z",
-  "apk": 404,
-  "ekstensi": 31,
-  "iphone": 25,
+  "tanggal": "2026-11-29",
+  "waktu": "2026-11-28T18:39:15Z",
+  "apk": 561,
+  "ekstensi": 37,
+  "iphone": 52,
   "berkas": [
     {
       "tag": "v1.1.0",
       "berkas": "sulo-1.1.0-android.apk",
       "jenis": "apk",
-      "total": 116
+      "total": 273
     },
     {
       "tag": "v1.1.0",
       "berkas": "sulo-1.1.0-ekstensi.zip",
       "jenis": "ekstensi",
-      "total": 2
+      "total": 8
     },
     {
       "tag": "v1.1.0",
       "berkas": "sulo-1.1.0-ios.ipa",
       "jenis": "iphone",
-      "total": 25
+      "total": 52
     },
     {
       "tag": "v1.0.0",
