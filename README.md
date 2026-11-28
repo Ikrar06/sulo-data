@@ -1,11 +1,11 @@
 # Unduhan Sulo
 
-Diperbarui 28 Nov 2026, 04.19 WITA. Dibaca ulang otomatis sekitar tiap 10 menit.
+Diperbarui 28 Nov 2026, 10.46 WITA. Dibaca ulang otomatis sekitar tiap 10 menit.
 
 | | Total | Hari ini | 7 hari terakhir |
 | --- | ---: | ---: | ---: |
-| APK Android | **283** | 6 | 283 |
-| Ekstensi (zip) | **28** | 0 | 28 |
+| APK Android | **288** | 11 | 288 |
+| Ekstensi (zip) | **29** | 1 | 29 |
 
 ## Per hari, 14 hari terakhir
 
@@ -15,7 +15,7 @@ APK Android
 25 Nov  █████ 36
 26 Nov  ████████████████████████ 189
 27 Nov  ███████ 52
-28 Nov  █ 6
+28 Nov  █ 11
 ```
 
 Ekstensi (zip)
@@ -24,13 +24,14 @@ Ekstensi (zip)
 25 Nov  ██ 16
 26 Nov  █ 5
 27 Nov  █ 7
-28 Nov   0
+28 Nov  █ 1
 ```
 
 ## Unduhan terakhir
 
 | Waktu (WITA) | APK | Ekstensi |
 | --- | ---: | ---: |
+| 28 Nov 04.19 sampai 10.46 | +5 | +1 |
 | 27 Nov 19.42 sampai 28 Nov 04.19 | +6 |  |
 | 27 Nov 10.57 sampai 19.42 | +18 |  |
 | 27 Nov 04.21 sampai 10.57 | +7 |  |
@@ -48,7 +49,7 @@ GitHub tidak menyimpan waktu tiap unduhan. Totalnya dibaca sekitar tiap 10 menit
 
 | Versi | Berkas | Unduhan |
 | --- | --- | ---: |
-| v1.0.0 | `sulo-1.0.0-android.apk` | 283 |
-| v1.0.0 | `sulo-1.0.0-ekstensi.zip` | 28 |
+| v1.0.0 | `sulo-1.0.0-android.apk` | 288 |
+| v1.0.0 | `sulo-1.0.0-ekstensi.zip` | 29 |
 
 Angka ini jumlah unduhan berkas di halaman rilis GitHub, bukan jumlah orang atau pemasangan. Unduhan ulang dan pengambilan otomatis ikut terhitung. Hari pertama memuat semua unduhan sebelum pencatatan dimulai. Riwayat lengkap: `unduhan.csv`.
