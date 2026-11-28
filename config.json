@@ -10,13 +10,26 @@
       "radarEvery": 3
     },
     "release": {
-      "versionCode": 10000,
-      "versionName": "1.0.0",
-      "url": "https://github.com/Ikrar06/sulo/releases/download/v1.0.0/sulo-1.0.0-android.apk",
-      "sha256": "5cd8ae8ff5401d9c0cb3944dbf47a27794ecac695a6a72912b8120c2127188ce",
+      "versionCode": 10100,
+      "versionName": "1.1.0",
+      "url": "https://github.com/Ikrar06/sulo/releases/download/v1.1.0/sulo-1.1.0-android.apk",
+      "sha256": "7a79d772f9023f80ff1e94a8d783a9cafe881a76976e82e1df6cf85106d86425",
       "notes": {
-        "id": "Versi 1.0.0. Bukan aplikasi resmi Unhas.",
-        "en": "Version 1.0.0. Not an official Unhas app."
+        "id": "Sipakamase, nilai tugas dari SIKOLA, tugas sendiri, dan tambah ke kalender HP. Bukan aplikasi resmi Unhas.",
+        "en": "Sipakamase, task grades from SIKOLA, your own tasks, and adding to your phone's calendar. Not an official Unhas app."
+      }
+    },
+    "ios": {
+      "release": {
+        "versionCode": 10100,
+        "versionName": "1.1.0",
+        "url": "https://github.com/Ikrar06/sulo/releases/download/v1.1.0/sulo-1.1.0-ios.ipa",
+        "sha256": "53e9ecc7cdf815cbc15fd8528aff0e650a13125b7379b947e43e3089c2b0f481",
+        "size": 1513829,
+        "notes": {
+          "id": "Sulo untuk iPhone versi 1.1.0. Bukan aplikasi resmi Unhas.",
+          "en": "Sulo for iPhone 1.1.0. Not an official Unhas app."
+        }
       }
     }
   }
