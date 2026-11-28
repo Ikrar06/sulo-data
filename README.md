@@ -53,6 +53,7 @@ Today's file:
 | `mobile.backgroundKeepAlive.radarEvery` | `3` | Course structure checks ride on every n-th daytime check, at most 4 courses each. Allowed 1 to 6. |
 | `mobile.backgroundKeepAlive.message` | absent | Optional `{ "id": "...", "en": "..." }`, at most 200 characters each, shown under the switch while it is off. Both languages or none. |
 | `mobile.release` | absent, on purpose | A new Android version (below). Left out until the first public release. |
+| `mobile.ios.release` | absent until the iPhone release | A new iPhone version (below). Filled in from the release workflow's output when the first iPhone .ipa is published. |
 
 How Sulo reads the file:
 
@@ -70,6 +71,7 @@ GitHub Pages serves the file with `Cache-Control: max-age=600`, so a change is v
 | Extension | at most once every 24 hours, at an hour picked by each installation; any hour once 48 hours have passed |
 | Android app | when it is opened, if the last read is more than 6 hours old; otherwise once a day |
 | Android background checks | the phone reads the file itself at most every 6 hours while background checks are on, without the app being opened |
+| iPhone app | when it is opened, if the last read is more than 6 hours old. Its session keeper never reads the file itself: it uses the app's last read, and sends nothing to SIKOLA once that read is over 72 hours old |
 
 So `enabled: false` stops the Android background checks within about 6 hours, and every extension within a day or two. Two more limits on the phone: if no read has succeeded for 72 hours, the background checks send nothing to SIKOLA until one does; and if the app has not been opened for 7 days, they stop with one notice.
 
@@ -93,6 +95,27 @@ Tells the Android app that a new version exists. It is left out until the first 
 - `versionCode` is `major * 10000 + minor * 100 + patch`, so every 0.9.x stays below 1.0.0.
 - `url` must be an APK asset of one of Ikrar06's GitHub releases; `sha256` is 64 hex characters; each note is at most 300 characters. One invalid field makes the app ignore the whole section.
 - `minVersionCode` (optional, never above `versionCode`) is only for security fixes. Below it the app shows one "update required" screen and sends nothing to SIKOLA until it is updated; the user's data stays.
+
+### mobile.ios.release
+
+Tells the iPhone app that a new version exists. The iPhone app reads only this section and the Android app only `mobile.release`, so the two never mix. It sits inside `mobile`:
+
+```json
+"ios": {
+  "release": {
+    "versionCode": 10100,
+    "versionName": "1.1.0",
+    "url": "https://github.com/Ikrar06/sulo/releases/download/v1.1.0/sulo-1.1.0-ios.ipa",
+    "sha256": "<64 hex characters of the .ipa>",
+    "size": 1300000,
+    "notes": { "id": "...", "en": "..." }
+  }
+}
+```
+
+- The iPhone app is installed from a laptop with Sideloadly, so a newer `versionCode` shows a card with "How to update", which opens https://sulo.ikrar.dev/pasang/iphone#perbarui in the browser, and "Send the link to my laptop", which shares that link. Sulo never downloads or installs anything itself.
+- `versionCode` is the app's CFBundleVersion, with the same rule as Android (1.1.0 = 10100). `url` must be an .ipa asset of one of Ikrar06's GitHub releases. `sha256` and `size` (bytes) come from the release workflow (`.github/workflows/ios-release.yml` in the main repository). One invalid field makes the app ignore the whole section.
+- `minVersionCode` and `requiredFrom` work as on Android: below `minVersionCode`, from `requiredFrom`, one "update required" screen, and nothing is sent to SIKOLA until the update. "See latest data" there shows the old data read-only, with no request; `readOnlyAllowed: false` turns that off for a heavy security fix.
 
 ## Academic calendar
 
@@ -122,7 +145,7 @@ It keeps what it has seen on the **`pantau` branch** (`state.json`), because `ma
 
 ## Download counts, and the `unduhan` branch
 
-`.github/workflows/unduhan.yml` reads, once an hour, how many times Sulo's release files have been downloaded: the Android APK and the extension zip, as GitHub itself counts them on the [release page](https://github.com/Ikrar06/sulo/releases). These are public totals of files, not of people: nobody is tracked, and nothing is added to the apps or the website for it. A download is not an install, and automated fetches are counted too. GitHub keeps no time for a download, so reading every hour is what tells roughly when one happened: within the hour before the reading that first saw it.
+`.github/workflows/unduhan.yml` reads, once an hour, how many times Sulo's release files have been downloaded: the Android APK, the extension zip and (since 1.1.0) the iPhone .ipa, as GitHub itself counts them on the [release page](https://github.com/Ikrar06/sulo/releases). These are public totals of files, not of people: nobody is tracked, and nothing is added to the apps or the website for it. A download is not an install, and automated fetches are counted too. GitHub keeps no time for a download, so reading every hour is what tells roughly when one happened: within the hour before the reading that first saw it.
 
 To look, live: [ikrar06.github.io/sulo-data/unduhan.html](https://ikrar06.github.io/sulo-data/unduhan.html) reads the totals from GitHub while it is open (again every five minutes, and with its Segarkan button; when GitHub limits the requests it shows the last hourly reading and says so) and the history from the `unduhan` branch: a column an hour for the last 48 hours, the last downloads with the time they were read, and a bar a day. That page loads nothing from outside and sends nothing anywhere else.
 

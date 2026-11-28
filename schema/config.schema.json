@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://ikrar06.github.io/sulo-data/schema/config.schema.json",
   "title": "Sulo remote configuration",
-  "description": "Remote kill switch and pacing for the Sulo extension and the Sulo Android app. Mirrors remoteConfigSchema (packages/core/src/remote/remote-config.ts), the Android app's keep-alive reader (packages/core/src/remote/keep-alive.ts) and its release reader (packages/core/src/remote/release.ts). This schema is stricter than the apps: unknown keys are rejected here, while the apps ignore them, and the Android app replaces any out-of-range field with its built-in default.",
+  "description": "Remote kill switch and pacing for the Sulo extension, the Sulo Android app and the Sulo iPhone app. Mirrors remoteConfigSchema (packages/core/src/remote/remote-config.ts), the Android app's keep-alive reader (packages/core/src/remote/keep-alive.ts) its release readers (packages/core/src/remote/release.ts, Android and iPhone), the extension's watch reader (packages/core/src/remote/extension-watch.ts) and the per-source reader (packages/core/src/remote/sources.ts). Every on/off switch must be a boolean when present: the apps refuse the whole file otherwise (packages/core/src/remote/switches.ts). This schema is stricter than the apps: unknown keys are rejected here, while the apps ignore them, and the Android app replaces any out-of-range field with its built-in default.",
   "type": "object",
   "properties": {
     "enabled": {
@@ -125,6 +125,12 @@
                 "en"
               ],
               "additionalProperties": false
+            },
+            "requiredFrom": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2099999999,
+              "description": "Unix seconds (1.1.0): when minVersionCode starts to apply. Before it, the update card shows its date and cannot be closed; from it, the 'update required' screen. Owner's rule: about 3 days after the release. Absent: at once."
             }
           },
           "required": [
@@ -133,6 +139,160 @@
             "url",
             "sha256"
           ],
+          "additionalProperties": false
+        },
+        "ios": {
+          "type": "object",
+          "description": "Settings for the Sulo iPhone app only (1.1.0). The Android app and the extension ignore this section.",
+          "properties": {
+            "release": {
+              "type": "object",
+              "description": "The latest iPhone release (1.1.0), read from this file the app already fetches: no extra request. The iPhone app is installed from a laptop with Sideloadly, so a newer versionCode shows a calm card whose 'How to update' opens the guide (https://sulo.ikrar.dev/pasang/iphone#perbarui) in the browser and whose 'Send the link to my laptop' shares that link; Sulo never downloads or installs anything itself. Below minVersionCode (from requiredFrom) one 'update required' screen; SIKOLA is not checked until updated, and 'See latest data' shows the old data read-only with no request, unless readOnlyAllowed is false. Kept apart from mobile.release (Android): each app reads only its own. The app ignores the whole section when any field is invalid, or when minVersionCode is above versionCode. Mirrors parseIosRelease (packages/core/src/remote/release.ts).",
+              "properties": {
+                "versionCode": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 2099999999,
+                  "description": "CFBundleVersion, the same rule as Android: major * 10000 + minor * 100 + patch (1.1.0 = 10100)."
+                },
+                "versionName": {
+                  "type": "string",
+                  "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+                  "description": "Digits and dots only, e.g. 0.9.6."
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^https://github\\.com/Ikrar06/[A-Za-z0-9_-][A-Za-z0-9._-]*/releases/download/[A-Za-z0-9_-][A-Za-z0-9._-]*/[A-Za-z0-9_-][A-Za-z0-9._-]*\\.ipa$",
+                  "description": "The .ipa asset of a GitHub release of Ikrar06 (sulo-<version>-ios.ipa from .github/workflows/ios-release.yml). Anything else makes the app ignore this section."
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-fA-F]{64}$",
+                  "description": "SHA-256 of the .ipa at `url`, as the release workflow prints it."
+                },
+                "size": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 2099999999,
+                  "description": "The .ipa's size in bytes, for the guide's download button."
+                },
+                "minVersionCode": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2099999999,
+                  "description": "Installed versions below this must update (security fixes only). 0 or absent: never required. Never above versionCode (the app ignores the section otherwise)."
+                },
+                "notes": {
+                  "type": "object",
+                  "description": "One short line on what changed. Plain text, never HTML. Both languages or none.",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 300
+                    },
+                    "en": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 300
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "en"
+                  ],
+                  "additionalProperties": false
+                },
+                "requiredFrom": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 2099999999,
+                  "description": "Unix seconds (1.1.0): when minVersionCode starts to apply. Before it, the update card shows its date and cannot be closed; from it, the 'update required' screen. Owner's rule: about 3 days after the release. Absent: at once."
+                },
+                "readOnlyAllowed": {
+                  "type": "boolean",
+                  "description": "'See latest data' on the update-required screen: the old data read-only, no request anywhere. false for a heavy security fix, when only the guide is offered. Absent: true."
+                }
+              },
+              "required": [
+                "versionCode",
+                "versionName",
+                "url",
+                "sha256",
+                "size"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "extension": {
+      "type": "object",
+      "description": "Settings for the Sulo extension only (1.1.0). The Android app ignores this section.",
+      "properties": {
+        "backgroundWatch": {
+          "type": "object",
+          "description": "'Pantau tugas baru' in the extension: a check every activeIntervalMinutes while the computer is in use and when the popup opens, keeping the SIKOLA session active in that browser. Can only be slowed down or turned off.",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "false stops the extension's watch everywhere."
+            },
+            "activeIntervalMinutes": {
+              "type": "integer",
+              "minimum": 15,
+              "maximum": 60,
+              "description": "Minutes between checks while the computer is in use (default 15)."
+            },
+            "idleIntervalMinutes": {
+              "type": "integer",
+              "minimum": 30,
+              "maximum": 110,
+              "description": "Minutes between checks while the computer is idle (default 30)."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "object",
+      "description": "Per campus system (1.1.0), read by both the extension and the Android app (its background worker too).",
+      "properties": {
+        "sipakamase": {
+          "type": "object",
+          "description": "The optional Sipakamase module: five read-only pages of the student's MKPK data.",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "false stops every request to Sipakamase, 'Perbarui sekarang' included."
+            },
+            "keep": {
+              "type": "boolean",
+              "description": "false stops only the keeper (the rotating read that keeps the session while something is pending)."
+            },
+            "keepIntervalMinutes": {
+              "type": "integer",
+              "minimum": 180,
+              "maximum": 720,
+              "description": "Minutes between the keeper's reads (default 180)."
+            }
+          },
+          "additionalProperties": false
+        },
+        "neosia": {
+          "type": "object",
+          "description": "The optional NEOSIA module.",
+          "properties": {
+            "scheduledVisit": {
+              "type": "boolean",
+              "description": "false stops the Android app's 'Perbarui NEOSIA otomatis' visit everywhere."
+            }
+          },
           "additionalProperties": false
         }
       },

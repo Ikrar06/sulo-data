@@ -1,7 +1,7 @@
 name: unduhan
 
 # Reads the download counts of Sulo's release files every ten minutes (the
-# Android APK and the extension zip), as GitHub itself counts them on the
+# Android APK, the extension zip and, since 1.1.0, the iPhone .ipa), as GitHub itself counts them on the
 # release page of Ikrar06/sulo, and writes them down when they changed. Nobody
 # is tracked: these are public totals, and nothing is added to the apps or the
 # website. GitHub keeps no time for a download, so the reading that first sees
